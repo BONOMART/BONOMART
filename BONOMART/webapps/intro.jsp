@@ -22,11 +22,11 @@
                     <table id="login">
                         <tr>
                             <td><label class="text">ID &nbsp;</label></td>
-                            <td><input class="form-control form-control-sm" type="text" name="userId" required></td>
+                            <td><input class="form-control form-control-sm" type="text" name="userId"></td>
                         </tr>
                         <tr>
                             <td><label class="text">PW &nbsp;</label></td>
-                            <td><input class="form-control form-control-sm" type="password" name="userPwd" required></td>
+                            <td><input class="form-control form-control-sm" type="password" name="userPwd"></td>
                         </tr>
                     </table>
 
@@ -35,13 +35,18 @@
                   
                     
                     <div class="btns" align="center">
-                        <button id="memberJoinBtn">JOIN</button> &nbsp;
+                        <button id="memberJoinBtn" onclick="memberJoin()">JOIN</button> &nbsp;
                         <button id="loginBtn">LOGIN</button> 
                     </div>
                 </form>
             </div>
-            
-        
     </div>
+    
+    <script>
+    
+    function memberJoin(){
+		location.href="/bono/views/member/memberJoin.jsp";
+	}
+    </script>
 </body>
 </html>
