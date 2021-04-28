@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+html, body {
+            background: rgb(78, 115, 223);
+            overflow: auto;
+        }
+
+        #wrap {
+            border: 3px solid white;
+            width: 50%;
+            height: auto;
+            background: white;
+            text-align: center;
+            color: #4e73df;
+            position: absolute;
+            top: 20%;
+            left: 25%;
+            padding-bottom: 50px;
+            margin-bottom: 200px;
+            
+        }
+
+        @media screen and (max-width : 950px), (max-height : 680px) {
+            #wrap {
+            border: 3px solid white;
+            width: 620px;
+            height: auto;
+            background: white;
+            text-align: center;
+            color: #4e73df;
+            position: absolute;
+            top: 20%;
+            left: 25%;
+            padding-bottom: 50px;
+            margin: 0 0 2% 200px;
+            }
+        }
+
+        #title {
+            font-size: 300%;
+            font-weight: bolder;
+            max-width: 100%;
+            margin-top: 20px;
+        }
+
+        #joinArea {
+            width: 600;
+            font-size: 11pt;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: -10px;
+            text-align: left;
+            
+        }
+
+        #loginBtn:hover, #memberJoinBtn:hover {
+            cursor: pointer;
+        }
+
+        .btns {
+            margin-top: 30px;
+        }
+
+        button {
+            width: 80px;
+            height: 28px;
+            background: #4e73df;
+            border: 1px solid white;
+            border-radius: 0.3rem;
+            font-weight: bold;
+            font-size: 11pt;
+            color: white;
+        }
+
+        .form-control-sm {
+            width: 300px;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        .comment {
+            display: none;
+            color: red;
+            font-size: 9pt;
+        }
+
+        .inputArea {
+            margin-bottom: 15px;
+        }
