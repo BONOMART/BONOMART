@@ -120,268 +120,148 @@
                     </div>
                 </div>
 
-                <!-- 데이터 입력 -->
-                <div class="wrapper">
-                    <div class="container sub-contents">
-                        <h3>발주 관리</h3>
+                <!-- header 영역과 게시판 영역 사이 공간 -->
+                <div style="padding-top: 50px; padding-bottom: 50px;"></div>
 
-                        <!-- 발주 등록을 위한 폼 -->
-                        <div class="product_select">
-                            <form action="" type="POST">
-                                <div class="select">
-                                    <div class="item">
-                                        <div>
-                                            발주 번호 <div class="col-sm-8"><input type="text" class="form-control"></div>
-                                        </div>
-                                        <div>
-                                            발주상품코드 <div class="col-sm-8"><input type="text" class="form-control"></div>
-                                        </div>
-                                        <div>
-                                            거래처 코드 <div class="col-sm-8"><input type="text" class="form-control"></div>
-                                        </div>
-                                        <div>
-                                            담당자명 <div class="col-sm-8"><input type="text" class="form-control"></div>
-                                        </div>
-                                    </div>
+                <!-- 추가한 상품들을 나열하여 보여주는 테이블 -->
+                <h3 style="text-align: center;">발주 조회</h3>
+                <table class="table table-hover text-center">
 
-                                    <div class="item" id="ss">
-                                        <div>
-                                            발주 수량 <div class="col-sm-8"><input type="number" class="form-control"></div>
-                                        </div>
-                                        <div>
-                                            발주 일자 <div class="col-sm-8"><input type="date" class="form-control"></div>
-                                        </div>
-                                        <div>
-                                            총 금액 <div class="col-sm-8"><input type="number" class="form-control"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>발주번호</th>
+                            <th>발주상품 코드</th>
+                            <th>거래처 코드</th>
+                            <th>발주 수량</th>
+                            <th>발주 일자</th>
+                            <th>총 금액</th>
+                            <th>담당자</th>
+                            <th>데이터 관리</th>
+                        </tr>
+                    </thead>
 
-                            <!-- 상품 하단 리스트 등록 버튼 및 하단 리스트에 원하는 상품 검색할 수 있는 검색버튼 -->
-                            <div class="submit_btn">
-                                <!-- 검색버튼 -->
-                                <div class="search">
-                                    <button type="button" class="btn btn-secondary">검색하기</button>
-                                </div>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>No.12321</td>
+                            <td>A203</td>
+                            <td>B203</td>
+                            <td>1,000</td>
+                            <td>2021-04-26</td>
+                            <td>400,000,000</td>
+                            <td>마진석</td>
+                            <td><button type="button" class="btn btn-primary" data-target=".modal" data-toggle="modal">삭제</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>No.12321</td>
+                            <td>A203</td>
+                            <td>B203</td>
+                            <td>1,000</td>
+                            <td>2021-04-26</td>
+                            <td>400,000,000</td>
+                            <td>마진석</td>
+                            <td><button type="button" class="btn btn-primary" data-target=".modal" data-toggle="modal">삭제</button></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>No.12321</td>
+                            <td>A203</td>
+                            <td>B203</td>
+                            <td>1,000</td>
+                            <td>2021-04-26</td>
+                            <td>400,000,000</td>
+                            <td>마진석</td>
+                            <td><button type="button" class="btn btn-primary" data-target=".modal" data-toggle="modal">삭제</button></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>No.12321</td>
+                            <td>A203</td>
+                            <td>B203</td>
+                            <td>1,000</td>
+                            <td>2021-04-26</td>
+                            <td>400,000,000</td>
+                            <td>마진석</td>
+                            <td><button type="button" class="btn btn-primary" data-target=".modal" data-toggle="modal">삭제</button></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>No.12321</td>
+                            <td>A203</td>
+                            <td>B203</td>
+                            <td>1,000</td>
+                            <td>2021-04-26</td>
+                            <td>400,000,000</td>
+                            <td>마진석</td>
+                            <td><button type="button" class="btn btn-primary" data-target=".modal" data-toggle="modal">삭제</button></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>No.12321</td>
+                            <td>A203</td>
+                            <td>B203</td>
+                            <td>1,000</td>
+                            <td>2021-04-26</td>
+                            <td>400,000,000</td>
+                            <td>마진석</td>
+                            <td><button type="button" class="btn btn-primary" data-target=".modal" data-toggle="modal">삭제</button></td>
+                        </tr>
+                    </tbody>
 
-                                <!-- 등록버튼 -->
-                                <div class="plus">
-                                    <button type="button" class="btn btn-primary">추가하기</button>
-                                </div>
+                </table>
+                <!-- 삭제 버튼 클릭 시, 팝업될 모달창 -->
+                <div class="modal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">등록한 발주 데이터 삭제</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                        </div>
-                        <p></p>
-
-                        <!-- 추가한 상품들을 나열하여 보여주는 테이블 -->
-                        <div class="scrollable">
-                            <table class="table table-hover text-center">
-
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>발주번호</th>
-                                        <th>발주상품 코드</th>
-                                        <th>거래처 코드</th>
-                                        <th>발주 수량</th>
-                                        <th>발주 일자</th>
-                                        <th>총 금액</th>
-                                        <th>담당자</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-                                </tbody>
-
-                            </table>
-                        </div>
-
-                        <!-- 실제 DB에 저장하는 등록버튼 및 등록 전 수정할 수 있는 수정버튼 -->
-                        <div class="final_btn">
-                            <div class="submit_btn">
-                                <button type="button" class="btn btn-success" data-target=".modal"
-                                    data-toggle="modal">등록하기</button>
+                            <div class="modal-body">
+                                <p>정말 삭제하시겠습니까??</p>
+                                <p>삭제 후, 다시 등록하셔야 합니다.</p>
                             </div>
-
-                            <!-- 모달창을 화면에 띄움 -->
-                            <div class="modify_btn">
-                                <button type="button" class="btn btn-warning" id="modal_btn">수정하기</button>
-
-                                <!-- 삭제 버튼 클릭 시, 팝업될 모달창 -->
-                                <div class="modal" tabindex="-1">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">발주 데이터 등록</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>정말 등록하시겠습니까??</p>
-                                                <p>등록 후, 조회 페이지로 이동합니다.</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary"
-                                                    onclick="location.href='http://127.0.0.1:5500/views/orderList.html'">등록</button>
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">취소</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- 모달 끝 -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary">삭제</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
                             </div>
                         </div>
                     </div>
+                </div>
+                <!-- 모달 끝 -->
 
-                    <script>
-                        $('#modal_btn').on('click', function () {
-                            $('##modify_product').modal();
-                        });
-                    </script>
-                    <!-- 게시판 끝 -->
+                </tbody>
+                </table>
+                <!-- 게시판 끝 -->
+
+                <!-- 게시판 영역과 page nation 영역 사이 공간 -->
+                <div style="padding-top: 50px; padding-bottom: 50px;"></div>
+
+                <!-- 페이지 네이션 시작 -->
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- 페이지 네이션 끝 -->
+
+                <footer>&copy;Copyright</footer>
                 </div>
             </div>
         </div>

@@ -152,7 +152,7 @@
                             <td>2021-04-26</td>
                             <td>400,000,000</td>
                             <td>마진석</td>
-                            <td><button data-target=".modal" data-toggle="modal">삭제</button></td>
+                            <td><button type="button" class="btn btn-primary" data-target=".modal" data-toggle="modal">삭제</button></td>
                         </tr>
                         <tr>
                             <td>2</td>
@@ -163,7 +163,7 @@
                             <td>2021-04-26</td>
                             <td>400,000,000</td>
                             <td>마진석</td>
-                            <td><button data-target=".modal" data-toggle="modal">삭제</button></td>
+                            <td><button type="button" class="btn btn-primary" data-target=".modal" data-toggle="modal">삭제</button></td>
                         </tr>
                         <tr>
                             <td>3</td>
@@ -174,7 +174,7 @@
                             <td>2021-04-26</td>
                             <td>400,000,000</td>
                             <td>마진석</td>
-                            <td><button data-target=".modal" data-toggle="modal">삭제</button></td>
+                            <td><button type="button" class="btn btn-primary" data-target=".modal" data-toggle="modal">삭제</button></td>
                         </tr>
                         <tr>
                             <td>4</td>
@@ -185,7 +185,7 @@
                             <td>2021-04-26</td>
                             <td>400,000,000</td>
                             <td>마진석</td>
-                            <td><button data-target=".modal" data-toggle="modal">삭제</button></td>
+                            <td><button type="button" class="btn btn-primary" data-target=".modal" data-toggle="modal">삭제</button></td>
                         </tr>
                         <tr>
                             <td>5</td>
@@ -196,7 +196,7 @@
                             <td>2021-04-26</td>
                             <td>400,000,000</td>
                             <td>마진석</td>
-                            <td><button data-target=".modal" data-toggle="modal">삭제</button></td>
+                            <td><button type="button" class="btn btn-primary" data-target=".modal" data-toggle="modal">삭제</button></td>
                         </tr>
                         <tr>
                             <td>6</td>
@@ -207,7 +207,7 @@
                             <td>2021-04-26</td>
                             <td>400,000,000</td>
                             <td>마진석</td>
-                            <td><button data-target=".modal" data-toggle="modal">삭제</button></td>
+                            <td><button type="button" class="btn btn-primary" data-target=".modal" data-toggle="modal">삭제</button></td>
                         </tr>
                     </tbody>
 
