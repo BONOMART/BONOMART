@@ -1,0 +1,255 @@
+@charset "UTF-8";
+
+
+.chart-line {
+        display : inline-block;
+        margin-left: 20px;
+        width:  1050px;
+ 	    height : 400px;
+        background: white;
+        padding: 10px;
+        border-radius : 15px;
+    }
+	
+    .chart-day {
+	    display : inline-block;
+        width : 100%;
+ 	    height : 380px;
+    }
+
+	.chart-month {
+	    display : inline-block;
+        width : 100%;
+ 	    height : 380px;
+        display: none; 
+	}
+
+    @media screen and (max-width: 1400px) {
+        .chart-rank {
+            display: none;
+        }
+    }
+    @media screen and (min-width: 200px) {
+        .chart-rank {
+            display: show;
+        }
+    }
+
+    .chart-rank {
+        width : 500px;
+ 	    height : 100%;
+        background: white;
+        padding: 10px;
+        margin-left: 10px;
+        border-radius : 15px;
+    }
+   
+    .chart-pie {
+        display : inline-block;
+ 	    width : 600px;
+ 	    height : 400px;
+    }
+
+    .select-div {
+        position:absolute; 
+        z-index:10;   
+    }
+
+    .container-bottom {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    @media screen and (max-width: 1850px) {
+        .dash-card {
+            display: none;
+        }
+    }
+
+    .dash-card { 
+       height: 100%;
+ 	   width : 100%;   
+       margin-left: 15px;
+    }
+
+    .day-card { 
+        display : inline-block;
+ 	    width : 95%;
+        background: white;
+        padding: 10px;
+        border-radius : 15px; 
+    }
+
+    .day-card-inner {
+        border :1px solid rgba(0, 0, 255, 0.40);
+        border-radius : 15px;
+    }
+
+   .day-money {
+        display: inline-block;
+        height: 182.5px;
+        width : 45%;
+        font-weight: bold;
+        border-left : 20px solid blue;
+        border-radius : 10px;
+   }
+
+   .icon {    
+        float: right;
+        height: 135px;
+        width : 45%; 
+   }
+   
+   .fa {
+        font-size: 140px;
+        opacity: 0.3;
+        margin-left: 20%;
+        color: rgba(0, 0, 255, 0.15);
+   }
+   
+   .day-earnings-text {
+       color: rgba(0, 0, 255, 0.69);
+       margin-left: 45px;
+       font-size: 24px;
+       margin-top: 45px;
+       font-family :Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;    
+   }
+
+   .day-money-text {
+        margin-left: 50px;
+        font-size: 40px; 
+   }
+
+   .month-card { 
+        display : inline-block;
+ 	    width : 100%;
+        height: 182.5px;
+        background: white;
+        padding: 10px;
+        border-radius : 15px; 
+    }
+
+    .month-card-inner {
+        border :1px solid rgba(0, 205, 226, 0.50);
+        border-radius : 15px;
+    }
+
+   .month-money {
+        display: inline-block;
+        height: 180px;
+        width : 45%;
+        font-weight: bold;
+        border-left : 20px solid rgba(0, 205, 226, 0.70);
+        border-radius : 10px; 
+   }
+
+   .icon {
+        float: right;
+        height: 135px;
+        width : 45%; 
+   }
+   
+   .fa {
+        font-size: 160px;
+        opacity: 0.3;
+        margin-left: 25%;
+        margin-top: 7%;
+        color: rgba(0, 0, 255, 0.15);
+   }
+
+   .month-earnings-text {
+        color: rgba(0, 205, 226, 0.70);
+        margin-left: 45px;
+        font-size: 24px;
+        margin-top: 45px;
+        font-family :Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;   
+   }
+
+   .month-money-text {
+        margin-left: 50px;
+        font-size: 40px;  
+   }
+
+    .pyo1-2{
+        width : 40%;
+        height: 13px;
+    }
+
+
+    .month-card{   
+        display : inline-block;
+ 	    width : 95%;
+        background: white;
+        padding: 10px;
+        border-radius : 15px;
+      
+    }
+    
+    .order { 
+        display : inline-block;
+ 	    width : 3200px;
+        height: 400px;
+        background: white;
+        padding: 10px;
+        border-radius : 15px;
+        margin-right: 30px;
+        
+    }
+
+    .order-table { 
+        width : 100%;
+        height: 100%; 
+        text-align: center;
+        border-collapse: collapse;
+    }
+  
+    .order-table tr {
+        border-bottom: 0.5px solid rgba(0, 0, 0, 0.20);
+    }
+
+    .order-table thead {
+        background: rgba(0, 0, 0, 0.10);
+        line-height: 40px;
+        
+        font-size: smaller
+    }
+
+    .order-table tbody tr {
+        font-weight: 600;
+        font-size:medium;
+    }
+
+    .order-table tbody tr td:nth-child(3) {
+        color: red; 
+    }
+
+    .order-table button {
+        width: 50px;
+        height: 30px;
+        color: white;
+        font-weight:700;
+        font-size: smaller;
+        background: rgba(0, 0, 0, 0.69);
+    }
+
+    .order-table tbody tr:hover {
+        background: rgba(0, 0, 0, 0.13);
+    }
+
+    .box select {
+        background-color: rgba(0, 0, 0, 0.30);
+        color: white;
+        width: 80px;
+        height: 20px;
+        
+        font-size: 17px;
+        font-weight: 400;
+        float: right;
+        border-radius : 5px;
+    }
+
+    .box:hover::before {
+        color: rgba(255, 255, 255, 0.6);
+        background-color: rgba(255, 255, 255, 0.2);
+    }
