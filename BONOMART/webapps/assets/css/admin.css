@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+
+   #serach {
+        margin-top: 20px;
+        margin-left:10px;
+        margin-bottom:-10px;
+        width: 180px;
+        height: 50px;
+        border-radius: 5px 5px 0px 0px ;
+        background:#4e73df ;
+        font-size: 30px;
+        text-align: center;
+        color: white;
+    }
+
+    #field2{
+        font-size: larger;
+        margin-top: 30px;
+        margin-left: 30px;
+        margin-bottom: 10px;
+        padding: 20px;
+        padding-left: 30px ;
+        width: 1300px;
+        height: 70px;
+        background: white;
+        border: 1px solid whitesmoke;
+        border-radius: 10px;
+    }
+
+    #table2 {
+        background: white;
+        margin-left: 30px ;
+        margin-top:30px ;
+        border: 1px solid whitesmoke;
+        border-radius: 10px;
+    }
