@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="assets/css/intro.css">
 </head>
 <body>
+<a href="/bono/index.jsp">가기</a>
     <div id="wrap" align="center">
         
             <p id="welcome">

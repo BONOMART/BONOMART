@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <div id="wrap" class="wrap">
     <div class="content">
         <div class="aside bg-gradient-sidebar">
@@ -75,7 +77,9 @@
         <div class="main-wrapper">
             <div id="main">
                 <div class="header bg-gradient-topbar">
-                    <p>관리자</p>
+                    <p id="headerUserName">
+                    	<b>관리자</b>
+                    </p>
                     <span id="headerIconWrapper">
                         <i class="fa fa-user-circle" aria-hidden="true" id="headerIcon"></i>
                     </span>
