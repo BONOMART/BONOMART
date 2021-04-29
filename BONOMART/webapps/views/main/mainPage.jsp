@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <script src="/bono/assets/js/jquery-3.6.0.min.js"></script>
+   <script src="/bono/assets/js/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="/bono/assets/css/header.css" />
     <link rel="stylesheet" href="/bono/assets/css/mainPage.css" />
     
@@ -73,7 +73,12 @@
                           <div class="day-money-text">\1,300,000</div>
                         </div>
                         <div class="icon">
-                          <i class="fa fa-krw" aria-hidden="true"></i>
+                          <i class="fa fa-krw" aria-hidden="true"    style=  "
+        font-size: 160px;
+        opacity: 0.3;
+        margin-left: 25%;
+        margin-top: 7%;
+        color: rgba(0, 0, 255, 0.15); "> </i>
                         </div>
                     </div>    
                 </div>  
@@ -89,7 +94,12 @@
                              <div class="month-money-text">\90,000,000</div>
                          </div>
                          <div class="icon">
-                             <i class="fa fa-krw" aria-hidden="true"></i>
+                             <i class="fa fa-krw" aria-hidden="true"   style=  "
+        font-size: 160px;
+        opacity: 0.3;
+        margin-left: 25%;
+        margin-top: 7%;
+        color: rgba(0, 0, 255, 0.15); "></i>
                          </div>
                     </div>     
                 </div>
@@ -191,6 +201,27 @@
                 text: '일 별 매출액',
                 fontSize : 13
                 
+            },
+            tooltips : {
+                backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      titleMarginBottom: 10,
+      titleFontColor: '#6e707e',
+      titleFontSize: 14,
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      intersect: false,
+      mode: 'index',
+      caretPadding: 10,
+      callbacks: {
+        label: function(tooltipItem, chart) {
+          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+        }
+      }
             }
             
          }
@@ -222,6 +253,27 @@
                 text: '월 별 매출액',
                 fontSize : 13
                 
+            },
+            tooltips : {
+                backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      titleMarginBottom: 10,
+      titleFontColor: '#6e707e',
+      titleFontSize: 14,
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      intersect: false,
+      mode: 'index',
+      caretPadding: 10,
+      callbacks: {
+        label: function(tooltipItem, chart) {
+          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+        }
+      }
             }
         }
     });
@@ -251,6 +303,33 @@
             
         }
     });
+    
+    Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+    Chart.defaults.global.defaultFontColor = '#858796';
+
+    function number_format(number, decimals, dec_point, thousands_sep) {
+      
+      number = (number + '').replace(',', '').replace(' ', '');
+      var n = !isFinite(+number) ? 0 : +number,
+        prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+        sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+        dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+        s = '',
+        toFixedFix = function(n, prec) {
+          var k = Math.pow(10, prec);
+          return '' + Math.round(n * k) / k;
+        };
+      
+      s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+      if (s[0].length > 3) {
+        s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+      }
+      if ((s[1] || '').length < prec) {
+        s[1] = s[1] || '';
+        s[1] += new Array(prec - s[1].length + 1).join('0');
+      }
+      return s.join(dec);
+    }
 </script>
 
  
