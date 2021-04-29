@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<div id="wrap" class="wrap" style="font-family:'Malgun Gothic';">
+<div id="wrap" class="wrap" style="font-family:'Malgun Gothic'; font-size:16px;">
     <div class="content">
         <div class="aside bg-gradient-sidebar">
             <ul class="sidebar-nav">
