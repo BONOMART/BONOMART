@@ -31,10 +31,10 @@
                                 <div class="select">
                                     <div class="item">
                                         <div>
-                                            담당자 명 <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                            담당자 명&nbsp;&nbsp;&nbsp;<div class="col-sm-8"><input type="text" class="form-control"></div>
                                         </div>
                                         <div>
-                                            거래처 명 <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                            거래처 명&nbsp;&nbsp;&nbsp;<div class="col-sm-8"><input type="text" class="form-control"></div>
                                         </div>
                                         <div>
                                             거래처 코드 <div class="col-sm-8"><input type="text" class="form-control"></div>
@@ -43,7 +43,7 @@
 
                                     <div class="item" id="ss">
                                         <div>
-                                            주소 <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                            주소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="col-sm-8"><input type="text" class="form-control"></div>
                                         </div>
                                         <div>
                                             이체 정보 <div class="col-sm-8"><input type="text" class="form-control"></div>

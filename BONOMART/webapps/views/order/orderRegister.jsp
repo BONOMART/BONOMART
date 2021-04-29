@@ -31,16 +31,16 @@
                                 <div class="select">
                                     <div class="item">
                                         <div>
-                                            발주 번호 <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                            발주 번호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="col-sm-8"><input type="text" class="form-control"></div>
                                         </div>
                                         <div>
-                                            발주상품코드 <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                            발주상품코드<div class="col-sm-8"><input type="text" class="form-control"></div>
                                         </div>
                                         <div>
-                                            거래처 코드 <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                            거래처 코드&nbsp;&nbsp;<div class="col-sm-8"><input type="text" class="form-control"></div>
                                         </div>
                                         <div>
-                                            담당자명 <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                            담당자명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="col-sm-8"><input type="text" class="form-control"></div>
                                         </div>
                                     </div>
 
@@ -52,7 +52,7 @@
                                             발주 일자 <div class="col-sm-8"><input type="date" class="form-control"></div>
                                         </div>
                                         <div>
-                                            총 금액 <div class="col-sm-8"><input type="number" class="form-control"></div>
+                                            총 금액&nbsp;&nbsp;&nbsp;<div class="col-sm-8"><input type="number" class="form-control"></div>
                                         </div>
                                     </div>
                                 </div>
