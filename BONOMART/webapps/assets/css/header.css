@@ -106,3 +106,10 @@ main {
     margin-right: 50px;
     color: #4e73df;
 }
+.accmenu{
+	background: #5a81f8;
+	border-radius: 15px;
+}
+.fa-angle-down{
+	margin-left:17px;
+}
