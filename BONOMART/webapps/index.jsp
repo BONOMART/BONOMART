@@ -20,6 +20,7 @@
 <a href="views/product_sale/Salepage.jsp">판매신청</a>
 <a href="views/account/accountList.jsp">거래처목록</a>
 <a href="views/account/accountRegister.jsp">거래처등록</a>
+<a href="views/inventory/inventory.jsp">재고목록</a>
 
 <%@include file="views/common/footer.jsp" %>
 </body>
