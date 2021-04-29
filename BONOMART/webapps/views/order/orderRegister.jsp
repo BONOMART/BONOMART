@@ -60,11 +60,6 @@
 
                             <!-- 상품 하단 리스트 등록 버튼 및 하단 리스트에 원하는 상품 검색할 수 있는 검색버튼 -->
                             <div class="submit_btn">
-                                <!-- 검색버튼 -->
-                                <div class="search">
-                                    <button type="button" class="btn btn-secondary">검색하기</button>
-                                </div>
-
                                 <!-- 등록버튼 -->
                                 <div class="plus">
                                     <button type="button" class="btn btn-primary">추가하기</button>

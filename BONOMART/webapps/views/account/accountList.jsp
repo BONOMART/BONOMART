@@ -18,6 +18,13 @@
 <link rel="stylesheet" href="/bono/assets/css/header.css">
 <link rel="stylesheet" href="/bono/assets/css/accountList.css">
 
+<style>
+		input-group mb-3 {
+			margin-left : auto;
+			margin-right : auto;
+			width: 600px;
+		}
+</style>
 
 </head>
 <body>
@@ -27,10 +34,36 @@
                 <!-- header 영역과 게시판 영역 사이 공간 -->
                 <div style="padding-top: 50px; padding-bottom: 50px;"></div>
 
-                <!-- 추가한 상품들을 나열하여 보여주는 테이블 -->
                 <h3 style="text-align: center;">거래처 조회</h3>
+                
+                <!-- 조회 페이지의 서치 바 -->
+                <div class="input-group mb-3" style="margin-left : auto;
+						margin-right : auto; width: 600px;">
+  						<input type="text" class="form-control" placeholder="검색할 데이터를 입력하세요.." aria-label="Recipient's username" aria-describedby="button-addon2">
+  						<!-- 검색 버튼 -->
+  						<div class="btn-group">
+							  <button type="button" class="btn btn-primary">검색</button>
+							  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							    <span class="sr-only">Toggle Dropdown</span>
+							  </button>
+							  <div class="dropdown-menu">
+									    <a class="dropdown-item" href="#">거래처 코드 기준 정렬</a>
+									    <div class="dropdown-divider"></div>
+									    <a class="dropdown-item" href="#">거래처 명 기준 정렬</a>
+									    <div class="dropdown-divider"></div>
+									    <a class="dropdown-item" href="#">담당자명 기준 정렬</a>
+									    <div class="dropdown-divider"></div>
+									    <a class="dropdown-item" href="#">전화번호 기준 정렬</a>
+									    <div class="dropdown-divider"></div>
+									    <a class="dropdown-item" href="#">이체 정보 기준 정렬</a>
+  							 </div>
+						</div>
+						<!-- 검색 버튼 끝 -->
+				</div>
+				<!-- 서치 바 끝 -->
+                
+                 <!-- 추가한 상품들을 나열하여 보여주는 테이블 -->
                 <table class="table table-hover text-center">
-
                     <thead>
                         <tr data-target=".modal" data-toggle="modal">
                             <th>#</th>
