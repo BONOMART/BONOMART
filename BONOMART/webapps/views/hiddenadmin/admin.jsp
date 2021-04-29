@@ -25,12 +25,17 @@
                                   <form action=""> 
                                     <div id="field2">
 										<div id="select_box">
-									    		<label for="color">항목선택</label>
+									    		<label for="color">항목선택 &nbsp; &nbsp;
+									    				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+  													 <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+													</svg>  			
+									    		</label>
 									    			<select id="color" title="select color">
-									     		  <option selected="selected">항목선택</option>
+									     		  <option selected="selected">항목선택	</option>
 									      		  <option>아이디</option>
 									      		  <option>이 름</option>
 									      		  <option>회원번호</option>
+									      		  <option>부 서</option>
 									  		  </select>
 											</div>
 											<div id="text1"> &nbsp;<input type="text"  size="50"/>    &nbsp; &nbsp;
@@ -121,6 +126,31 @@
                                          </table>
                                        </div> 
 									</div>
+										<!-- 게시판 영역과 page nation 영역 사이 공간 -->
+										<div style="padding-top: 50px; padding-bottom: 50px;"></div> 
+									
+									   <!-- 페이지 네이션 시작 -->
+						                <nav aria-label="Page navigation example">
+						                    <ul class="pagination justify-content-center">
+						                        <li class="page-item">
+						                            <a class="page-link" href="#" aria-label="Previous">
+						                                <span aria-hidden="true">&laquo;</span>
+						                            </a>
+						                        </li>
+						                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+						                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+						                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+						                        <li class="page-item">
+						                            <a class="page-link" href="#" aria-label="Next">
+						                                <span aria-hidden="true">&raquo;</span>
+						                            </a>
+						                        </li>
+						                    </ul>
+						                </nav>
+						                <!-- 페이지 네이션 끝 -->
+								<div style="padding-top: 50px; padding-bottom: 50px;"></div> 
+                            </div>
+                            
                             </div>
                             
                           
