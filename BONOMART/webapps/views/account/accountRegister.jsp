@@ -13,8 +13,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- css 파일 삽입 -->
-<link rel="stylesheet" href="assets/css/header.css">
-<link rel="stylesheet" href="assets/css/accountRegister.css">
+<link rel="stylesheet" href="/bono/assets/css/header.css">
+<link rel="stylesheet" href="/bono/assets/css/accountRegister.css">
 
 </head>
 <body>
