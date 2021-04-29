@@ -1,5 +1,10 @@
 @charset "UTF-8";
 /* 게시판 css */
+/* 게시판 css */
+        .table {
+            text-align: center;
+        }
+
         .wrapper {
             height: 920px;
             background: whitesmoke;
@@ -67,11 +72,12 @@
             padding-bottom: 30px;
         }
 
+        .scrollable {
+            height: 620px;
+            overflow-y: scroll;
+        }
+
         .table {
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-            width: 70%;
             background: white;
             border-radius: 30px;
             box-shadow: 1px 1px 1px 1px lightgray;
