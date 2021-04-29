@@ -5,6 +5,7 @@ html,body{
     margin: 0;
     background: whitesmoke;
 }
+
 .wrap {
     display: flex;
     flex-direction: column;
@@ -65,7 +66,7 @@ html,body{
 
 hr.sidebar-divider {
     margin: 0 1rem 1rem;
-    border-color: white;
+    border:1px solid white;
 }
 .bg-gradient-sidebar {
       background-color: #4e73df;
