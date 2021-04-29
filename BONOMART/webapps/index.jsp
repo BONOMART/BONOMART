@@ -18,6 +18,8 @@
 <a href="views/order/orderRegister.jsp">발주신청</a>
 <a href="views/product_sale/PMpage.jsp">판매화면</a>
 <a href="views/product_sale/Salepage.jsp">판매신청</a>
+<a href="views/account/accountList.jsp">거래처목록</a>
+<a href="views/account/accountRegister.jsp">거래처등록</a>
 
 <%@include file="views/common/footer.jsp" %>
 </body>
