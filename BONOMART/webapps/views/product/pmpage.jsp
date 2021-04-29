@@ -8,9 +8,9 @@
 <script src="../../assets/js/jquery-3.6.0.min.js"></script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-<link rel="stylesheet" href="../../assets/css/PMpage.css" />
-<link rel="stylesheet" href="../../assets/css/header.css" />
 
+<link rel="stylesheet" href="../../assets/css/pmpage.css" />
+<link rel="stylesheet" href="../../assets/css/header.css" />
 
 </head>
 
@@ -67,7 +67,8 @@
 									</div>
 								</div>
 							</div>
-	
+							 
+							 <!-- 스펙 입력 -->
 							<div class="item">
 								<textarea class="form-control col-md-10" rows="6"
 									placeholder="제품 스펙을 입력해주세요."></textarea>
@@ -106,6 +107,7 @@
 								<th>상품수량</th>
 								<th>입고단가</th>
 								<th>출고단가</th>
+								<th>제품사양</th>
 							</tr>
 						</thead>
 	
@@ -118,6 +120,10 @@
 								<td>33</td>
 								<td>400</td>
 								<td>500</td>
+								<td>
+									<textarea class="form-control col-md-10" rows="6"
+									placeholder="아주빠르고 조아여" readonly></textarea>
+								</td>
 							</tr>
 	
 							<tr>
@@ -128,6 +134,10 @@
 								<td>33</td>
 								<td>400</td>
 								<td>500</td>
+								<td>
+									<textarea class="form-control col-md-10" rows="6"
+									placeholder="제품 스펙을 입력해주세요." readonly></textarea>
+								</td>
 							</tr>
 	
 							<tr>
@@ -138,6 +148,10 @@
 								<td>33</td>
 								<td>400</td>
 								<td>500</td>
+								<td>
+									<textarea class="form-control col-md-10" rows="6"
+									placeholder="제품 스펙을 입력해주세요." readonly></textarea>
+								</td>
 							</tr>
 	
 							<tr>
@@ -148,6 +162,10 @@
 								<td>33</td>
 								<td>400</td>
 								<td>500</td>
+								<td>
+									<textarea class="form-control col-md-10" rows="6"
+									placeholder="제품 스펙을 입력해주세요." readonly></textarea>
+								</td>
 							</tr>
 	
 							<tr>
@@ -158,6 +176,10 @@
 								<td>33</td>
 								<td>400</td>
 								<td>500</td>
+								<td>
+									<textarea class="form-control col-md-10" rows="6"
+									placeholder="제품 스펙을 입력해주세요." readonly></textarea>
+								</td>
 							</tr>
 	
 							<tr>
@@ -168,6 +190,10 @@
 								<td>33</td>
 								<td>400</td>
 								<td>500</td>
+								<td>
+									<textarea class="form-control col-md-10" rows="6"
+									placeholder="제품 스펙을 입력해주세요." readonly></textarea>
+								</td>
 							</tr>
 	
 							<tr>
@@ -178,6 +204,10 @@
 								<td>33</td>
 								<td>400</td>
 								<td>500</td>
+								<td>
+									<textarea class="form-control col-md-10" rows="6"
+									placeholder="제품 스펙을 입력해주세요." readonly></textarea>
+								</td>
 							</tr>
 	
 							<tr>
@@ -188,6 +218,10 @@
 								<td>33</td>
 								<td>400</td>
 								<td>500</td>
+								<td>
+									<textarea class="form-control col-md-10" rows="6"
+									placeholder="제품 스펙을 입력해주세요." readonly></textarea>
+								</td>
 							</tr>
 	
 						</tbody>
@@ -210,5 +244,6 @@
 	</div>
 	
 	<%@ include file="../common/footer.jsp" %>
+	
 </body>
 </html>
