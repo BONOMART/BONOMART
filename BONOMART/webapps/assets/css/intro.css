@@ -47,56 +47,44 @@ body {
 }
 
 #wrap {
-    width: 50%;
-    height: 60%;
+    width: 850px;
+    height: 510px;
     background: white;
     text-align: center;
     color: #4e73df;
     position: absolute;
     top: 25%;
     left: 25%;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
     position: fixed; 
     animation-name: trans1;  /* 선언한 keyframe 사용 */
     animation-duration: 3s;  /* 애니매이션 실행 시간 */
     animation-iteration-count: 1;
 }
 
-@media screen and (max-width : 950px), (max-height : 800px) {
-    #wrap {
-    width: 550px;
-    height: 380px;
-    background: white;
-    text-align: center;
-    color: #4e73df;
-    position: absolute;
-    top: 25%;
-    left: 25%;
-    margin-left: 2%;
-    position: fixed; 
-    }
-}
+
 
 #welcome {
-    font-size: 400%;
+    font-size: 500%;
     font-weight: bolder;
     max-width: 100%;
     margin-top: 50px;
 }
 
 #loginArea {
-    font-size: 15pt;
+    font-size: 20pt;
     display: inline-block;
-    margin-top: 15px;
+    margin-top: 25px;
 }
 
 #loginBtn:hover, #memberJoinBtn:hover {
     cursor: pointer;
 }
 
-input {
-    width: 180px;
-    height: 20px;
+.form-control-sm {
+    width: 250px;
+    height: 40px;
     animation-name: trans2;  /* 선언한 keyframe 사용 */
     animation-duration: 3s;  /* 애니매이션 실행 시간 */
     animation-iteration-count: 1;
@@ -104,17 +92,17 @@ input {
 }
 
 .btns {
-    margin-top: 40px;
+    margin-top: 50px;
 }
 
 button {
-    width: 80px;
-    height: 28px;
+    width: 120px;
+    height: 40px;
     background: #4e73df;
     border: 1px solid white;
     border-radius: 0.3rem;
     font-weight: bold;
-    font-size: 11pt;
+    font-size: 18pt;
     color: white;
     animation-name: trans3;  /* 선언한 keyframe 사용 */
     animation-duration: 3s;  /* 애니매이션 실행 시간 */
