@@ -1,9 +1,10 @@
 @charset "UTF-8";
 
-<style>
+
     footer {
+    	position: relative;
         padding: 2px;
-        width: 89%;
+        width: 100%;
         text-align: center;
         bottom: 0;
         background: white;
@@ -154,5 +155,3 @@
     #check{
         font-weight: bold;
     }
-    
-    </style>

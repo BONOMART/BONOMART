@@ -6,9 +6,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-   <script src="/bono/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="/bono/assets/js/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="/bono/assets/css/header.css" />
-      <link rel="stylesheet" href="/bono/assets/css/mainPage.css" />
+    <link rel="stylesheet" href="/bono/assets/css/mainPage.css" />
     
 </head>
 <body>
