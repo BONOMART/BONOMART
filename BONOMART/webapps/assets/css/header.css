@@ -58,6 +58,10 @@ html,body{
     color: #fff;
     background: rgba(218, 217, 217, 0.5);
     transition-duration: 0.3s;
+
+}
+.accmenu a:hover{
+    border-radius:15px;		
 }
 
 .sidebar-nav > .sidebar-brand {
@@ -109,7 +113,4 @@ main {
 .accmenu{
 	background: #5a81f8;
 	border-radius: 15px;
-}
-.fa-angle-down{
-	margin-left:17px;
 }

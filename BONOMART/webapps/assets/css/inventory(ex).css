@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+ 	
+
+.table {
+text-align: center;
+}
+
 .wrapper {
 	height: 920px;
 	background: whitesmoke;
@@ -9,8 +15,7 @@
 	padding-top: 40px;
 }
 
-/* 판매상품 정보 입 */
-.sale_select {
+.product_select {
 	width: 100%;
 	height: 300px;
 	background: white;
@@ -20,14 +25,30 @@
 
 .select {
 	height: 220px;
+	display: flex;
+	justify-content: center;
 	align-items: center;
 }
 
-.select > div {
-	display: flex;
-	justify-content: center;	
+.item {
+	width: 30%;
+	padding: 5px;
+	justify-content: center;
 	align-items: center;
-	padding-top: 40px;
+}
+
+.item > div {
+	padding: 8px;
+	display: flex;
+	justify-content: center;
+}
+
+.item > div > col-sm-8 {
+	justify-content: flex-end;
+}
+
+.item > .form-control {
+	resize: none;
 }
 
 .submit_btn {
@@ -51,22 +72,18 @@
 	padding-left: 40px;
 	padding-bottom: 30px;
 }
-/* 판매상품 정보입력 끝 */
 
-/* 테이블 */
-.product_list {
-	overflow: auto;
+.scrollable {
+	height: 460px;
+	overflow-y: auto;
 }
 
 .table {
 	background: white;
-	text-align: center;
 	border-radius: 30px;
 	box-shadow: 1px 1px 1px 1px lightgray;
 }
-/* 테이블 끝 */
 
-/* DB 등록버튼 */
 .final_btn {
 	display: flex;
 	justify-content: center;
@@ -77,18 +94,22 @@
 	padding-right: 40px;
 	padding-bottom: 30px;
 }
-/* DB 등록버튼 끝 */
 
+.final_btn > .modify_btn {
+	padding-left: 40px;
+	padding-bottom: 30px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+#serach {
+        margin-top: 20px;
+        margin-left:10px;
+        margin-bottom: -5px;
+        width: 180px;
+        height: 50px;
+        border-radius: 5px 5px 0px 0px ;
+        background:#4e73df ;
+        font-size: 30px;
+        text-align: center;
+        color: white;
+    }
+ 	

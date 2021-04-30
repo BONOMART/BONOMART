@@ -7,7 +7,6 @@
 		$(".accmenu").hide();
 		$(".menuBtn").click(function(){
 			$(this).next().slideToggle(300);
-			// $(this).next().slideDown(300);
 			$(".menuBtn").not(this).next().slideUp(300);
 			return false;
 		});
@@ -113,7 +112,6 @@
                         &nbsp; 회원관리
                     </a>
                 </li>
-                
               </ul>
         </div>
         <div class="main-wrapper">
