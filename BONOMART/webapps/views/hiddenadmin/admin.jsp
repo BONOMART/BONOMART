@@ -32,7 +32,7 @@
 									    		</label>
 									    			<select id="color" title="select color">
 									     		  <option selected="selected">항목선택	</option>
-									      		  <option>아이디</option>
+									      		  <option >아이디</option>
 									      		  <option>이 름</option>
 									      		  <option>회원번호</option>
 									      		  <option>부 서</option>

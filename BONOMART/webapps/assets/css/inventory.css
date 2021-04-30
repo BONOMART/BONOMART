@@ -66,8 +66,8 @@
 	}
 	
 	#text1{
-	    display:inline;
-	      flex: 1;
+	    display:inline-block;
+	    
 		 
 	}
 	
