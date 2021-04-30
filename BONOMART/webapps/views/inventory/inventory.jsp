@@ -36,7 +36,7 @@
 									    		</label>
 									    			<select id="color" title="select color">
 									     		  <option selected="selected">항목선택</option>
-									      		  <option>상품코드</option>
+									      		  <option value="">상품코드</option>
 									      		  <option>그룹명</option>
 									      		  <option>상품명</option>
 									      		  <option>거래처명</option>
@@ -48,20 +48,7 @@
 
 									      </div>                                
                                     </form>
-                                
-                                
-                                
-                                
-                           <!--      <form action=""> 
-                                    <div id="field2">
-                                   
-                                     이 름 &nbsp;&nbsp;&nbsp; <input type="text"> &nbsp;&nbsp;&nbsp;
-                                     아이디 &nbsp;&nbsp;&nbsp; <input type="text"> &nbsp;&nbsp;&nbsp;
-                                     회원번호 &nbsp;&nbsp; <input type="text">  &nbsp;&nbsp;&nbsp;&nbsp;
-                                     <button type="button" class="btn btn-primary"> 검 &nbsp; 색 </button> 
-                                    </div>                                
-                                    </form>  -->
-                                    	
+                                       	
                                     <div id="table2">
                                     <div class="table-responsive">
                                         <table class="table table-hover">
@@ -225,8 +212,7 @@
 									
 								</div>
 									 <!-- 게시판 영역과 page nation 영역 사이 공간 -->
-						      
-									
+
 									   <!-- 페이지 네이션 시작 -->
 						                <nav aria-label="Page navigation example">
 						                    <ul class="pagination justify-content-center">
