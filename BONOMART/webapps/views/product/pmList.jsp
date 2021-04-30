@@ -18,7 +18,6 @@
 				<h3>상품조회</h3>
 				<div class="product_search_list">
 					<table class="table table-hover">
-					
 						<thead>
 							<tr>
 								<th>#</th>
