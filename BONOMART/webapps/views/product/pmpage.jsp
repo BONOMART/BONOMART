@@ -30,19 +30,19 @@
 								<div>
 									상품코드
 									<div class="col-sm-8">
-										<input type="text" class="form-control">
+										<input type="text" class="form-control input_value">
 									</div>
 								</div>
 								<div>
 									그룹명 &nbsp;
 									<div class="col-sm-8">
-										<input type="text" class="form-control">
+										<input type="text" class="form-control input_value">
 									</div>
 								</div>
 								<div>
 									상품명 &nbsp;
 									<div class="col-sm-8">
-										<input type="text" class="form-control">
+										<input type="text" class="form-control input_value">
 									</div>
 								</div>
 							</div>
@@ -51,28 +51,29 @@
 								<div>
 									상품수량
 									<div class="col-sm-8">
-										<input type="number" class="form-control">
+										<input type="number" class="form-control input_value">
 									</div>
 								</div>
 								<div>
 									입고단가
 									<div class="col-sm-8">
-										<input type="number" class="form-control">
+										<input type="number" class="form-control input_value">
 									</div>
 								</div>
 								<div>
 									출고단가
 									<div class="col-sm-8">
-										<input type="number" class="form-control">
+										<input type="number" class="form-control input_value">
 									</div>
 								</div>
 							</div>
 							 
 							 <!-- 스펙 입력 -->
-							<div class="item">
+<!-- 							<div class="item">
 								<textarea class="form-control col-md-10" rows="6"
 									placeholder="제품 스펙을 입력해주세요."></textarea>
-							</div>
+							</div> 
+-->
 						</div>
 					</form>
 	
@@ -91,6 +92,52 @@
 					</div>
 	
 				</div>
+				
+				<script>
+ 					$(function() {
+						$('.btn-primary').click(function() {
+							var input = $('input');
+							var inputcheck = $('input').val();
+							var textarea = $('textarea').text(); //spec 텍스트 가지는 변수
+							var tr = $('<tr></tr>');
+							
+							//상품 정보 input tag 값 널 검사
+							for(var i in $('.input_value')) {
+								var chk = true;
+								
+								if ($('.input_value')[i].value == '' || $('.input_value')[i].value.length == 0) {
+									window.alert("정보를 모두 입력해주세요.");
+									chk = false;
+									return;
+								} else {
+									
+								}
+								console.log(i + " : " + $('.input_value')[i].value);
+								if(chk == false){ break; }
+								
+							}
+							/* 
+							$.each(input, function(i, item) { //row에 input 태그에 값 삽입
+							
+								if (inputcheck === "") { //input tag null 검사
+									//null일 때 삽입 요청 띄우고 데이터 입력 x
+									window.alert("정보를 모두 입력해주세요.");
+								} else { 
+									//null이 아닐 때 데이터 삽입
+									var td = $("<td></td>").html($(item).val());
+									return false;
+								}
+								
+								$(tr).append(td);
+							}); */
+							
+							$('table').append(tr);
+							$(input).val("");
+						});
+					}); 
+
+
+				</script>
 	
 				<p></p>
 	
@@ -99,7 +146,7 @@
 					<table class="table table-hover text-center">
 	
 						<thead>
-							<tr>
+							<tr data-target="#listmodal" data-toggle="modal">
 								<th>#</th>
 								<th>상품코드</th>
 								<th>그룹명</th>
@@ -107,7 +154,6 @@
 								<th>상품수량</th>
 								<th>입고단가</th>
 								<th>출고단가</th>
-								<th>제품사양</th>
 							</tr>
 						</thead>
 	
@@ -120,10 +166,6 @@
 								<td>33</td>
 								<td>400</td>
 								<td>500</td>
-								<td>
-									<textarea class="form-control col-md-10" rows="6"
-									placeholder="아주빠르고 조아여" readonly></textarea>
-								</td>
 							</tr>
 	
 							<tr>
@@ -134,10 +176,6 @@
 								<td>33</td>
 								<td>400</td>
 								<td>500</td>
-								<td>
-									<textarea class="form-control col-md-10" rows="6"
-									placeholder="제품 스펙을 입력해주세요." readonly></textarea>
-								</td>
 							</tr>
 	
 							<tr>
@@ -148,10 +186,6 @@
 								<td>33</td>
 								<td>400</td>
 								<td>500</td>
-								<td>
-									<textarea class="form-control col-md-10" rows="6"
-									placeholder="제품 스펙을 입력해주세요." readonly></textarea>
-								</td>
 							</tr>
 	
 							<tr>
@@ -162,10 +196,6 @@
 								<td>33</td>
 								<td>400</td>
 								<td>500</td>
-								<td>
-									<textarea class="form-control col-md-10" rows="6"
-									placeholder="제품 스펙을 입력해주세요." readonly></textarea>
-								</td>
 							</tr>
 	
 							<tr>
@@ -176,10 +206,6 @@
 								<td>33</td>
 								<td>400</td>
 								<td>500</td>
-								<td>
-									<textarea class="form-control col-md-10" rows="6"
-									placeholder="제품 스펙을 입력해주세요." readonly></textarea>
-								</td>
 							</tr>
 	
 							<tr>
@@ -190,10 +216,6 @@
 								<td>33</td>
 								<td>400</td>
 								<td>500</td>
-								<td>
-									<textarea class="form-control col-md-10" rows="6"
-									placeholder="제품 스펙을 입력해주세요." readonly></textarea>
-								</td>
 							</tr>
 	
 							<tr>
@@ -204,10 +226,6 @@
 								<td>33</td>
 								<td>400</td>
 								<td>500</td>
-								<td>
-									<textarea class="form-control col-md-10" rows="6"
-									placeholder="제품 스펙을 입력해주세요." readonly></textarea>
-								</td>
 							</tr>
 	
 							<tr>
@@ -218,25 +236,51 @@
 								<td>33</td>
 								<td>400</td>
 								<td>500</td>
-								<td>
-									<textarea class="form-control col-md-10" rows="6"
-									placeholder="제품 스펙을 입력해주세요." readonly></textarea>
-								</td>
 							</tr>
 	
 						</tbody>
 	
 					</table>
+					
+					<!-- 리스트 행 클릭 시 모달창 -->
+					<div class="modal" id="listmodal" tabindex="-1">
+					  <div class=""modal-dialog">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title">상품등록 수정</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      
+					      <!-- 정보 수정 칸 -->
+					      <div class="modal-body">
+					        <p>뭐 수정할래??</p>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					        <button type="button" class="btn btn-primary">Save changes</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
 				</div>
+				
+				<script>
+					$(".table tr").on("click", function() {
+						var tr = $(this);
+						
+						console.log("row data => " + tr.text()); //한 줄에 있는 데이터를 다 가져옴.
+												
+						
+						
+					});
+				</script>
 	
 				<!-- 실제 DB에 저장하는 등록버튼 및 등록 전 수정할 수 있는 수정버튼 -->
 				<div class="final_btn">
 					<div class="submit_btn">
 						<button type="button" class="btn btn-success">등록하기</button>
-					</div>
-					
-					<div class="modify_btn">
-						<button type="button" class="btn btn-warning">수정하기</button>
 					</div>
 				</div>
 			</div>
