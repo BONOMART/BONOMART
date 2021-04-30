@@ -91,8 +91,8 @@
 						</svg>
                     </a>
                     <div class="accmenu">
-                    	<a href="/bono/views/account/accountRegister.jsp" >거래처등록</a>
-                    	<a href="/bono/views/account/accountList.jsp" >거래처조회</a>
+                    	<a href="/bono/views/client/clientRegister.jsp" >거래처등록</a>
+                    	<a href="/bono/views/client/clientList.jsp" >거래처조회</a>
                     </div>
                 </li>
                 <li>
