@@ -17,7 +17,7 @@
 
 </head>
 <body>
-<!-- 헤더 영역 추가 -->
+<!-- 헤더 영역 추가           -->
 <%@ include file="/views/common/header.jsp" %>
 		
                 <!-- 데이터 입력 -->
