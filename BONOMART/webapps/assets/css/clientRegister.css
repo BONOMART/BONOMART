@@ -1,20 +1,19 @@
 @charset "UTF-8";
-/* 게시판 css */
-<<<<<<< HEAD
-		.table {
+
+/* 게시판 & form태그 css */
+    	footer {
+	    	position: relative;
+	        padding: 2px;
+	        width: 100%;
+	        text-align: center;
+	        bottom: 0;
+	        background: white;
+    	}
+    	
+        .table {
             text-align: center;
         }
-		
-=======
-   		 footer {
-    		position: relative;
-        	padding: 2px;
-        	width: 100%;
-        	text-align: center;
-        	bottom: 0;
-        	background: white;
-   		 }
->>>>>>> branch 'feature_combine' of https://github.com/BONOMART/BONOMART.git
+
         .wrapper {
             background: whitesmoke;
         }
@@ -81,19 +80,12 @@
             padding-bottom: 30px;
         }
 
-		.scrollable {
-            height: 500px;
+        .scrollable {
+            height: 620px;
             overflow-y: scroll;
         }
 
         .table {
-<<<<<<< HEAD
-=======
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-            width: 100%;
->>>>>>> branch 'feature_combine' of https://github.com/BONOMART/BONOMART.git
             background: white;
             border-radius: 30px;
             box-shadow: 1px 1px 1px 1px lightgray;
@@ -114,19 +106,3 @@
             padding-left: 40px;
             padding-bottom: 30px;
         }
-<<<<<<< HEAD
-        
-        footer {
-        position: relative;
-        padding: 2px;
-        width: 100%;
-        text-align: center;
-        bottom: 0;
-        background: white;
-    }
-=======
-        .scrollable{
-        	height : 500px;
-        	overflow-y : scroll;
-        }
->>>>>>> branch 'feature_combine' of https://github.com/BONOMART/BONOMART.git

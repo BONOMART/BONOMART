@@ -22,7 +22,7 @@
                 <!-- 데이터 입력 -->
                 <div class="wrapper">
                     <div class="container sub-contents">
-                        <h3>발주 관리</h3>
+                        <h3>발주 등록</h3>
 
                         <!-- 발주 등록을 위한 폼 -->
                         <div class="product_select">

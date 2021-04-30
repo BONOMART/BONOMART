@@ -16,7 +16,7 @@
 
 <!-- css 파일 삽입 -->
 <link rel="stylesheet" href="/bono/assets/css/header.css">
-<link rel="stylesheet" href="/bono/assets/css/accountList.css">
+<link rel="stylesheet" href="/bono/assets/css/clientList.css">
 
 <style>
       input-group mb-3 {
