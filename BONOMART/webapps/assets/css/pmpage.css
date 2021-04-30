@@ -69,7 +69,7 @@
 	padding-left: 40px;
 	padding-bottom: 30px;
 }
-/* 조회하기 검색하기 버튼 끝 */
+/* 검색하기 버튼 끝 */
  
 /* 테이블 관련 CSS 시 */
 .scrollable {
@@ -110,13 +110,4 @@ textarea:focus {
 	justify-content: center;
 	align-items: center;
 	
-}
-
-.submit_btn {
-	padding-right: 40px;
-}
-
-.modify_btn {
-	padding-left: 40px;
-	color: white;
 }
