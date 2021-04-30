@@ -8,8 +8,9 @@
 <script src="../../assets/js/jquery-3.6.0.min.js"></script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-<link rel="stylesheet" href="../../assets/css/salepage.css" />
+
 <link rel="stylesheet" href="/bono/assets/css/header.css" />
+<link rel="stylesheet" href="../../assets/css/salepage.css" />
 
 </head>
 
@@ -19,7 +20,7 @@
 	<div class="inner">
 		<div class="wrapper">
 			<div class="container sub-contents">
-				<h3>판매등록</h3>
+				<h3>판매 등록</h3>
 				
 				<!-- 판매등록을 위한 폼 -->
 				<div class="sale_select">
@@ -52,7 +53,7 @@
 				<p></p>
 				
 				<!-- 추가한 상품들을 나열하여 보여주는 테이블 -->
-				<div class="product_list">
+				<div class="sale_list">
 					<table class="table table-hover">
 					
 						<thead>

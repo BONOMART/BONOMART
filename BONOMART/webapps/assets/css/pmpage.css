@@ -1,7 +1,14 @@
 @charset "UTF-8";
-
+footer {
+	position: relative;
+	padding: 2px;
+	width: 100%;
+	text-align: center;
+	bottom: 0;
+	background: white;
+}
+   		 
 .wrapper {
-	height: 960px;
 	background: whitesmoke;
 }
 
@@ -73,8 +80,8 @@
  
 /* 테이블 관련 CSS 시 */
 .scrollable {
-	height: 450px;
-	overflow: auto;
+	height: 500px;
+	overflow-y: scroll;
 }
 
 .table {

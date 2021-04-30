@@ -10,7 +10,7 @@
 			$(".menuBtn").not(this).next().slideUp(300);
 			return false;
 		});
-		$(".menuBtn").eq(0).trigger("click");
+			$(".menuBtn").child().trigger("click");
 		});
 </script>
 <div id="wrap" class="wrap" style="font-family:'Malgun Gothic'; font-size:16px;">
