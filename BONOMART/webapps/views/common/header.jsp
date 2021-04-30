@@ -18,7 +18,7 @@
         <div class="aside bg-gradient-sidebar">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                  <a href="#">BONO MART</a>
+                  <a href="/bono/views/main/mainPage.jsp">BONO MART</a>
                 </li>
                 <hr style="margin-top:8px; margin-bottom:0; border:1px solid white;">
                 <li>
@@ -42,8 +42,8 @@
 						</svg>
                     </a>
                     <div class="accmenu">
-                    	<a href="" >상품등록</a>
-                    	<a href="" >상품조회</a>
+                    	<a href="/bono/views/product/pmpage.jsp" >상품등록</a>
+                    	<a href="/bono/views/product/pmList.jsp" >상품조회</a>
                     </div>
 
                 </li>
@@ -61,8 +61,8 @@
 						</svg>
                     </a>
                     <div class="accmenu">
-                    	<a href="" >판매등록</a>
-                    	<a href="" >판매조회</a>
+                    	<a href="/bono/views/sale/salepage.jsp" >판매등록</a>
+                    	<a href="/bono/views/sale/saleList.jsp" >판매조회</a>
                     </div>
                 </li>
                 <li>
@@ -77,8 +77,8 @@
 						</svg>
                     </a>
                     <div class="accmenu">
-                    	<a href="" >발주등록</a>
-                    	<a href="" >발주조회</a>
+                    	<a href="/bono/views/order/orderRegister.jsp" >발주등록</a>
+                    	<a href="/bono/views/order/orderList.jsp" >발주조회</a>
                     </div>
                 </li>
                 <li>
@@ -92,12 +92,12 @@
 						</svg>
                     </a>
                     <div class="accmenu">
-                    	<a href="" >거래처등록</a>
-                    	<a href="" >거래처조회</a>
+                    	<a href="/bono/views/account/accountList.jsp" >거래처등록</a>
+                    	<a href="/bono/views/account/accountRegister.jsp" >거래처조회</a>
                     </div>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/bono/views/inventory/inventory.jsp">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket2-fill" viewBox="0 0 16 16" style="vertical-align: middle;">
                             <path d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383L5.93 1.757zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1z"/>
                         </svg>
@@ -105,7 +105,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/bono/views/member/memberUpdate.jsp">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16" style="vertical-align: middle;">
                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                         </svg>
