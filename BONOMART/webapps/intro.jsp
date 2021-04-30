@@ -30,20 +30,20 @@
                             <td><input class="form-control form-control-sm" type="password" name="userPwd"></td>
                         </tr>
                     </table>
-
-
-                    
-                  
                     
                     <div class="btns" align="center">
                         <button id="memberJoinBtn" onclick="memberJoin()">JOIN</button> &nbsp;
-                        <button id="loginBtn">LOGIN</button> 
+                        <button id="loginBtn" onclick="login()">LOGIN</button> 
                     </div>
                 </form>
             </div>
     </div>
     
     <script>
+    
+    function login() {
+		$('#loginForm').submit();
+	}
     
     function memberJoin(){
 		location.href="/bono/views/member/memberJoin.jsp";
