@@ -32,7 +32,6 @@ html,body{
 }
 .main-wrapper{
     width: 100%;
-    overflow-x: hidden;
 }
 .sidebar-nav {
     width: 200px;
