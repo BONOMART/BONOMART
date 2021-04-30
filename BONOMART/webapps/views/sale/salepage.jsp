@@ -30,7 +30,6 @@
 								판매일자 
 								<div class="col-sm-3"><input type="date" class="form-control"></div>
 							</div>
-							
 							<div>
 								상품코드 <div class="col-sm-3"><input type="text" class="form-control" /></div>
 							</div>
