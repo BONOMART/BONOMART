@@ -27,13 +27,14 @@
 						<div class="select">				
 							<div>
 								판매일자 
-								<div class="col-sm-3"><input type="text" class="form-control"></div>
+								<div class="col-sm-3"><input type="date" class="form-control"></div>
+							</div>
 							
+							<div>
 								상품코드 <div class="col-sm-3"><input type="text" class="form-control" /></div>
 							</div>
 							
 							<div>
-								상품명 <div class="col-sm-3"><input type="text" class="form-control" /></div> &nbsp;
 								판매수량 <div class="col-sm-3"><input type="number" class="form-control" /></div>
 							</div>
 						</div>
