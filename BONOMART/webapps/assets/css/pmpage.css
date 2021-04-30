@@ -80,12 +80,26 @@
 .table {
 	background: white;
 	text-align: center;
+	justify-content: center;
+	align-items: center;
 	border-radius: 30px;
 	box-shadow: 1px 1px 1px 1px lightgray;
 }
 
-.table thead th {
-	position: sticky;
+.table > td > textarea {
+	justify-content: center;
+	align-items: center;
+	
+}
+
+textarea {
+	resize: none;
+	border: 0;
+}
+
+textarea:focus {
+	outline: none;
+	
 }
 /* 테이블 관련 CSS 끝 */
 
