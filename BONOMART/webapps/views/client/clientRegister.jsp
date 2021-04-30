@@ -13,7 +13,7 @@
 
 <!-- css 파일 삽입 -->
 <link rel="stylesheet" href="/bono/assets/css/header.css">
-<link rel="stylesheet" href="/bono/assets/css/accountRegister.css">
+<link rel="stylesheet" href="/bono/assets/css/clientRegister.css">
 
 </head>
 <body>
