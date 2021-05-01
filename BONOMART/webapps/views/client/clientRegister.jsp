@@ -29,29 +29,42 @@
                         <div class="product_select">
                             <form action="" type="POST">
                                 <div class="select">
+                                
                                     <div class="item">
                                         <div>
-                                            담당자 명&nbsp;&nbsp;&nbsp;<div class="col-sm-8"><input type="text" class="form-control"></div>
+                                            <span class="foamSpan">거래처 코드</span><div class="col-sm-8"><input type="text" class="form-control"></div>
                                         </div>
                                         <div>
-                                            거래처 명&nbsp;&nbsp;&nbsp;<div class="col-sm-8"><input type="text" class="form-control"></div>
+                                            <span class="foamSpan">거래처 명</span><div class="col-sm-8"><input type="text" class="form-control"></div>
                                         </div>
                                         <div>
-                                            거래처 코드 <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                            <span class="foamSpan">은행코드</span>
+                                            <div class="col-sm-8">
+                                            	<select class="custom-select">
+													<option selected>은행명을 고르세요</option>
+													<option value="1">One</option>
+													<option value="2">Two</option>
+													<option value="3">Three</option>
+												</select>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="item" id="ss">
                                         <div>
-                                            주소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="col-sm-8"><input type="text" class="form-control"></div>
+                                            <span class="foamSpan">담당자 명</span><div class="col-sm-8"><input type="text" class="form-control"></div>
                                         </div>
                                         <div>
-                                            이체 정보 <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                            <span class="foamSpan">담당자 번호</span><div class="col-sm-8"><input type="text" class="form-control"></div>
                                         </div>
                                         <div>
-                                            사용 처리 <div class="col-sm-8"><input type="number" class="form-control"></div>
+                                            <span class="foamSpan">계좌 번호</span><div class="col-sm-8"><input type="number" class="form-control"></div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="select2">
+                                    	<span class="foamaddSpan">주소</span>
+                                    	<div class="foamaddDiv"><input type="text" class="form-control"></div>
                                 </div>
                             </form>
 

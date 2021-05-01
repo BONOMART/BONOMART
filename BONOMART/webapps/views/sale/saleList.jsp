@@ -19,24 +19,9 @@
 				
 				<!-- 판매 검색 -->
 				<div class="input-group" id="search_sale">
-				  <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
-				  <div class="input-group-append">
-				  	<button type="button" class="btn btn-primary">검색하기</button>
-				    <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				      <span class="sr-only">Toggle Dropdown</span>
-				    </button>
-					    <div class="dropdown-menu">
-					      	<a class="dropdown-item" href="#">판매일자 정렬</a>
-					    	<div role="separator" class="dropdown-divider"></div>
-					    	<a class="dropdown-item" href="#">상품코드 정렬</a>
-					    	<div role="separator" class="dropdown-divider"></div>
-					    	<a class="dropdown-item" href="#">상품명 정렬</a>
-					    	<div role="separator" class="dropdown-divider"></div>
-				      		<a class="dropdown-item" href="#">판매수량 정렬</a>
-				      		<div role="separator" class="dropdown-divider"></div>
-				      		<a class="dropdown-item" href="#">총 판매금액 정렬</a>
-				      		<div role="separator" class="dropdown-divider"></div>
-						</div>
+					<input type="text" class="form-control">
+					<div class="input-group-append">
+						<button type="button" class="btn btn-primary">검색하기</button>
 					</div>
 				</div>
 				
