@@ -49,13 +49,7 @@ footer {
 	align-items: center;
 }
 
-.submit_btn > .search {
-	padding-right: 40px;
-	padding-bottom: 30px;
-}
-
 .submit_btn > .plus {
-	padding-left: 40px;
 	padding-bottom: 30px;
 }
 /* 판매상품 정보입력 끝 */
@@ -79,11 +73,6 @@ footer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-
-.final_btn > .submit_btn {
-	padding-right: 40px;
-	padding-bottom: 30px;
 }
 /* DB 등록버튼 끝 */
 
