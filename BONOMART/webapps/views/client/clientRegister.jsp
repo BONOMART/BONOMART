@@ -38,7 +38,15 @@
                                             <span class="foamSpan">거래처 명</span><div class="col-sm-8"><input type="text" class="form-control"></div>
                                         </div>
                                         <div>
-                                            <span class="foamSpan">은행코드</span><div class="col-sm-8"><input type="text" class="form-control"></div>
+                                            <span class="foamSpan">은행코드</span>
+                                            <div class="col-sm-8">
+                                            	<select class="custom-select">
+													<option selected>은행명을 고르세요</option>
+													<option value="1">One</option>
+													<option value="2">Two</option>
+													<option value="3">Three</option>
+												</select>
+                                            </div>
                                         </div>
                                     </div>
 
