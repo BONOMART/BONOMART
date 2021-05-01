@@ -37,7 +37,9 @@
 								<div>
 									그룹명 &nbsp;
 									<div class="col-sm-8">
-										<input type="text" class="form-control input_value">
+										<select name="" id="grn">
+											
+										</select>
 									</div>
 								</div>
 								<div>
@@ -95,49 +97,24 @@
 				</div>
 				
 				<script>
- 					$(function() {
-						$('.btn-primary').click(function() {
-							var input = $('input');
-							var inputcheck = $('input').val();
-							var textarea = $('textarea').text(); //spec 텍스트 가지는 변수
-							var tr = $('<tr></tr>');
-							
-							//상품 정보 input tag 값 널 검사
-							for(var i in $('.input_value')) {
-								var chk = true;
+ 				
+
+				$(function(){
+					$.ajax({
+						url : '/bono/product.gr',
+						type : 'get',
+						success : function(data) {
+							for (var i in data) {
+								var innerHtml = '' ;
 								
-								if ($('.input_value')[i].value == '' || $('.input_value')[i].value.length == 0) {
-									window.alert("정보를 모두 입력해주세요.");
-									chk = false;
-									return;
-								} else {
-									
-								}
-								console.log(i + " : " + $('.input_value')[i].value);
-								if(chk == false){ break; }
+							innerHtml = "<option value=" + data[i].g_name + "> "
+							innerHtml += data[i].g_name + "</option>"
 								
+								$("#grn").append(innerHtml);
 							}
-							/* 
-							$.each(input, function(i, item) { //row에 input 태그에 값 삽입
-							
-								if (inputcheck === "") { //input tag null 검사
-									//null일 때 삽입 요청 띄우고 데이터 입력 x
-									window.alert("정보를 모두 입력해주세요.");
-								} else { 
-									//null이 아닐 때 데이터 삽입
-									var td = $("<td></td>").html($(item).val());
-									return false;
-								}
-								
-								$(tr).append(td);
-							}); */
-							
-							$('table').append(tr);
-							$(input).val("");
-						});
-					}); 
-
-
+						}
+					})
+				})
 				</script>
 	
 				<p></p>
