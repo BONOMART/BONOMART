@@ -9,9 +9,10 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-<link rel="stylesheet" href="../../assets/css/pmpage.css" />
-<link rel="stylesheet" href="../../assets/css/header.css" />
+<script src="jquery.tablesort.js"></script>
 
+<link rel="stylesheet" href="../../assets/css/header.css" />
+<link rel="stylesheet" href="../../assets/css/pmpage.css" />
 </head>
 
 <body>
@@ -49,40 +50,29 @@
 	
 							<div class="item" id="ss">
 								<div>
-									상품수량
+									최소수량
 									<div class="col-sm-8">
-										<input type="number" class="form-control input_value">
+										<input type="number" class="form-control input_value" min="0">
 									</div>
 								</div>
 								<div>
 									입고단가
 									<div class="col-sm-8">
-										<input type="number" class="form-control input_value">
+										<input type="number" class="form-control input_value" min="0">
 									</div>
 								</div>
 								<div>
 									출고단가
 									<div class="col-sm-8">
-										<input type="number" class="form-control input_value">
+										<input type="number" class="form-control input_value" min="0">
 									</div>
 								</div>
 							</div>
-							 
-							 <!-- 스펙 입력 -->
-<!-- 							<div class="item">
-								<textarea class="form-control col-md-10" rows="6"
-									placeholder="제품 스펙을 입력해주세요."></textarea>
-							</div> 
--->
 						</div>
 					</form>
 	
 					<!-- 상품 하단 리스트 등록 버튼 및 하단 리스트에 원하는 상품 검색할 수 있는 검색버튼 -->
 					<div class="plus_btn">
-						<!-- 검색버튼 -->
-						<div class="search">
-							<button type="button" class="btn btn-secondary">검색하기</button>
-						</div>
 	
 						<!-- 등록버튼 -->
 						<div class="plus">
@@ -98,22 +88,25 @@
 						$('.btn-primary').click(function() {
 							var input = $('input');
 							var inputcheck = $('input').val();
-							var textarea = $('textarea').text(); //spec 텍스트 가지는 변수
+
 							var tr = $('<tr></tr>');
 							
 							//상품 정보 input tag 값 널 검사
 							for(var i in $('.input_value')) {
 								var chk = true;
 								
+								//상품 정보 입력 input들 값들 없을 경우 알림창 띄우고 하단 리스트에 추가 x
 								if ($('.input_value')[i].value == '' || $('.input_value')[i].value.length == 0) {
 									window.alert("정보를 모두 입력해주세요.");
 									chk = false;
 									return;
-								} else {
-									
+								} else { //null이 아닐경우 정보입력 값 행 추가.
+									//var td = $('<td></td>').html($(this).val());
+									//$('.table').append(td);
 								}
-								console.log(i + " : " + $('.input_value')[i].value);
-								if(chk == false){ break; }
+								
+								console.log(i + " : " + $('.input_value')[i].value); //입력값 콘솔에서 확
+								if(chk == false){ break;}
 								
 							}
 							/* 
@@ -131,6 +124,8 @@
 								$(tr).append(td);
 							}); */
 							
+							
+							//td:eq(0).Last()? 
 							$('table').append(tr);
 							$(input).val("");
 						});
@@ -146,12 +141,11 @@
 					<table class="table table-hover text-center">
 	
 						<thead>
-							<tr data-target="#listmodal" data-toggle="modal">
-								<th>#</th>
+							<tr data-target="#listmodal" data-toggle="modal" id="sorter">
 								<th>상품코드</th>
 								<th>그룹명</th>
 								<th>상품명</th>
-								<th>상품수량</th>
+								<th>최소수량</th>
 								<th>입고단가</th>
 								<th>출고단가</th>
 							</tr>
@@ -159,7 +153,24 @@
 	
 						<tbody>
 							<tr>
-								<td>1</td>
+								<td>LG-327</td>
+								<td>본체</td>
+								<td>LG-327</td>
+								<td>33</td>
+								<td>400</td>
+								<td>500</td>
+							</tr>
+	
+							<tr>
+								<td>LG-327</td>
+								<td>모니터</td>
+								<td>LG-327</td>
+								<td>20</td>
+								<td>400</td>
+								<td>500</td>
+							</tr>
+	
+							<tr>
 								<td>LG-327</td>
 								<td>모니터</td>
 								<td>LG-327</td>
@@ -169,7 +180,15 @@
 							</tr>
 	
 							<tr>
-								<td>2</td>
+								<td>cG-327</td>
+								<td>가니터</td>
+								<td>LG-327</td>
+								<td>33</td>
+								<td>400</td>
+								<td>500</td>
+							</tr>
+	
+							<tr>
 								<td>LG-327</td>
 								<td>모니터</td>
 								<td>LG-327</td>
@@ -179,7 +198,15 @@
 							</tr>
 	
 							<tr>
-								<td>3</td>
+								<td>AG-327</td>
+								<td>니터</td>
+								<td>LG-327</td>
+								<td>33</td>
+								<td>400</td>
+								<td>500</td>
+							</tr>
+	
+							<tr>
 								<td>LG-327</td>
 								<td>모니터</td>
 								<td>LG-327</td>
@@ -189,84 +216,19 @@
 							</tr>
 	
 							<tr>
-								<td>4</td>
 								<td>LG-327</td>
 								<td>모니터</td>
 								<td>LG-327</td>
 								<td>33</td>
-								<td>400</td>
-								<td>500</td>
-							</tr>
-	
-							<tr>
-								<td>5</td>
-								<td>LG-327</td>
-								<td>모니터</td>
-								<td>LG-327</td>
-								<td>33</td>
-								<td>400</td>
-								<td>500</td>
-							</tr>
-	
-							<tr>
-								<td>6</td>
-								<td>LG-327</td>
-								<td>모니터</td>
-								<td>LG-327</td>
-								<td>33</td>
-								<td>400</td>
-								<td>500</td>
-							</tr>
-	
-							<tr>
-								<td>7</td>
-								<td>LG-327</td>
-								<td>모니터</td>
-								<td>LG-327</td>
-								<td>33</td>
-								<td>400</td>
-								<td>500</td>
-							</tr>
-	
-							<tr>
-								<td>8</td>
-								<td>LG-327</td>
-								<td>모니터</td>
-								<td>LG-327</td>
-								<td>33</td>
-								<td>400</td>
+								<td>100</td>
 								<td>500</td>
 							</tr>
 	
 						</tbody>
 	
-					</table>
-					
-					<!-- 리스트 행 클릭 시 모달창 -->
-					<div class="modal" id="listmodal" tabindex="-1">
-					  <div class=""modal-dialog">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <h5 class="modal-title">상품등록 수정</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
-					      </div>
-					      
-					      <!-- 정보 수정 칸 -->
-					      <div class="modal-body">
-					        <p>뭐 수정할래??</p>
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					        <button type="button" class="btn btn-primary">Save changes</button>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-				</div>
+					</table>	
 				
-				<script>
+				<!-- <script>
 					$(".table tr").on("click", function() {
 						var tr = $(this);
 						
@@ -275,14 +237,49 @@
 						
 						
 					});
+				</script> -->
+				
+				<!-- table th click sort -->
+				<script>
+  					$(function(){
+						$('.table').each(function(column){
+							$(this).click(function(){
+								if($(this).is('.asc')) { //table 속성이 asc라면
+									$(this).removeClass('asc'); //asc 클래스 삭제
+									$(this).addClass('desc');  //desc 클래스 추가
+									sortdir = -1;
+								} else { //table 속성이 desc라면
+									$(this).addClass('desc');
+									$(this).removeClass('asc');
+									sortdir = 1;
+								}
+								$(this).siblings().removeClass('asc'); //선택한 요소의 형제 요소들을 모두 선택해서 asc삭제
+								$(this).siblings().removeClass('desc');
+								
+								var rec = $('table').find('tbody > tr').get(); //행 요소들을 배열에 담아서 가져옴
+								rec.sort(function(a,b) { //배열로 가져온 로우들 정렬
+									var val1 = $(a).children('td').eq(column).text().toUpperCase(); //로우에 텍스트값들을 모두 대문자로 바꿔준다. 아스키코드가 달라서
+									var val2 = $(b).children('td').eq(column).text().toUpperCase(); //숫자 비교값도 있어줘야 함.
+									
+									return (val1 < val2)?-sortdir:(val1 > val2)?sortdir:0;
+								});
+								
+								$.each(rec, function(index, row) {
+									$('tbody').append(row);
+								});
+							});
+						});
+					});		
+					
 				</script>
+				
 	
-				<!-- 실제 DB에 저장하는 등록버튼 및 등록 전 수정할 수 있는 수정버튼 -->
-				<div class="final_btn">
-					<div class="submit_btn">
-						<button type="button" class="btn btn-success">등록하기</button>
-					</div>
 				</div>
+				<!-- 실제 DB에 저장하는 등록버튼 및 등록 전 수정할 수 있는 수정버튼 -->
+			<div class="final_btn">
+				<div class="submit_btn">
+					<button type="button" class="btn btn-success">등록하기</button>
+				</div>				
 			</div>
 		</div>
 	</div>
