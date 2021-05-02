@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bn.jsp.product.model.service.ProductService;
-import com.bn.jsp.product.model.vo.G_name;
+import com.bn.jsp.product.model.vo.Product;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class ProductGname
+ * Servlet implementation class ProductList
  */
-@WebServlet("/product.gr")
-public class ProductGname extends HttpServlet {
+@WebServlet("/product.li")
+public class ProductList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductGname() {
+    public ProductList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,16 +32,16 @@ public class ProductGname extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductService service = new ProductService(); 
+	
+		ProductService service = new ProductService();
 		
-		ArrayList<G_name> list = service.selectGr();
+		ArrayList<Product> list= service.selectList();
 		
-		
+		System.out.println(list);
 		response.setContentType("application/json; charset=UTF-8");
 		
 		new Gson().toJson(list, response.getWriter());
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

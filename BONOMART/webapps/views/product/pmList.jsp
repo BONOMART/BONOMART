@@ -30,7 +30,7 @@
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>등록일자</th>
+								<th>거래처</th>
 								<th>상품코드</th>
 								<th>상품명</th>
 								<th>상품수량</th>
@@ -39,86 +39,9 @@
 							</tr>
 						</thead>
 						
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>2021-04-02</td>
-								<td>LG-327</td>
-								<td>모니터</td>
-								<td>30</td>
-								<td>400</td>
-								<td>500</td>
-							</tr>
+						<tbody id ="plist">
 							
-							<tr>
-								<td>2</td>
-								<td>2021-04-04</td>
-								<td>LG-327</td>
-								<td>모니터</td>
-								<td>30</td>
-								<td>400</td>
-								<td>500</td>
-							</tr>
 							
-							<tr>
-								<td>3</td>
-								<td>2021-04-06</td>
-								<td>LG-327</td>
-								<td>모니터</td>
-								<td>30</td>
-								<td>400</td>
-								<td>500</td>
-							</tr>
-							
-							<tr>
-								<td>4</td>
-								<td>2021-04-07</td>
-								<td>LG-327</td>
-								<td>모니터</td>
-								<td>30</td>
-								<td>400</td>
-								<td>500</td>
-							</tr>
-							
-							<tr>
-								<td>5</td>
-								<td>2021-04-12</td>
-								<td>LG-327</td>
-								<td>모니터</td>
-								<td>30</td>
-								<td>400</td>
-								<td>500</td>
-							</tr>
-							
-							<tr>
-								<td>6</td>
-								<td>2021-04-13</td>
-								<td>LG-327</td>
-								<td>모니터</td>
-								<td>30</td>
-								<td>400</td>
-								<td>500</td>
-							</tr>
-							
-							<tr>
-								<td>7</td>
-								<td>2021-04-15</td>
-								<td>LG-327</td>
-								<td>모니터</td>
-								<td>30</td>
-								<td>400</td>
-								<td>500</td>
-							</tr>
-							
-							<tr>
-								<td>8</td>
-								<td>2021-04-18</td>
-								<td>LG-327</td>
-								<td>모니터</td>
-								<td>30</td>
-								<td>400</td>
-								<td>500</td>
-							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -126,5 +49,31 @@
 		</div>
 	</div>
 	<%@include file="../common/footer.jsp" %>
+	
+	<script>
+	$(function(){
+		$.ajax({
+			url : '/bono/product.li',
+			type : 'get',
+			success : function(data) {
+				for (var i in data) {
+					var innerHtml = ""
+					
+				 innerHtml = "<tr> <td> " + i + " </td> " 
+			        innerHtml += " <td> " +  data[i].c_name  + " </td> " 
+			        innerHtml += " <td> " + data[i].p_no  + " </td> " 
+			        innerHtml += " <td> " + data[i].p_name  + " </td>  "
+			        innerHtml += " <td> " + data[i].p_quan  + " </td>  "
+			        innerHtml += " <td> " + data[i].r_price  + " </td>  "
+			        innerHtml += " <td> " + data[i].s_price  + " </td>  </tr>"
+			       
+			        $("#plist").append(innerHtml);
+				}
+				
+			}
+		})
+	})
+	
+	</script>
 </body>
 </html>

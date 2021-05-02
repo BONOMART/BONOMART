@@ -31,21 +31,21 @@
 								<div>
 									상품코드
 									<div class="col-sm-8">
-										<input type="text" class="form-control input_value">
+										<input type="text" class="form-control input_value" id="scode">
 									</div>
 								</div>
 								<div>
 									그룹명 &nbsp;
 									<div class="col-sm-8">
-										<select name="" id="grn">
-											
+										<select name="" id="gname">
+											<option value="">그룹명</option>
 										</select>
 									</div>
 								</div>
 								<div>
 									상품명 &nbsp;
 									<div class="col-sm-8">
-										<input type="text" class="form-control input_value">
+										<input type="text" class="form-control input_value" id="pname">
 									</div>
 								</div>
 							</div>
@@ -54,19 +54,19 @@
 								<div>
 									최소수량
 									<div class="col-sm-8">
-										<input type="number" class="form-control input_value" min="0">
+										<input type="number" class="form-control input_value" min="0" id="minnum">
 									</div>
 								</div>
 								<div>
 									입고단가
 									<div class="col-sm-8">
-										<input type="number" class="form-control input_value" min="0">
+										<input type="number" class="form-control input_value" min="0" id="ingo">
 									</div>
 								</div>
 								<div>
 									출고단가
 									<div class="col-sm-8">
-										<input type="number" class="form-control input_value" min="0">
+										<input type="number" class="form-control input_value" min="0" id="outgo">
 									</div>
 								</div>
 							</div>
@@ -78,66 +78,14 @@
 	
 						<!-- 등록버튼 -->
 						<div class="plus">
-							<button type="button" class="btn btn-primary">추가하기</button>
+							<button type="button" class="btn btn-primary"  onclick="addtable()">추가하기</button>
 						</div>
 	
 					</div>
 	
 				</div>
 				
-				<script>
-
- 					$(function() {
-						$('.btn-primary').click(function() {
-							var input = $('input');
-							var inputcheck = $('input').val();
-
-							var tr = $('<tr></tr>');
-							
-							//상품 정보 input tag 값 널 검사
-							for(var i in $('.input_value')) {
-								var chk = true;
-
-								//상품 정보 입력 input들 값들 없을 경우 알림창 띄우고 하단 리스트에 추가 x
-								if ($('.input_value')[i].value == '' || $('.input_value')[i].value.length == 0) {
-									window.alert("정보를 모두 입력해주세요.");
-									chk = false;
-									return;
-								} else { //null이 아닐경우 정보입력 값 행 추가.
-									//var td = $('<td></td>').html($(this).val());
-									//$('.table').append(td);
-								}
-								
-								console.log(i + " : " + $('.input_value')[i].value); //입력값 콘솔에서 확
-								if(chk == false){ break;}
-
-							/* 
-							$.each(input, function(i, item) { //row에 input 태그에 값 삽입
-							
-								if (inputcheck === "") { //input tag null 검사
-									//null일 때 삽입 요청 띄우고 데이터 입력 x
-									window.alert("정보를 모두 입력해주세요.");
-								} else { 
-									//null이 아닐 때 데이터 삽입
-									var td = $("<td></td>").html($(item).val());
-									return false;
-								}
-								
-								$(tr).append(td);
-							}); */
-							
-							
-							//td:eq(0).Last()? 
-							$('table').append(tr);
-							$(input).val("");
-						});
-					}); 
-
-
-
-				</script>
-	
-				<p></p>
+			
 	
 				<!-- 추가한 상품들을 나열하여 보여주는 테이블 -->
 				<div class="scrollable">
@@ -154,132 +102,21 @@
 							</tr>
 						</thead>
 	
-						<tbody>
-							<tr>
-								<td>LG-327</td>
-								<td>본체</td>
-								<td>LG-327</td>
-								<td>33</td>
-								<td>400</td>
-								<td>500</td>
-							</tr>
+						<tbody id="inputval">
+					
 	
-							<tr>
-								<td>LG-327</td>
-								<td>모니터</td>
-								<td>LG-327</td>
-								<td>20</td>
-								<td>400</td>
-								<td>500</td>
-							</tr>
-	
-							<tr>
-								<td>LG-327</td>
-								<td>모니터</td>
-								<td>LG-327</td>
-								<td>33</td>
-								<td>400</td>
-								<td>500</td>
-							</tr>
-	
-							<tr>
-								<td>cG-327</td>
-								<td>가니터</td>
-								<td>LG-327</td>
-								<td>33</td>
-								<td>400</td>
-								<td>500</td>
-							</tr>
-	
-							<tr>
-								<td>LG-327</td>
-								<td>모니터</td>
-								<td>LG-327</td>
-								<td>33</td>
-								<td>400</td>
-								<td>500</td>
-							</tr>
-	
-							<tr>
-								<td>AG-327</td>
-								<td>니터</td>
-								<td>LG-327</td>
-								<td>33</td>
-								<td>400</td>
-								<td>500</td>
-							</tr>
-	
-							<tr>
-								<td>LG-327</td>
-								<td>모니터</td>
-								<td>LG-327</td>
-								<td>33</td>
-								<td>400</td>
-								<td>500</td>
-							</tr>
-	
-							<tr>
-								<td>LG-327</td>
-								<td>모니터</td>
-								<td>LG-327</td>
-								<td>33</td>
-								<td>100</td>
-								<td>500</td>
-							</tr>
+							
 	
 						</tbody>
 	
 					</table>	
 				
-				<!-- <script>
-					$(".table tr").on("click", function() {
-						var tr = $(this);
-						
-						console.log("row data => " + tr.text()); //한 줄에 있는 데이터를 다 가져옴.
-												
-						
-						
-					});
-				</script> -->
 				
-				<!-- table th click sort -->
-				<script>
-  					$(function(){
-						$('.table').each(function(column){
-							$(this).click(function(){
-								if($(this).is('.asc')) { //table 속성이 asc라면
-									$(this).removeClass('asc'); //asc 클래스 삭제
-									$(this).addClass('desc');  //desc 클래스 추가
-									sortdir = -1;
-								} else { //table 속성이 desc라면
-									$(this).addClass('desc');
-									$(this).removeClass('asc');
-									sortdir = 1;
-								}
-								$(this).siblings().removeClass('asc'); //선택한 요소의 형제 요소들을 모두 선택해서 asc삭제
-								$(this).siblings().removeClass('desc');
-								
-								var rec = $('table').find('tbody > tr').get(); //행 요소들을 배열에 담아서 가져옴
-								rec.sort(function(a,b) { //배열로 가져온 로우들 정렬
-									var val1 = $(a).children('td').eq(column).text().toUpperCase(); //로우에 텍스트값들을 모두 대문자로 바꿔준다. 아스키코드가 달라서
-									var val2 = $(b).children('td').eq(column).text().toUpperCase(); //숫자 비교값도 있어줘야 함.
-									
-									return (val1 < val2)?-sortdir:(val1 > val2)?sortdir:0;
-								});
-								
-								$.each(rec, function(index, row) {
-									$('tbody').append(row);
-								});
-							});
-						});
-					});		
-					
-				</script>
 				</div>
 				<!-- 실제 DB에 저장하는 등록버튼 및 등록 전 수정할 수 있는 수정버튼 -->
 			<div class="final_btn">
 				<div class="submit_btn">
-					<button type="button" class="btn btn-success">등록하기</button>
+					<button type="button" class="btn btn-success" id="submit">등록하기</button>
 				</div>				
 			</div>
 		</div>
@@ -287,5 +124,101 @@
 	
 	<%@ include file="../common/footer.jsp" %>
 	
+	
+	<script>
+	
+	
+	
+	
+	
+		$(function(){
+			$.ajax({
+				url : '/bono/product.gr',
+				type : 'get',
+				success : function(data) {
+					for (var i in data) {
+						var innerHtml = '' ;
+						
+					innerHtml = "<option value="+data[i].g_code+">"
+					innerHtml +=data[i].g_name+"</option>"
+						
+						$("#gname").append(innerHtml);
+					}
+				}
+			})
+		})
+	
+	
+		function addtable() {
+			innerHtml = '';
+		
+			
+			var scode = $('#scode').val()
+			var gname = $('#gname option:selected').text()
+			var gcode = $('#gname option:selected').val()
+			var pname = $('#pname').val()
+			var minnum = $('#minnum').val()
+			var ingo = $('#ingo').val()
+			var outgo = $('#outgo').val()
+			
+			  if (scode == "" || gcode == "" || pname == "" || minnum == "" || ingo =="" || outgo == "" )  {
+		            alert("입력 값 넣어주세요 ")
+		        } else {
+			
+			
+			
+		    	innerHtml = "<tr> <td> " + scode + " </td> " 
+		        innerHtml += " <td> " + gname + " </td> " 
+		        innerHtml += " <td> " + pname + " </td> " 
+		        innerHtml += " <td> " + minnum + " </td> " 
+		        innerHtml += " <td> " + ingo + " </td>  "
+		        innerHtml += " <td> " + outgo + " </td> <tr>"
+		        
+		        $('#inputval').append(innerHtml);
+		        
+		        $('input').val("")
+		        $('select').find('option:first').attr('selected', 'selected');
+		        }
+			$("#inputval tr:last-child").remove();
+		}
+			
+		
+		$(function() {
+		       $("#submit").click(function() { 
+		           var list = [] ; 
+		    	   var Arraydata = [];
+		          
+
+		           $('#inputval tr').each(function(){
+		               Arraydata={
+		                   "p_no" : $(this).find('td:eq(0)').text()
+		                   , "g_code" : $(this).find('td:eq(1)').text()
+		                   , "p_name" : $(this).find('td:eq(2)').text()
+		                   , "min_quan" : $(this).find('td:eq(3)').text()
+		                   , "r_price" : $(this).find('td:eq(4)').text()
+		                   , "s_price" : $(this).find('td:eq(5)').text()
+		                   	
+		               }    
+		               list.push(Arraydata)
+		           }); 
+		     
+		          
+		           jQuery.ajaxSettings.traditional = true;
+		            $.ajax({
+		                contentType:"application/json",
+		                type:"POST",
+		                data: JSON.stringify(list),
+		                url:"/bono/product.in",
+		                success:function(data){
+								location.href = "../product/pmList.jsp"
+		                }
+		                
+		            })
+		       });
+		   });
+		
+		
+	
+	</script>
 </body>
 </html>
