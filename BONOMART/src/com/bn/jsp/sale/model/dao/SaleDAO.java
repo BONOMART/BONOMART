@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.bn.jsp.sale.model.vo.Sale;
+import com.bn.jsp.sale.model.vo.SaleJoin;
 
 import static com.bn.jsp.common.JDBCTemplate.*;
 
@@ -84,7 +85,6 @@ public class SaleDAO {
 				
 			}
 			
-			System.out.println(list);
 			
 			
 		} catch (SQLException e) {
@@ -117,7 +117,6 @@ public class SaleDAO {
 				
 			}
 			
-			System.out.println(list);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -131,6 +130,81 @@ public class SaleDAO {
 		
 		return list;
 	}
+
+	public int getListCount(Connection con) {
+		
+		int result = 0;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("listCount");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			if ( rs.next() ) {
+				result = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return result;
+	}
+
+	public ArrayList<SaleJoin> selectList(Connection con, int currentPage) {
+		
+		ArrayList<SaleJoin> list = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectList");
+		
+		// 1페이지 : 1-10번 글, 2페이지 : 11-20번 글, 3페이지 : 21-30번 글
+		int startRow = (currentPage - 1) * 10 + 1;
+		int endRow = currentPage * 10;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, endRow);
+			ps.setInt(2, startRow);
+			
+			rs = ps.executeQuery();
+			
+			while( rs.next() ) {
+				
+				SaleJoin s = new SaleJoin();
+				
+				s.setS_no(rs.getInt("s_no"));
+				s.setS_date(rs.getDate("s_date"));
+				s.setP_no(rs.getString("p_no"));
+				s.setP_name(rs.getString("p_name"));
+				s.setS_quan(rs.getInt("s_quan"));
+				s.setS_total(rs.getInt("s_total"));
+				
+				list.add(s);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return list;
+	}
+
+	
 
 	
 
