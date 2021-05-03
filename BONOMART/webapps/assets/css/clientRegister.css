@@ -124,8 +124,14 @@
         	width:470px;
         	display:inline-block;
         }
+
+        thead tr{
+        	border-top:0px solid black;
+        }
         
-        
+        .table th{
+        	border-top: 0px solid black;
+        }
         
         
         

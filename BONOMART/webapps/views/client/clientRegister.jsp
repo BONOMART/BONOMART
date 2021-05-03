@@ -12,7 +12,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <title>거래처 등록 페이지</title>
-<button onclick=></button>
 <script src="/bono/assets/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
@@ -31,31 +30,15 @@
 </style>
 
 <script>
-	$(function(){
-	    $.ajax({
-	        url : '/bono/banklist.cl',
-	        type : 'get',
-	        success : function(data) {
-	            for (var i in data) {
-	                var innerHtml = '' ;
-	
-	            innerHtml = "<option value=" + data[i].b_code + "> "
-	            innerHtml += data[i].b_title + "</option>"
-	
-	                $(".custom-select").append(innerHtml);
-	            }
-	        }
-	    })
-	})
-	
+
 	function addTable() {
             innerHtml = '';
 
-			var numb = $('tr:last>td:first-child').text();
+			var numb = $('#inputval tr:last>td:first-child').text();
             var c_code = $('#c_code').val();
             var c_title = $('#c_title').val();
-            var b_name = $('#b_code option:selected').text();
-            var b_code = $('#b_code option:selected').val();
+            var b_name = $('#bankInput').val();
+            var b_code = $('#bankCodeInput').val();
             var c_who = $('#c_who').val();
             var c_phone = $('#c_phone').val();
             var c_account = $('#c_account').val();
@@ -99,7 +82,7 @@
             	$("#listNum").val(listNum);
             	$("#m_code").val(m_code);
             	$("#m_title").val(m_title);
-            	$("#m_b_name option:selected").text(m_b_name);
+            	$("#bankInputMod").val(m_b_name);
             	$("#m_who").val(m_who);
             	$("#m_phone").val(m_phone);
             	$("#m_account").val(m_account);
@@ -110,6 +93,8 @@
             });
             
 
+            
+
 
 	}
 	
@@ -117,8 +102,8 @@
     	var listNum = $("#listNum").val();
         var m_code = $("#m_code").val();
         var m_title = $("#m_title").val();
-        var m_b_name = $("#m_b_name option:selected").text();
-        var m_b_code = $("#m_b_name option:selected").val();
+        var m_b_name = $("#bankInputMod").val();
+        var m_b_code = $("#bankCodeInputMod").val();
         var m_who = $("#m_who").val();
         var m_phone = $("#m_phone").val();
         var m_account = $("#m_account").val();
@@ -148,8 +133,31 @@
    		$('#myModal').modal('hide');
    		
 	};
-
 	
+	$(function(){
+		$('#bankInput').on('click',function(){
+			$('#myModalBank').modal();
+		});
+		
+		$('#myModalBank tbody tr').on('click',function(){
+			$('#bankCodeInput').val($(this).children().eq(1).text());
+			$('#bankInput').val($(this).children().eq(0).text());
+			$('#myModalBank').modal('hide');
+		});
+	});
+	
+	$(function(){
+		$('#bankInputMod').on('click',function(){
+			$('#myModalBank').modal();
+		})
+		
+		$('#myModalBank tbody tr').on('click',function(){
+			$('#bankCodeInputMod').val($(this).children().eq(1).text());
+			$('#bankInputMod').val($(this).children().eq(0).text());
+			$('#myModalBank').modal('hide');
+		});
+	});
+
 	
 
 	
@@ -180,10 +188,9 @@
                                         </div>
                                         <div>
                                             <span class="foamSpan">은행명</span>
-                                            <div class="col-sm-8">
-                                            	<select class="custom-select" id="b_code">
-													<option selected>은행명을 고르세요</option>
-												</select>
+                                            <div class="col-sm-8" >
+                                            	<input type="text" class="form-control" id="bankInput" value="은행명을 골라주세요"/>
+                                            	<input type="hidden" name="" id="bankCodeInput"/>
                                             </div>
                                         </div> 
                                     </div>
@@ -248,7 +255,7 @@
 
                             <!-- 모달창을 화면에 띄움 -->
                            
-                                <!-- 등록 버튼 클릭 시, 팝업될 모달창 -->
+                            <!-- 등록 버튼 클릭 시, 팝업될 모달창 -->
 							<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="myModal">
 								<div class="modal-dialog modal-lg">
 									<div class="modal-content">
@@ -273,14 +280,13 @@
 												        <div>
 												            <span class="foamSpan">거래처 명</span><div class="col-sm-8"><input type="text" class="form-control" id="m_title"></div>
 												        </div>
-												        <div>
-												            <span class="foamSpan">은행명</span>
-												            <div class="col-sm-8">
-												            	<select class="custom-select" id="m_b_name">
-																<option selected>은행명을 고르세요</option>
-															</select>
-												            </div>
-												        </div> 
+														<div>
+                                            				<span class="foamSpan">은행명</span>
+                                            				<div class="col-sm-8" >
+                                            					<input type="text" class="form-control" id="bankInputMod" value="은행명을 골라주세요"/>
+                                            					<input type="hidden" name="" id="bankCodeInputMod"/>
+                                            				</div>
+                                        				</div> 
 												    </div>
 												
 												    <div class="item" style="width:45%">
@@ -316,8 +322,44 @@
 									</div>
 								</div>
 							</div>
-							
-								
+							<!-- 은행 고르기 모달창 -->
+							<div class="modal" tabindex="-1" id="myModalBank">
+  								<div class="modal-dialog">
+    								<div class="modal-content">
+									
+										<div class="modal-header">
+											<h5 class="modal-title">은행 선택</h5>
+											<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										
+										<div class="modal-body">
+											<table class="table table-hover text-center">
+											
+												<thead>
+													<tr>
+														<th>은행명</th>
+														<th>은행 코드</th>
+                                    				</tr>
+                                				</thead>
+
+                                				<tbody>
+													<% for(Bank b : bankList) {%>
+													<tr>
+														<td> <%=b.getB_title() %></td>
+														<td> <%=b.getB_code() %></td>
+													</tr>
+													<%} %>
+                                				</tbody>
+
+                            				</table>
+
+										</div>
+									</div>
+								</div>
+							</div>								
 								
 								
 						</div> <!-- container -->

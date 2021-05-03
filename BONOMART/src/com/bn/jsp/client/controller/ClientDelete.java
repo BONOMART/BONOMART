@@ -1,9 +1,7 @@
 package com.bn.jsp.client.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,20 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bn.jsp.client.model.service.ClientService;
-import com.bn.jsp.client.model.vo.Bank;
-import com.google.gson.Gson;
 
 /**
- * Servlet implementation class BanklistSelect
+ * Servlet implementation class ClientDelete
  */
-@WebServlet("/banklist.cl")
-public class BanklistSelect extends HttpServlet {
+@WebServlet("/delete.cl")
+public class ClientDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BanklistSelect() {
+    public ClientDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,23 +29,23 @@ public class BanklistSelect extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String c_no = request.getParameter("c_no");
 		
-		ArrayList<Bank> bankList = new ArrayList<>();
 		ClientService service = new ClientService();
 		
-		bankList = service.selectBank();
-
-        request.setAttribute("bankList", bankList);
-
-        RequestDispatcher view = 
-        		request.getRequestDispatcher("views/client/clientRegister.jsp");
-        
-        view.forward(request,response);
-        
+		int result = service.deleteClient(c_no);
 		
+		if(result>0) {
+			response.sendRedirect("selectlist.cl");
+			
+		} else {
+			request.setAttribute("error-msg", "거래처 삭제 실패!");
+			
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			
+		}
 		
-		
-		
+	
 	}
 
 	/**
