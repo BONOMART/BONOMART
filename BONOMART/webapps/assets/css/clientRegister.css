@@ -132,6 +132,9 @@
         .table th{
         	border-top: 0px solid black;
         }
+        input:invalid{
+			border : 2px solid red;
+		}
         
         
         

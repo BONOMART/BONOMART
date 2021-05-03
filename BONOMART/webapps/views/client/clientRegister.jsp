@@ -23,10 +23,6 @@
 	tr td:first-child {
 		border-right: 1px solid #dee2e6;
 	}
-	
-	input:invalid{
-		border : 2px solid red;
-	}
 </style>
 
 <script>
