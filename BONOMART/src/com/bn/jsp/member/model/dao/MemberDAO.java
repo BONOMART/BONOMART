@@ -31,6 +31,7 @@ public class MemberDAO {
 		}
 	}
 	
+	// 회원 가입
 	public int insertMember(Connection con, Member m) {
 		
 		int result = 0;
@@ -42,13 +43,14 @@ public class MemberDAO {
 			ps = con.prepareStatement(sql);
 			
 			// DB 숫자 시작은 1부터.
-			ps.setString(1, m.getUserName());
-			ps.setString(2, m.getUserId());
-			ps.setString(3, m.getUserPwd());
-			ps.setString(4, m.getEmail());
-			ps.setString(5, m.getPhone());
-			ps.setString(6, m.getjCode());
+			ps.setInt(1, m.getUserNo());
+			ps.setString(2, m.getUserName());
+			ps.setString(3, m.getUserId());
+			ps.setString(4, m.getUserPwd());
+			ps.setString(5, m.getEmail());
+			ps.setString(6, m.getPhone());
 			ps.setString(7, m.getdCode());
+			ps.setString(8, m.getjCode());
 			
 			result = ps.executeUpdate();
 			
@@ -63,6 +65,7 @@ public class MemberDAO {
 		return result;
 	}
 
+	// 아이디 중복 확인
 	public int idcheck(Connection con, String userId) {
 		
 		int result = 0;
@@ -94,7 +97,44 @@ public class MemberDAO {
 		
 		return result;
 	}
+	
+	/*
+	// 회원 번호 중복 확인
+		public int nocheck(Connection con, int userNo) {
+			
+			int result = 0;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			String sql = prop.getProperty("nocheck");		// properties로 이동.
+			
+			try {
+				
+				ps = con.prepareStatement(sql);
+				
+				ps.setInt(1, userNo);
+				
+				rs = ps.executeQuery();
+				
+				if(rs.next()) {
+					result = rs.getInt(1);
+				}
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+				
+			} finally {
+				close(rs);
+				close(ps);
+			}
+			return result;
+		}
+		*/
+	
+	
 
+	// 회원 조회
 	public Member selectMember(Connection con, Member loginMember) {
 		
 		Member result = null;
@@ -116,10 +156,10 @@ public class MemberDAO {
 			
 			if(rs.next()) {
 				result = new Member();
-				
-				result.setUserName(   rs.getString("m_id") );
-				result.setUserId(  rs.getString("m_password"));
-				result.setUserPwd( rs.getString("m_Name"));
+				result.setUserNo(rs.getInt("m_no"));
+				result.setUserName(   rs.getString("m_name") );
+				result.setUserId(  rs.getString("m_id"));
+				result.setUserPwd( rs.getString("m_password"));
 				result.setEmail(   rs.getString("m_email")        );
 				result.setPhone(      rs.getString("m_phone")       );
 				result.setdCode(    rs.getString("dept_code")  );
@@ -139,5 +179,63 @@ public class MemberDAO {
 		return result;
 		
 	}
+
+	// 회원 비밀번호 변경
+	public int updateMemberPwd(Connection con, Member m) {
+		int result = 0;
+		
+		PreparedStatement ps = null;
+		String sql = prop.getProperty("updateMemberPwd");
+		
+		try {
+			
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, m.getUserPwd() );
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			close(ps);
+		}
+		
+		return result;
+	}
+	
+	// 회원 이메일, 연락처, 부서코드, 직급코드 변경
+		public int updateMemberExtra(Connection con, Member m) {
+			int result = 0;
+			
+			PreparedStatement ps = null;
+			String sql = prop.getProperty("updateMemberExtra");
+			
+			try {
+				
+				ps = con.prepareStatement(sql);
+				
+				ps.setString(1, m.getEmail() );
+				ps.setString(2, m.getPhone() );
+				ps.setString(3, m.getdCode() );
+				ps.setString(4, m.getjCode() );
+				
+				result = ps.executeUpdate();
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			} finally {
+				close(ps);
+			}
+			
+			return result;
+		}
+	
+	
+	
+	
 
 }

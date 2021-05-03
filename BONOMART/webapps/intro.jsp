@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>WELCOME</title>
+<script src="/bono/assets/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/intro.css">
 </head>
@@ -32,7 +33,7 @@
                     </table>
                     
                     <div class="btns" align="center">
-                        <button id="memberJoinBtn" onclick="memberJoin()">JOIN</button> &nbsp;
+                        <button id="memberJoinBtn" type = "button" onclick="memberJoin()">JOIN</button> &nbsp;
                         <button id="loginBtn" onclick="login()">LOGIN</button> 
                     </div>
                 </form>
@@ -40,14 +41,14 @@
     </div>
     
     <script>
+    function memberJoin(){
+		location.href="/bono/views/member/memberJoin.jsp";
+	}
     
     function login() {
 		$('#loginForm').submit();
 	}
     
-    function memberJoin(){
-		location.href="/bono/views/member/memberJoin.jsp";
-	}
     </script>
 </body>
 </html>

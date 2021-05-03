@@ -5,17 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.bn.jsp.common.JDBCTemplate;
 import com.bn.jsp.member.model.dao.MemberDAO;
 import com.bn.jsp.member.model.vo.Member;
 
 import static com.bn.jsp.common.JDBCTemplate.*;
-import static com.bn.jsp.common.JDBCTemplate.getConnection;
 
 public class MemberService {
 		private Connection con;
 		private MemberDAO dao = new MemberDAO();
 		
+		// 회원 가입
 		public int insertMember(Member m) {
 			con = getConnection();
 			
@@ -32,7 +31,7 @@ public class MemberService {
 			return result;
 		}
 
-		// 중복 확인
+		// 아이디 중복 확인
 		public int idcheck(String userId) {
 			con = getConnection();
 			
@@ -42,7 +41,21 @@ public class MemberService {
 			
 			return result;
 		}
+		
+		/*
+		// 회원 번호 중복 확인
+		public int nocheck(int userNo) {
+			con = getConnection();
+					
+			int result = dao.nocheck(con, userNo);
+					
+			close(con);
+					
+			return result;
+		}
+		*/
 
+		// 회원 조회
 		public Member selectMember(Member loginMember) {
 			
 			// DB연결을 위해 getConnection 사용
@@ -61,4 +74,36 @@ public class MemberService {
 			
 			return result;
 		}
+
+		// 회원 비밀번호 변경
+		public int updateMemberPwd(Member m) {
+			con = getConnection();
+			
+			int result = dao.updateMemberPwd(con, m);
+			
+			if(result > 0)
+				commit(con);
+			else
+				rollback(con);
+			
+			close(con);
+			
+			return result;
+		}
+		
+		// 회원 이메일, 연락처, 부서코드, 직급코드 변경
+				public int updateMemberExtra(Member m) {
+					con = getConnection();
+					
+					int result = dao.updateMemberExtra(con, m);
+					
+					if(result > 0)
+						commit(con);
+					else
+						rollback(con);
+					
+					close(con);
+					
+					return result;
+				}
 }

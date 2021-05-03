@@ -14,16 +14,16 @@ import com.bn.jsp.member.model.service.MemberService;
 import com.bn.jsp.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberLogin
+ * Servlet implementation class MemberUpdateExtra
  */
-@WebServlet("/login.me")
-public class MemberLogin extends HttpServlet {
+@WebServlet("/updateExtra.me")
+public class MemberUpdateExtra extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberLogin() {
+    public MemberUpdateExtra() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,37 +33,41 @@ public class MemberLogin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String userId = request.getParameter("userId");
-		String userPwd = request.getParameter("userPwd");
+		String email = request.getParameter("email");
+		String phone = request.getParameter("phone");
+		String dCode = request.getParameter("dCode");
+		String jCode = request.getParameter("jCode");
+	
+		// 해당 회원을 구분짓는 ID 받아오기
+		HttpSession session = request.getSession(false);
 		
-		System.out.println("서블릿 : " + userId + "/" + userPwd);
+		Member m = (Member)session.getAttribute("member");
 		
-		Member loginMember = new Member(userId, userPwd);
+		// 기존의 회원 이메일, 연락처, 부서코드 ,직급코드를 새로운 값으로 변경하기
+		m.setEmail(email);
+		m.setPhone(phone);
+		m.setdCode(dCode);
+		m.setjCode(jCode);
 		
-		// 3. 로그인 서비스 수행 (업무 로직: biz logic)
+		System.out.println("변경한 회원 정보 확인 : " + m);
+		
 		MemberService service = new MemberService();
 		
-		loginMember = service.selectMember(loginMember);
+		int result = service.updateMemberExtra(m);
 		
-		if(loginMember != null) {
-			// 로그인 성공!
+		if(result > 0) {
+			// session.setAttribute("member", m);
+			session.invalidate();
 			
-			HttpSession session = request.getSession();
-			
-			session.setAttribute("member", loginMember);
-			
-			response.sendRedirect("/bono/index.jsp");
+			response.sendRedirect("index.jsp");
 		} else {
-			// 로그인 실패!
 			
-			request.setAttribute("error-msg", "로그인 실패!");
+			RequestDispatcher view = request.getRequestDispatcher("view/common/errorPage.jsp");
 			
-			RequestDispatcher view
-			   = request.getRequestDispatcher("views/common/errorPage.jsp");
+			request.setAttribute("error-msg", "회원 정보 수정 실패");
 			
 			view.forward(request, response);
 		}
-		
 	}
 
 	/**

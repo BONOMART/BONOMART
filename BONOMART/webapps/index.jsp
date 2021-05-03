@@ -12,6 +12,7 @@
 <%@include file="views/common/header.jsp" %>
 <a href="views/member/memberUpdate.jsp">수정화면</a>
 <a href="views/member/memberJoin.jsp">회원가입</a>
+<a href="views/member/memberDetail.jsp">내 정보 조회</a>
 <a href="views/hiddenadmin/admin.jsp">운영자화면</a>
 <a href="views/main/mainPage.jsp">메인페이지</a>
 <a href="views/order/orderList.jsp">발주화면</a>

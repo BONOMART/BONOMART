@@ -32,6 +32,7 @@ public class MemberInsert extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
 		String userName = request.getParameter("userName");
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
@@ -40,7 +41,7 @@ public class MemberInsert extends HttpServlet {
 		String dCode = request.getParameter("dCode");
 		String jCode = request.getParameter("jCode");
 		
-		Member m = new Member(userName, userId, userPwd, email, phone, dCode, jCode, 'N', 'N');
+		Member m = new Member(userNo, userName, userId, userPwd, email, phone, dCode, jCode, 'N', 'N');
 		
 		MemberService service = new MemberService();
 		
@@ -50,15 +51,15 @@ public class MemberInsert extends HttpServlet {
 		if(result > 0) {
 			
 			// 회원 가입 성공
-			response.sendRedirect("views/main/mainPage.jsp");
+			response.sendRedirect("intro.jsp");
 		} else {
 			
 			// 회원 가입 실패 
 			// (아이디 중복 검사 버튼을 누르지 않고 회원가입을 하려는 경우)
-			//RequestDispatcher view = 
-							//request.getRequestDispatcher("");
+			RequestDispatcher view = 
+							request.getRequestDispatcher("/bono/views/common/errorPage.jsp");
 			
-			//view.forward(request, response);
+			view.forward(request, response);
 		}
 		
 	}

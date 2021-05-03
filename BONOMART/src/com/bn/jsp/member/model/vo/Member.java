@@ -15,6 +15,7 @@ public class Member implements Serializable{
 
 	// 1. 회원가입에 사용 될 필드 변수
 	
+	private int userNo;
 	private String userName;
 	private String userId;
 	private String userPwd;
@@ -28,9 +29,10 @@ public class Member implements Serializable{
 	// 2. 생성자
 	public Member() {}
 	
-	public Member(String userName, String userId, String userPwd, String email, String phone,
+	public Member(int userNo, String userName, String userId, String userPwd, String email, String phone,
 			String dCode, String jCode, char authority, char joinAccess) {
 		super();
+		this.userNo = userNo;
 		this.userName = userName;
 		this.userId = userId;
 		this.userPwd = userPwd;
@@ -55,9 +57,17 @@ public class Member implements Serializable{
 	// toString
 	@Override
 	public String toString() {
-		return "Member [userName=" + userName + ", userId=" + userId + ", userPwd=" + userPwd 
+		return "Member [userNo="+ userNo + ", userName=" + userName + ", userId=" + userId + ", userPwd=" + userPwd 
 				+ ", email=" + email + ", phone=" + phone + ", dCode=" + dCode + ", jCode=" + jCode
 				+  ", authority=" + authority + ", joinAccess=" + joinAccess + "]";
+	}
+	
+	public int getUserNo() {
+		return userNo;
+	}
+
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
 
 	public String getUserName() {

@@ -1,26 +1,29 @@
 package com.bn.jsp.member.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bn.jsp.member.model.service.MemberService;
-import com.google.gson.Gson;
+import com.bn.jsp.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberIdCheck
+ * Servlet implementation class MemberUpdate
  */
-@WebServlet("/idcheck.me")
-public class MemberIdCheck extends HttpServlet {
+@WebServlet("/updatePwd.me")
+public class MemberUpdatePwd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberIdCheck() {
+    public MemberUpdatePwd() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,16 +33,35 @@ public class MemberIdCheck extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String userId = request.getParameter("userId");
-		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		String userPwd = request.getParameter("userPwd");
+	
+		// 해당 회원을 구분짓는 ID 받아오기
+		HttpSession session = request.getSession(false);
+		
+		Member m = (Member)session.getAttribute("member");
+		
+		// 기존의 회원 비밀번호를 새로운 값으로 변경하기
+		m.setUserPwd(userPwd);
+		
+		System.out.println("변경한 비밀번호 확인 : " + m.getUserPwd());
 		
 		MemberService service = new MemberService();
 		
-		int result = service.idcheck(userId);
-		//int result2 = service.nocheck(userNo);
+		int result = service.updateMemberPwd(m);
 		
-		new Gson().toJson(result, response.getWriter());
-		//new Gson().toJson(result2, response.getWriter());
+		if(result > 0) {
+			// session.setAttribute("member", m);
+			session.invalidate();
+			
+			response.sendRedirect("index.jsp");
+		} else {
+			
+			RequestDispatcher view = request.getRequestDispatcher("view/common/errorPage.jsp");
+			
+			request.setAttribute("error-msg", "회원 정보 수정 실패");
+			
+			view.forward(request, response);
+		}
 		
 	}
 
