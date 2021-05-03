@@ -19,7 +19,7 @@
                 </svg> 
             </p>
             <div id="loginArea">
-                <form action="" method="POST" id="loginForm">
+                <form action="/bono/login.me" method="post" id="loginForm">
                     <table id="login">
                         <tr>
                             <td><label class="text">ID &nbsp;</label></td>

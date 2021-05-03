@@ -104,12 +104,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/bono/views/member/memberUpdate.jsp">
+                    <a href="#" class="menuBtn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16" style="vertical-align: middle;">
                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                         </svg>
                         &nbsp; 회원관리
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16" style="margin-left: 30px;">
+  							<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+						</svg>
                     </a>
+                    <div class="accmenu">
+                    	<a href="/bono/views/member/memberJoin.jsp" >회원가입</a>
+                    	<a href="/bono/views/member/memberUpdate.jsp" >마이 페이지</a>
+                    </div>
                 </li>
               </ul>
         </div>

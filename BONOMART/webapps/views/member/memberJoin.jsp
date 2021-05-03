@@ -16,7 +16,7 @@
                 JOIN  
             </p>
             <div id="joinArea">
-                <form action="" method="post" id="joinForm">
+                <form action="/bono/insert.me" method="post" id="joinForm">
                     <div class="inputArea">
                         <label class="text">이름</label>
                         <input class="form-control form-control-sm" type="text" name="userName" required>
@@ -24,7 +24,7 @@
                     <div class="inputArea">
                         <label class="text">아이디</label>
                         <input class="form-control form-control-sm" type="text" name="userId" required>
-                        <div id="idCheck" class="comment">이미 사용중인 아이디입니다.</div>
+                        <button id="idCheck" name="idCheck">중복 확인</button>
                     </div>
                     <div class="inputArea">
                         <label class="text">비밀번호  &nbsp;</label>
@@ -57,7 +57,7 @@
                     
                     <div class="btns" align="center">
                         <button type="reset">작성취소</button>
-                        <button type="submit">가입하기</button>
+                        <button type="submit" onclick="login()">가입하기</button>
                     </div>
                 </form>
 
@@ -78,10 +78,15 @@
                                 }
                             }
                         });
-                    });
-
-                    
+                    });        
                 </script>
+
+				<script>
+						function login() {
+							
+						}
+				
+				</script>
 
                 
             </div>
