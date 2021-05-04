@@ -6,21 +6,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.bn.jsp.member.model.service.MemberService;
-import com.google.gson.Gson;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class MemberIdCheck
+ * Servlet implementation class MemberLogout
  */
-@WebServlet("/idcheck.me")
-public class MemberIdCheck extends HttpServlet {
+@WebServlet("/logout.me")
+public class MemberLogout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberIdCheck() {
+    public MemberLogout() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,16 +28,18 @@ public class MemberIdCheck extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String userId = request.getParameter("userId");
-		//int userNo = Integer.parseInt(request.getParameter("userNo"));
+		HttpSession session = request.getSession(false);
 		
-		MemberService service = new MemberService();
+		// .getSession() : 세션 영역에 세션 정보가 없다면 세션 정보를 새로 만들어서 가져옴
+		// .getSession(false) : 세션 영역에 세션 정보가 없다면 그냥 가져오지마!
 		
-		int result = service.idcheck(userId);
-		//int result2 = service.nocheck(userNo);
+		if(session != null) {
+			System.out.println(session.getId());
+			
+			session.invalidate(); // 이전 세션 연결 정보가 있다면 무효화.
+		}
 		
-		new Gson().toJson(result, response.getWriter());
-		//new Gson().toJson(result2, response.getWriter());
+		response.sendRedirect("intro.jsp");
 		
 	}
 

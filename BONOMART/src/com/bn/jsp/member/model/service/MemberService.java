@@ -41,19 +41,6 @@ public class MemberService {
 			
 			return result;
 		}
-		
-		/*
-		// 회원 번호 중복 확인
-		public int nocheck(int userNo) {
-			con = getConnection();
-					
-			int result = dao.nocheck(con, userNo);
-					
-			close(con);
-					
-			return result;
-		}
-		*/
 
 		// 회원 조회
 		public Member selectMember(Member loginMember) {
@@ -92,18 +79,47 @@ public class MemberService {
 		}
 		
 		// 회원 이메일, 연락처, 부서코드, 직급코드 변경
-				public int updateMemberExtra(Member m) {
-					con = getConnection();
+		public int updateMemberExtra(Member m) {
+			con = getConnection();
 					
-					int result = dao.updateMemberExtra(con, m);
+			int result = dao.updateMemberExtra(con, m);
 					
-					if(result > 0)
-						commit(con);
-					else
-						rollback(con);
+			if(result > 0)
+				commit(con);
+			else
+				rollback(con);
 					
-					close(con);
+				close(con);
 					
-					return result;
-				}
+			return result;
+			}
+
+		public int pwdcheck(String userPwd) {
+				
+			con = getConnection();
+					
+			int result = dao.pwdcheck(con, userPwd);
+					
+			close(con);
+					
+			return result;
+		}
+		
+		
+		// 회원 탈퇴
+		public int deleteMember(String userId) {
+			con = getConnection();
+			
+			int result = dao.deleteMember(con, userId);
+			
+			if(result > 0) 
+				commit(con);
+			else
+				rollback(con);
+			
+			close(con);
+			
+			return result;
+		}
+		
 }

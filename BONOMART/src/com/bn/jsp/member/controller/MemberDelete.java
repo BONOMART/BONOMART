@@ -11,19 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.bn.jsp.member.model.service.MemberService;
-import com.bn.jsp.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberLogin
+ * Servlet implementation class MemberDelete
  */
-@WebServlet("/login.me")
-public class MemberLogin extends HttpServlet {
+@WebServlet("/delete.me")
+public class MemberDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberLogin() {
+    public MemberDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,37 +31,29 @@ public class MemberLogin extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String userId = request.getParameter("userId");
-		String userPwd = request.getParameter("userPwd");
-		
-		System.out.println("서블릿 : " + userId + "/" + userPwd);
-		
-		Member loginMember = new Member(userId, userPwd);
-		
-		// 3. 로그인 서비스 수행 (업무 로직: biz logic)
-		MemberService service = new MemberService();
-		
-		loginMember = service.selectMember(loginMember);
-		
-		if(loginMember != null) {
-			// 로그인 성공!
-			
-			HttpSession session = request.getSession();
-			
-			session.setAttribute("member", loginMember);
-			
-			response.sendRedirect("/bono/index.jsp");
-		} else {
-			// 로그인 실패!
-			
-			request.setAttribute("error-msg", "로그인 실패!");
-			
-			RequestDispatcher view
-			   = request.getRequestDispatcher("views/common/loginErrorPage.jsp");
-			
-			view.forward(request, response);
-		}
+
+		// 쿼리 스트링을 받음.
+				String userId = request.getParameter("mid");
+				
+				MemberService service = new MemberService();
+				
+				int result = service.deleteMember(userId);
+				
+				if (result > 0) {
+					
+					HttpSession session = request.getSession(false);
+					
+					session.invalidate();
+					
+					response.sendRedirect("intro.jsp");
+				} else {
+					
+					RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+					
+					request.setAttribute("error-msg", "회원 정보 삭제  실패");
+					
+					view.forward(request, response);
+				}
 		
 	}
 

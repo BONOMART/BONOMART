@@ -9,6 +9,7 @@ import com.bn.jsp.member.model.vo.Member;
 
 import static com.bn.jsp.common.JDBCTemplate.*;
 
+
 public class MemberDAO {
 
 	private Properties prop;
@@ -42,15 +43,14 @@ public class MemberDAO {
 			
 			ps = con.prepareStatement(sql);
 			
-			// DB 숫자 시작은 1부터.
-			ps.setInt(1, m.getUserNo());
-			ps.setString(2, m.getUserName());
-			ps.setString(3, m.getUserId());
-			ps.setString(4, m.getUserPwd());
-			ps.setString(5, m.getEmail());
-			ps.setString(6, m.getPhone());
-			ps.setString(7, m.getdCode());
-			ps.setString(8, m.getjCode());
+			// DB 숫자 시작은 1부터
+			ps.setString(1, m.getUserName());
+			ps.setString(2, m.getUserId());
+			ps.setString(3, m.getUserPwd());
+			ps.setString(4, m.getEmail());
+			ps.setString(5, m.getPhone());
+			ps.setString(6, m.getdCode());
+			ps.setString(7, m.getjCode());
 			
 			result = ps.executeUpdate();
 			
@@ -72,7 +72,7 @@ public class MemberDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String sql = prop.getProperty("idcheck");		// properties로 이동.
+		String sql = prop.getProperty("idcheck");		// properties濡� �씠�룞.
 		
 		try {
 			
@@ -84,6 +84,7 @@ public class MemberDAO {
 			
 			if(rs.next()) {
 				result = rs.getInt(1);
+				System.out.println(rs.getInt(1));
 			}
 			
 		} catch (SQLException e) {
@@ -98,43 +99,8 @@ public class MemberDAO {
 		return result;
 	}
 	
-	/*
-	// 회원 번호 중복 확인
-		public int nocheck(Connection con, int userNo) {
-			
-			int result = 0;
-			PreparedStatement ps = null;
-			ResultSet rs = null;
-			
-			String sql = prop.getProperty("nocheck");		// properties로 이동.
-			
-			try {
-				
-				ps = con.prepareStatement(sql);
-				
-				ps.setInt(1, userNo);
-				
-				rs = ps.executeQuery();
-				
-				if(rs.next()) {
-					result = rs.getInt(1);
-				}
-				
-			} catch (SQLException e) {
-				
-				e.printStackTrace();
-				
-			} finally {
-				close(rs);
-				close(ps);
-			}
-			return result;
-		}
-		*/
-	
-	
 
-	// 회원 조회
+	// 회원 정보 조회
 	public Member selectMember(Connection con, Member loginMember) {
 		
 		Member result = null;
@@ -166,7 +132,7 @@ public class MemberDAO {
 				result.setjCode(  rs.getString("job_Code"));
 			}
 			
-			System.out.println("조회 결과 : " + result);
+			System.out.println("議고쉶 寃곌낵 : " + result);
 			
 		} catch (SQLException e) {
 			
@@ -192,6 +158,7 @@ public class MemberDAO {
 			ps = con.prepareStatement(sql);
 			
 			ps.setString(1, m.getUserPwd() );
+			ps.setString(2, m.getUserId() );
 			
 			result = ps.executeUpdate();
 			
@@ -206,7 +173,7 @@ public class MemberDAO {
 		return result;
 	}
 	
-	// 회원 이메일, 연락처, 부서코드, 직급코드 변경
+	// 회원 선택 정보 변경
 		public int updateMemberExtra(Connection con, Member m) {
 			int result = 0;
 			
@@ -221,6 +188,7 @@ public class MemberDAO {
 				ps.setString(2, m.getPhone() );
 				ps.setString(3, m.getdCode() );
 				ps.setString(4, m.getjCode() );
+				ps.setString(5,  m.getUserId());
 				
 				result = ps.executeUpdate();
 				
@@ -233,9 +201,65 @@ public class MemberDAO {
 			
 			return result;
 		}
-	
-	
-	
-	
 
+		public int pwdcheck(Connection con, String userPwd) {
+			
+			int result = 0;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			String sql = prop.getProperty("pwdcheck");		// properties濡� �씠�룞.
+			
+			try {
+				
+				ps = con.prepareStatement(sql);
+				
+				ps.setString(1, userPwd);
+				
+				rs = ps.executeQuery();
+				
+				if(rs.next()) {
+					result = rs.getInt(1);
+					System.out.println(rs.getInt(1));
+				}
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+				
+			} finally {
+				close(rs);
+				close(ps);
+			}
+			return result;
+		}
+		
+		// 회원 탈퇴
+		public int deleteMember(Connection con, String userId) {
+			int result = 0;
+			PreparedStatement ps = null;
+			
+			String sql = prop.getProperty("deleteMember");
+			
+			try {
+				
+				ps = con.prepareStatement(sql);
+				
+				ps.setString(1, userId);
+				
+				result = ps.executeUpdate();
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+				
+			} finally {
+				
+				close(ps);
+				
+			}
+			
+			return result;
+		}
+		
 }

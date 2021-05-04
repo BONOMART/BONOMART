@@ -25,14 +25,30 @@ public class Member implements Serializable{
 	private String jCode;				// 직급 코드
 	private char authority;			// 권한
 	private char joinAccess;			// 가입 승인 여부
+	private String mdate;
 	
 	// 2. 생성자
 	public Member() {}
 	
 	public Member(int userNo, String userName, String userId, String userPwd, String email, String phone,
-			String dCode, String jCode, char authority, char joinAccess) {
+			String dCode, String jCode, char authority, char joinAccess, String mdate) {
 		super();
 		this.userNo = userNo;
+		this.userName = userName;
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.email = email;
+		this.phone = phone;
+		this.dCode = dCode;
+		this.jCode = jCode;
+		this.authority = authority;
+		this.joinAccess = joinAccess;
+		this.mdate = mdate;
+	}
+	
+	public Member(String userName, String userId, String userPwd, String email, String phone,
+			String dCode, String jCode, char authority, char joinAccess) {
+		super();
 		this.userName = userName;
 		this.userId = userId;
 		this.userPwd = userPwd;
@@ -141,4 +157,14 @@ public class Member implements Serializable{
 	public void setJoinAccess(char joinAccess) {
 		this.joinAccess = joinAccess;
 	}
+
+	public String getMdate() {
+		return mdate;
+	}
+
+	public void setMdate(String mdate) {
+		this.mdate = mdate;
+	}
+	
 }
+

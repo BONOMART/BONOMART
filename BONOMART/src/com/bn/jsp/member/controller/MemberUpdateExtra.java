@@ -35,13 +35,15 @@ public class MemberUpdateExtra extends HttpServlet {
 		
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
-		String dCode = request.getParameter("dCode");
-		String jCode = request.getParameter("jCode");
+		String dCode = request.getParameter("dcode");
+		String jCode = request.getParameter("jcode");
 	
 		// 해당 회원을 구분짓는 ID 받아오기
 		HttpSession session = request.getSession(false);
 		
 		Member m = (Member)session.getAttribute("member");
+		
+		System.out.println("변경 전 회원 정보 확인 : " + m);
 		
 		// 기존의 회원 이메일, 연락처, 부서코드 ,직급코드를 새로운 값으로 변경하기
 		m.setEmail(email);
@@ -49,7 +51,7 @@ public class MemberUpdateExtra extends HttpServlet {
 		m.setdCode(dCode);
 		m.setjCode(jCode);
 		
-		System.out.println("변경한 회원 정보 확인 : " + m);
+		System.out.println("변경 한 회원 정보 확인 : " + m);
 		
 		MemberService service = new MemberService();
 		

@@ -33,12 +33,17 @@ public class MemberUpdatePwd extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//  문자 셋 변경
+		request.setCharacterEncoding("UTF-8");
+		
 		String userPwd = request.getParameter("userPwd");
 	
 		// 해당 회원을 구분짓는 ID 받아오기
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession(false);	// getSession이 false면 로그인이 안됐다면 의미이므로, id 가져오지마라.
 		
 		Member m = (Member)session.getAttribute("member");
+		
+		System.out.println("변경 전 비밀번호 확인 : " + m.getUserPwd());
 		
 		// 기존의 회원 비밀번호를 새로운 값으로 변경하기
 		m.setUserPwd(userPwd);
@@ -62,7 +67,6 @@ public class MemberUpdatePwd extends HttpServlet {
 			
 			view.forward(request, response);
 		}
-		
 	}
 
 	/**

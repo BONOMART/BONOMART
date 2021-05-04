@@ -6,7 +6,6 @@
 <%
 		Member m  = (Member)session.getAttribute("member");
 %>
-    
 <script src="/bono/assets/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script>
@@ -21,7 +20,7 @@
 	
 	// 게스트 아이콘 클릭 시, 마이 페이지(회원 정보 수정)로 이동.
 	function goMypage() {
-		location.href='/bono/views/member/memberUpdate.jsp';
+		location.href='/bono/views/member/memberDetail.jsp';
 	}
 </script>
 <div id="wrap" class="wrap" style="font-family:'Malgun Gothic'; font-size:16px;">
@@ -127,6 +126,7 @@
                     </a>
                     <div class="accmenu">
                     	<a href="/bono/views/member/memberJoin.jsp" >회원가입</a>
+                    	<a href="/bono/views/member/memberUpdate.jsp" >내 정보 수정</a>
                     	<a href="/bono/views/member/memberDetail.jsp" >내 정보 조회</a>
                     </div>
                 </li>
@@ -137,7 +137,7 @@
                 <div class="header bg-gradient-topbar">
                 <% if ( m != null ) { %>
                     <p id="headerUserName" style="margin-top:15px;">
-                    	<b><%= m.getUserName() %>님이 로그인 하셨습니다.</b>
+                    	<b><%= m.getUserName() %>님</b>
                     </p>
                     <span id="headerIconWrapper">
                         <i class="fa fa-user-circle" aria-hidden="true" id="headerIcon" onclick="goMypage()"></i>

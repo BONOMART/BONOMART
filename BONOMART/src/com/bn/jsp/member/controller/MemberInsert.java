@@ -32,7 +32,6 @@ public class MemberInsert extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int userNo = Integer.parseInt(request.getParameter("userNo"));
 		String userName = request.getParameter("userName");
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
@@ -40,8 +39,9 @@ public class MemberInsert extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String dCode = request.getParameter("dCode");
 		String jCode = request.getParameter("jCode");
+		//String mdate = request.getParameter("mdate");
 		
-		Member m = new Member(userNo, userName, userId, userPwd, email, phone, dCode, jCode, 'N', 'N');
+		Member m = new Member(userName, userId, userPwd, email, phone, dCode, jCode, 'N', 'N');
 		
 		MemberService service = new MemberService();
 		
