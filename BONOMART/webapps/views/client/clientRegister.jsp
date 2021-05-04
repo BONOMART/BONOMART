@@ -26,7 +26,6 @@
 </style>
 
 <script>
-
 	function addTable() {
             innerHtml = '';
 
@@ -46,13 +45,13 @@
             // 등록 후 인풋값 empty 만들기
 			$('#c_code').val("");
 			$('#c_title').val("");
-			$('#b_code').val("은행명을 고르세요");
+			$('#bankInput').val("은행명을 고르세요");
 			$('#c_who').val("");
 			$('#c_phone').val("");
 			$('#c_account').val("");
 			$('#c_addr').val("");
           	
-            innerHtml = "<tr> <td> " + numb + "</td> "
+            innerHtml = "<tr id='input"+numb+"'> <td>" + numb + "</td> "
             innerHtml += "<td>" + c_code + "</td> "
             innerHtml += " <td>" + c_title + "</td> " 
             innerHtml += " <td>" + b_name + "</td> " 
@@ -60,7 +59,7 @@
             innerHtml += " <td>" + c_phone + "</td>  "
             innerHtml += " <td>" + c_account + "</td>"
             innerHtml += " <td>" + c_addr + "</td>"
-            innerHtml += "<input type='hidden' name='b_code' value='" + b_code + "'/> </tr>"
+            innerHtml += "<input type='hidden' name='b_code' value='"+b_code+"'/> </tr>"
 
             	
             $('#inputval').append(innerHtml);
@@ -105,17 +104,19 @@
         var m_account = $("#m_account").val();
         var m_addr = $("#m_addr").val();
         	
-      	listNum = Number(listNum)-1;
-      	console.log(listNum);
       	
-   		$('#inputval tr').eq(listNum).children().eq(1).text(m_code);
-   		$('#inputval tr').eq(listNum).children().eq(2).text(m_title);
-   		$('#inputval tr').eq(listNum).children().eq(3).text(m_b_name);
-   		$('#inputval tr').eq(listNum).children().eq(4).text(m_who);
-   		$('#inputval tr').eq(listNum).children().eq(5).text(m_phone);
-   		$('#inputval tr').eq(listNum).children().eq(6).text(m_account);
-   		$('#inputval tr').eq(listNum).children().eq(7).text(m_addr);   
-   		$('#inputval tr').eq(listNum).children().eq(8).val(m_b_code); 
+      	
+      	listNum = "input" + listNum;
+      	
+      	
+   		$('#'+listNum).children().eq(1).text(m_code);
+   		$('#'+listNum).children().eq(2).text(m_title);
+   		$('#'+listNum).children().eq(3).text(m_b_name);
+   		$('#'+listNum).children().eq(4).text(m_who);
+   		$('#'+listNum).children().eq(5).text(m_phone);
+   		$('#'+listNum).children().eq(6).text(m_account);
+   		$('#'+listNum).children().eq(7).text(m_addr);   
+   		$('#'+listNum).children().eq(8).val(m_b_code); 
         	
    		$('#myModal').modal('hide');
        };	
@@ -123,9 +124,9 @@
    	function modalDelBtn(){
    		
    		var listNum = $("#listNum").val();
-   		listNum = Number(listNum)-1;
+   		listNum = "input" + listNum;
 		
-		$('#inputval tr').eq(listNum).remove();
+		$('#'+listNum).remove();
    		$('#myModal').modal('hide');
    		
 	};
@@ -153,14 +154,41 @@
 			$('#myModalBank').modal('hide');
 		});
 	});
-
 	
-
-	
-
+	function commitBtn() {
+		var list=[];
+		var Arraydata={};
+		
+		$('#inputval tr').each(function(){
+			Arraydata = {
+				
+				"c_no" : $(this).children().eq(1).text(),
+				"c_name" : $(this).children().eq(2).text(),
+				"c_manager" : $(this).children().eq(4).text(),
+				"c_tel" : $(this).children().eq(5).text(),
+				"c_account" : $(this).children().eq(6).text(),
+				"c_address" : $(this).children().eq(7).text(),
+				"b_code" : $(this).children().eq(8).val()
+				
+			}
+			list.push(Arraydata);
 			
+		});
+		
+		$.ajax({
+			url : '/bono/insert.cl',
+			type : 'POST',
+			data : { name : JSON.stringify(list) },
+			async : 'false',
+			success : function( data ) {
+				location.href = "/bono/selectlist.cl"
+				
+			}
+		
+		});
+		
+	};
 
-        
 </script>
 </head>
 <body>
@@ -185,7 +213,7 @@
                                         <div>
                                             <span class="foamSpan">은행명</span>
                                             <div class="col-sm-8" >
-                                            	<input type="text" class="form-control" id="bankInput" value="은행명을 골라주세요"/>
+                                            	<input type="text" class="form-control" id="bankInput" value="은행명을 고르세요"/>
                                             	<input type="hidden" name="" id="bankCodeInput"/>
                                             </div>
                                         </div> 
@@ -245,8 +273,7 @@
 
                         <!-- 실제 DB에 저장하는 등록버튼 및 등록 전 수정할 수 있는 수정버튼 -->
                             <div class="submit_btn">
-                                <button type="button" class="btn btn-success" data-target=".modal"
-                                    data-toggle="modal">등록하기</button>
+                                <button type="button" class="btn btn-success" onclick="commitBtn()">등록하기</button>
                             </div>
 
                             <!-- 모달창을 화면에 띄움 -->
@@ -331,7 +358,7 @@
 											</button>
 										</div>
 										
-										<div class="modal-body">
+										<div class="modal-body" id="modal_bank">
 											<table class="table table-hover text-center">
 											
 												<thead>
@@ -344,8 +371,8 @@
                                 				<tbody>
 													<% for(Bank b : bankList) {%>
 													<tr>
-														<td> <%=b.getB_title() %></td>
-														<td> <%=b.getB_code() %></td>
+														<td><%=b.getB_title() %></td>
+														<td><%=b.getB_code() %></td>
 													</tr>
 													<%} %>
                                 				</tbody>

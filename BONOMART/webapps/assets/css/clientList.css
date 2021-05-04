@@ -119,6 +119,24 @@
         input:invalid{
 			border : 2px solid red;
 		}
+		
+        #tableList tr:hover{
+        	cursor : pointer;
+        }
+        
+        #bankInputMod:hover{
+        	cursor : pointer;
+        }
+        
+        #modal_bank tbody tr:hover{
+        	cursor : pointer;
+        }
+        
+        .btn-outline-secondary {
+        	background : #4e73df;
+        	color : white;
+        }
+        
         
         
         

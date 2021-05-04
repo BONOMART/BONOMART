@@ -182,6 +182,116 @@ public class ClientDAO {
 				
 		return result;
 	}
+
+	public int insertClient(Connection con, Client[] list) {
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = prop.getProperty("insertClient");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			for(Client c : list) {
+				ps.setString(1, c.getC_no());
+				ps.setString(2, c.getC_name());
+				ps.setString(3, c.getC_manager());
+				ps.setString(4, c.getC_tel());
+				ps.setString(5, c.getC_address());
+				ps.setString(6, c.getB_code());
+				ps.setString(7, c.getC_account());
+				
+				result = ps.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(ps);
+		}
+		
+		return result;
+	}
+
+	public int getListCountSort(Connection con, String data, String sort) {
+		int result = 0;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT COUNT(*) "
+				   + "FROM BN_CLIENT "
+				   + "WHERE C_STATUS = 'Y' AND "
+				   +sort+ " LIKE ?";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, "%"+data+"%");
+			
+			rs= ps.executeQuery();
+			
+			if( rs.next() ) {
+				result = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		
+		return result;
+	}
+
+	public ArrayList<Client> selectClientListSort(Connection con, int currentPage, String data, String sort) {
+		ArrayList<Client> list = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT * FROM (SELECT ROWNUM "
+					+ "\""+"순위"+"\", A.* "
+					+ "FROM (SELECT * "
+					+ "FROM BN_CLIENT "
+					+ "JOIN BN_BANK USING(B_CODE) "
+					+ "WHERE C_STATUS = 'Y' AND "
+					+sort+ " LIKE ? "
+					+ "ORDER BY C_DATE DESC) A "
+					+ "WHERE ROWNUM <= ?) "
+					+ "WHERE 순위>= ?";
+		
+		int startRow = (currentPage -1) *10 +1;
+		int endRow = currentPage * 10;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, "%"+ data +"%");
+			ps.setInt(2, endRow);
+			ps.setInt(3, startRow);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Client c = new Client();
+				
+				c.setC_no(rs.getString("c_no"));
+				c.setC_name(rs.getString("c_name"));
+				c.setC_manager(rs.getString("c_manager"));
+				c.setC_tel(rs.getString("c_tel"));
+				c.setC_address(rs.getString("c_address"));
+				c.setB_title(rs.getString("b_title"));
+				c.setC_account(rs.getString("c_account"));
+				c.setB_code(rs.getString("b_code"));
+				
+				list.add(c);
+			
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		
+		return list;
+	}
 	
 	
 	

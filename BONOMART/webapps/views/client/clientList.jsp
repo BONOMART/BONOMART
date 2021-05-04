@@ -5,6 +5,8 @@
 	ArrayList<Client> list = (ArrayList<Client>)request.getAttribute("list");
 	PageInfo pi = (PageInfo) request.getAttribute("pi");
 	ArrayList<Bank> bankList = (ArrayList<Bank>)request.getAttribute("bankList");
+	String dataThing = (String)request.getAttribute("data");
+	String sortThing = (String)request.getAttribute("sort");
 
 	int st = pi.getStartPage();
 	int ed = pi.getEndPage();
@@ -98,31 +100,30 @@ integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2
                 <div style="padding-top: 50px; padding-bottom: 50px;"></div>
 
                 <h3 style="text-align: center;">거래처 조회</h3>
-                
+                <form action="/bono/listSort.cl" method="get">
                 <!-- 조회 페이지의 서치 바 -->
-                <div class="input-group mb-3" style="margin-left : auto;
-                  margin-right : auto; width: 600px;">
-                    <input type="text" class="form-control" placeholder="검색할 데이터를 입력하세요.." aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <!-- 검색 버튼 -->
-                    <div class="btn-group">
-                       <button type="button" class="btn btn-primary">검색</button>
-                       <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                         <span class="sr-only">Toggle Dropdown</span>
-                       </button>
-                       <div class="dropdown-menu">
-                               <a class="dropdown-item" href="#">거래처 코드 기준 정렬</a>
-                               <div class="dropdown-divider"></div>
-                               <a class="dropdown-item" href="#">거래처 명 기준 정렬</a>
-                               <div class="dropdown-divider"></div>
-                               <a class="dropdown-item" href="#">담당자명 기준 정렬</a>
-                               <div class="dropdown-divider"></div>
-                               <a class="dropdown-item" href="#">전화번호 기준 정렬</a>
-                               <div class="dropdown-divider"></div>
-                               <a class="dropdown-item" href="#">이체 정보 기준 정렬</a>
-                        </div>
-                  </div>
-                  <!-- 검색 버튼 끝 -->
-            </div>
+		            <div class="input-group mb-3" style="margin-left : auto;
+		                 margin-right : auto; width: 600px; background : white;">
+		                 <input type="text" class="form-control" placeholder="검색할 데이터를 입력하세요.." aria-label="Recipient's username" aria-describedby="button-addon2"
+		                 style="width: 300px" id="searchData" name="searchData" value="${param.searchData}">
+		                    
+		                 <!-- 검색 버튼 -->
+						<select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon" style="width:40px" name="searchSort">
+							<option ${(param.searchSort == "c_no")? "selected" : "" } value="c_no">거래처 코드</option>
+							<option ${(param.searchSort == "c_name")? "selected" : "" } value="c_name">거래처 명</option>
+							<option ${(param.searchSort == "c_manager")? "selected" : "" } value="c_manager">담당자 명</option>
+						</select>
+							
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary" type="submit" >검색하기</button>
+						</div>
+						
+							
+		                <!-- 검색 버튼 끝 -->
+		                  
+		            </div>
+	            </form>
+            	
             <!-- 서치 바 끝 -->
                 
                  <!-- 추가한 상품들을 나열하여 보여주는 테이블 -->
@@ -235,7 +236,7 @@ integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2
 								</button>
 							</div>
 							
-							<div class="modal-body">
+							<div class="modal-body" id="modal_bank">
 								<table class="table table-hover text-center">
 								
 									<thead>
@@ -265,6 +266,7 @@ integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2
                 <div style="padding-top: 30px; padding-bottom: 30px;"></div>
 
                 <!-- 페이지 네이션 시작 -->
+                <%if (dataThing==null && sortThing==null) {%>
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                     	<li class="page-item">
@@ -285,7 +287,7 @@ integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2
                         <% for(int p = st ; p <= ed ; p++)  { %>
                         	<% if( p == cur) { %>
                         		<li class="page-item">
-                        		<a class="page-link" href="#"><%=p %></a>
+                        		<a class="page-link" href="#" style="background:lightgrey;"><%=p %></a>
                         		</li>
                         	<% } else {%>
                         		<li class="page-item">
@@ -315,6 +317,58 @@ integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2
                                       
                     </ul>
                 </nav>
+                <%} else { %>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                    	<li class="page-item">
+                            <a class="page-link" href="/bono/listSort.cl?searchData=<%=dataThing %>&searchSort=<%=sortThing %>&currentPage=1" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>                    	
+                        <li class="page-item">
+                        <% if (cur <= 1) { %>
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&lt;</span>
+                            </a>
+                        <% } else { %>
+                        	<a class="page-link" href="/bono/listSort.cl?searchData=<%=dataThing %>&searchSort=<%=sortThing %>&currentPage=<%= cur-1 %>" aria-label="Previous">
+                                <span aria-hidden="true">&lt;</span>
+                            </a>
+                        <% } %>
+                        </li>
+                        <% for(int p = st ; p <= ed ; p++)  { %>
+                        	<% if( p == cur) { %>
+                        		<li class="page-item">
+                        		<a class="page-link" href="#" style="background:lightgrey;"><%=p %></a>
+                        		</li>
+                        	<% } else {%>
+                        		<li class="page-item">
+                        		<a class="page-link" href="/bono/listSort.cl?searchData=<%=dataThing %>&searchSort=<%=sortThing %>&currentPage=<%=p %>" ><%=p %></a>
+                        		</li>
+                        	<% } %>
+                        <% } %>
+                        
+                        
+                        <li class="page-item">
+                        <% if (cur >= mx) { %>
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&gt;</span>
+                            </a>
+                        <% } else { %>
+                            <a class="page-link" href="/bono/listSort.cl?searchData=<%=dataThing %>&searchSort=<%=sortThing %>&currentPage=<%=cur+1 %>" aria-label="Next">
+                                <span aria-hidden="true">&gt;</span>
+                            </a>                        
+                        <% } %>
+                        </li>
+                        
+                    	<li class="page-item">
+                            <a class="page-link" href="/bono/listSort.cl?searchData=<%=dataThing %>&searchSort=<%=sortThing %>&currentPage=<%= mx %>" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>                    	
+                        <li class="page-item">          
+                                      
+                    </ul>
+                </nav>                
+                <%} %>
                 <!-- 페이지 네이션 끝 -->
                 <!-- 푸터 영역 추가 -->
             <%@ include file="../common/footer.jsp" %>

@@ -135,6 +135,19 @@
         input:invalid{
 			border : 2px solid red;
 		}
+		
+		#bankInput:hover{
+        	cursor : pointer;
+        }
+        #inputval tr:hover{
+        	cursor : pointer;
+        }
+        #modal_bank tbody tr:hover{
+        	cursor : pointer;
+        }
+        #bankInputMod:hover{
+        	cursor : pointer;
+        }
         
         
         

@@ -73,6 +73,40 @@ public class ClientService {
 		close(con);
 		return result;
 	}
+
+	public int insertClient(Client[] list) {
+		con = getConnection();
+		
+		int result = dao.insertClient(con,list);
+		
+		if(result>0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		return result;
+	}
+
+	public int getListCountSort(String data, String sort) {
+		con = getConnection();
+		
+		int result = dao.getListCountSort(con,data,sort);
+		
+		close(con);
+		
+		return result;
+	}
+
+	public ArrayList<Client> selectClientListSort(int currentPage, String data, String sort) {
+		con = getConnection();
+		
+		ArrayList<Client> list = dao.selectClientListSort(con, currentPage, data, sort);
+		
+		close(con);
+		
+		return list;
+		
+	}
 	
 	 
 	
