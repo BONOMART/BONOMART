@@ -1,16 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page import="com.bn.jsp.admin.model.vo.*, java.util.*" %>
-    <% 
-    	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
-    %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>회원 관리</title>
 <link rel="stylesheet" href="/bono/assets/css/header.css" />
-<link rel="stylesheet" href="../../assets/css/admin.css" />
+<link rel="stylesheet" href="/bono/assets/css/admin.css" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 <script src="/bono/assets/js/jquery-3.6.0.min.js"></script>
@@ -22,7 +20,7 @@
 
     <div id="graph">
                             <div id="search">
-                              <h3> 회원 관리 </h3> 
+                               <a href="/bono/searchOK.ad" style= "color:white;"><h3> 회원 조회 </h3> </a>
                             </div> 
 						
                             <div id = member >
@@ -46,30 +44,24 @@
 											<div id="text1"> &nbsp;<input type="text" name="content" size="50"/>    &nbsp; &nbsp;
 											<button type="submit" class="btn btn-primary" id="btn1">조 회</button>
 											</div>
-											 <div id="result">
-											</div>
 									      </div>                                
   <!--                              </form>  -->                                
                                 <script>
+          
+                                	/*  회원 정보 검색 */
                                 	$('#btn1').on('click', function(){
-                                		
-                                		/* var jsonData = { } ;
-                                		
-                                		jsonData.name = $('[name=type]').val();
-                                		jsonData.content = $('[name=content]').val();
-                                		
-                                		console.log(jsonData); */
-                       
+            
                                			$.ajax({
                                 			url : "/bono/search.ad",
                                 			type : "post",
                                 			data : { 
                                 				name :$('[name=type]').val(),
                                 				content : $('[name=content]').val()
-                                			}, success : function( data ) { 
-                                				alert("전송성공!");
-                                				
-                                				 
+                                			}, success : function( result ) { 
+                                				alert("검색완료");
+                                				console.log(result);
+                                				 var data = result.list;
+       											 var pi = result.pi;
                                 				var $tbody = $('<tbody>');
                                 				
                                 				for(var i in data){
@@ -85,7 +77,7 @@
                                 					var $phone = $('<td>').text(data[i].phone);
                                 					var $job = $('<td>').text(data[i].job);
                                 					var $dept = $('<td>').text(data[i].dept);
-                                					var $sign = $('<td>').html($(' <button type="button" class="btn btn-success"> 승 &nbsp; 인 </button>'));
+                                					var $sign = $('<td>').html($(' <button type="button" class="btn btn-danger accNo"> 회 &nbsp; 수 </button>'));
                                 					
                                 					$tr.append($userNo).append($userName)
                                 					   .append($userId).append($userPwd)
@@ -99,11 +91,92 @@
                                 				$('#memberList>tbody').remove();
                                 				
                                 				$('#memberList').append($tbody);
+                                				
+                                				$('#paging_area').empty();
+                                				/* 페이지처리 시작 */
+                                				
+                                				var st = pi.getStartPage;
+												var ed = pi.getEndPage;
+												var mx = pi.getMaxPage;
+												var limit = pi.getLimit;
+												var listCount = pi.getListCount;
+												var cur = pi.getCurrentPage;
+                                				
+                                				$('#paging_area').append(
+                                				'<ul class="pagination justify-content-center">' +
+                                          	  	'<li class="page-item">' +
+                                                    '<a class="page-link" href="/bono/searchad?currentPage=1&name=' + $('[name=type]').val() + '&content=' + $('[name=content]').val() + 'aria-label="Previous">' +
+                                                        '<span aria-hidden="true">&laquo;</span>' +
+                                                    '</a>' +                    	
+                                                '<li class="page-item">' )
+                                                
+												if(   cur  + == 1) {
+                                                  +  '<a class="page-link" href="#" aria-label="Previous">' +
+                                                        '<span aria-hidden="true">&lt;</span>' +
+                                                  ' </a>'  +
+											' }  else { '+
+                                                '<a class="page-link" href="/bono/search.ad?currentPage=' + (cur - 1) + '&name='+$('[name=type]').val() +'&content=' + $('[name=content]').val() + 'aria-label="Previous">' +
+                                                        '<span aria-hidden="true">&lt;</span>' +
+                                                   ' </a>' +
+											'}'+
+                                                '</li>' +
+                                                ' for(int p = '+ st+' ; p <= ' + ed + '; p++;)  {'  +
+                                                '	 if( p ==' + cur + ';) { '  +
+                                                		'<li class="page-item">'+
+                                                		'<a class="page-link" href="#"> p </a>' +
+                                                		'</li>' +
+                                                	  '} else { ' +
+                                                		'<li class="page-item">' +
+                                                		'<a class="page-link href="/bono/search.ad?currentPage=p&name='+$('[name=type]').val() +'&content=' + $('[name=content]').val() + '>  p'+'</a>' +
+                                                		'</li>' +
+                                               		'}' +  
+                                                 '}' +
+                                               
+                                                '<li class="page-item">' +
+                                                 'if (' + cur + ' >=' + mx + ' ;) { ' +
+                                                   ' <a class="page-link" href="#" aria-label="Next">' +
+                                                        '<span aria-hidden="true">&gt;</span>' +
+                                                    '</a>' +
+                                         		   ' } else { '  +
+                                                    '<a class="page-link" href="/bono/search.ad?currentPage=' + (cur+1)  + '&name='+$('[name=type]').val() +'&content=' + $('[name=content]').val() + ' aria-label="Next">' +
+                                                        '<span aria-hidden="true">&gt;</span>' +
+                                                    '</a>'  +                      
+                                                		'}' +
+                                                '</li>' +
+                                                
+                                           '<li class="page-item">' +
+                                                    '<a class="page-link" href="/bono/?currentPage=' + mx  + '&name='+$('[name=type]').val() +'&content=' + $('[name=content]').val() + ' aria-label="Next">' +
+                                                        '<span aria-hidden="true">&raquo;</span>' +
+                                                    '</a>'        +           	
+                                                '<li class="page-item"> '        + 
+                                                              
+                                            '</ul>'
+                                            );
+                                				
+                                				/* 회원 관한 회수 */
+                                            	$('.accNo').on('click', function(){
+                                            		
+                                            		var mno = $(this).parent().parent().children().first().text();
+                                            		
+                                            		alert(mno);
+                                            		                                                     		
+                                            	/* 	$.ajax({
+                                            			url : "/bono/accNo.ad",
+                                            			type : "post",
+                                            			data : { 
+                                            				mno
+                                            				content : $('[name=content]').val()
+                                            			}, success : function( data ) {  }
+                                            			
+                                            		}); */
+                                            	});
                                 			 },  error : function(error) {
                                 				consle.log("에러 발생!");
                                 			}
                                 		});	 
                                 	});
+                                	
+                               
                                 
                                 </script>
                                                               	
@@ -120,7 +193,7 @@
                                                <th> 연락처 </th>
                                                <th> 직 급 </th>
                                                <th> 부 서 </th>
-                                               <th> 가입승인 </th>
+                                               <th> 권한회수 </th>
                                            </tr>
                                            </thead>
                                        <!--   <tr>
@@ -132,42 +205,27 @@
                                           <td> 010-1234-5678 </td>
                                           <td> 관리자 </td>
                                           <td> 재무부 </td>
-                                          <td> <button type="button" class="btn btn-success"> 승 &nbsp; 인 </button></td>
+                                          <td> <button type="button" class=""btn btn-danger" "> 승 &nbsp; 인 </button></td>
                                       </tr>
                                            -->
                                       
                                          </table>
                                        </div> 
 									</div>
-										<!-- 게시판 영역과 page nation 영역 사이 공간 -->
-										<div style="padding-top: 50px; padding-bottom: 50px;"></div> 
-									
-									   <!-- 페이지 네이션 시작 -->
-						                <nav aria-label="Page navigation example">
-						                    <ul class="pagination justify-content-center">
-						                        <li class="page-item">
-						                            <a class="page-link" href="#" aria-label="Previous">
-						                                <span aria-hidden="true">&laquo;</span>
-						                            </a>
-						                        </li>
-						                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-						                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-						                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-						                        <li class="page-item">
-						                            <a class="page-link" href="#" aria-label="Next">
-						                                <span aria-hidden="true">&raquo;</span>
-						                            </a>
-						                        </li>
-						                    </ul>
-						                </nav>
-						                <!-- 페이지 네이션 끝 -->
-								<div style="padding-top: 50px; padding-bottom: 50px;"></div> 
+				
+				<!-- 페이지 네이션 -->
+										<div style="padding-top: 20px; padding-bottom: 10px;"></div> 
+										<nav id="paging_area" aria-label="Page navigation example" >
+                    	<!-- style="display:none;" -->
+                </nav>
                             </div>
+                            </div>
+                           
                             
-                            </div>
+                     
                             
                           
-                    </div>
+                   
            
  <script>
  /*      -------------------------------------- select----------------------------------------------  */
