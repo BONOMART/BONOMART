@@ -136,12 +136,10 @@
         <div class="main-wrapper">
             <div id="main">
                 <div class="header bg-gradient-topbar">
-                <% if ( m != null ) { %>
                     <p id="headerUserName" style="margin-top:15px;">
                     	<b><%= m.getUserName() %>님</b>
                     </p>
                     <span id="headerIconWrapper">
                         <i class="fa fa-user-circle" aria-hidden="true" id="headerIcon" onclick="goMypage()"></i>
                     </span>
-                    <% } %>
                 </div>
