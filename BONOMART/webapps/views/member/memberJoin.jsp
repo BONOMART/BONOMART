@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,20 +12,19 @@
 </head>
 <body>
     <div id="wrap" align="center">
-        
             <p id="title">
-                JOIN  
+                JOIN
             </p>
             <div id="joinArea">
-                <form action="" method="post" id="joinForm">
+                <form action="/bono/insert.me" method="post" id="joinForm" name="joinForm">
                     <div class="inputArea">
                         <label class="text">이름</label>
                         <input class="form-control form-control-sm" type="text" name="userName" required>
                     </div>
                     <div class="inputArea">
                         <label class="text">아이디</label>
-                        <input class="form-control form-control-sm" type="text" name="userId" required>
-                        <div id="idCheck" class="comment">이미 사용중인 아이디입니다.</div>
+                        <input class="form-control form-control-sm" type="text" name="userId" id="userId"  required>
+                        <button id="idCheckFunc" name="idCheck">중복 확인</button>
                     </div>
                     <div class="inputArea">
                         <label class="text">비밀번호  &nbsp;</label>
@@ -42,22 +42,32 @@
                     </div>
                     <div class="inputArea">
                         <label class="text">연락처  &nbsp;</label>
-                        <input class="form-control form-control-sm" type="text" name="phone" maxlength="11" required
+                        <input class="form-control form-control-sm" type="text" name="phone" maxlength="13" required
                                        placeholder="010-1111-1111">
                     </div>
-                    <div class="inputArea">
-                        <label class="text">부서코드  &nbsp;</label>
-                        <input class="form-control form-control-sm" type="text" name="department" >
+                    <div class="form-wrap">
+                                    <div class="form-div left-radius"> 부서코드</div>
+                                    <select name="dCode" class="form-select right-radius">
+                                        <option value="D1">인사관리팀</option>
+                                        <option value="D2">재무팀</option>
+                                        <option value="D3">재고관리팀</option>
+                                    </select>
                     </div>
-                    <div class="inputArea">
-                        <label class="text">직급코드  &nbsp;</label>
-                        <input class="form-control form-control-sm" type="text" name="job" >
+                    <div class="form-wrap">
+                           <div class="form-div left-radius"> 직급명</div>
+                           <select name="jCode" class="form-select right-radius">
+                                <option value="J1">사원</option>
+                                <option value="J2">주임</option>
+                                <option value="J3">대리</option>
+                                <option value="J4">과장</option>
+                                <option value="J5">부장</option>
+                                <option value="J6">이사</option>
+                           </select>
                     </div>
-                    
                     
                     <div class="btns" align="center">
                         <button type="reset">작성취소</button>
-                        <button type="submit">가입하기</button>
+                        <button onclick="login();">가입하기</button>
                     </div>
                 </form>
 
@@ -78,12 +88,60 @@
                                 }
                             }
                         });
+                    });        
+                    
+                    // 가입하기 버튼 기능.
+                    function login() {
+                    	
+                    	if(!document.joinForm.userPwd.value) {
+                    		alert("비밀번호를 입력하지 않으셨습니다.");
+                    		return false;
+                    	}
+                    	
+                    	else {
+                    		var check = confirm('회원 가입이 완료되었습니다.');
+                    		$('#joinForm').submit();
+                    	}
+					}
+                    
+                    
+                    /*
+                    // 날짜 생성
+                    $(document).ready(function() {
+                    	var dt = new Date();
+                    	var dateNow = dt.getFullYear() + '-' + (dt.getMonth()+1) + '-' + dt.getDate();
+                    	
+                    	$("#m_date").val(dateNow);
                     });
-
+                    */
+                    
+                    // 아이디 중복 확인
+                    $('#idCheckFunc').on('click', function() {
+		    				$.ajax({
+				    				url : '/bono/idcheck.me',
+				    				type : 'post',
+				    				data : { userId : $('#userId').val() },
+				    				success : function( data ) {
+				    					console.log(data);
+				    					
+				    					// 전달된 결과가 0이면 : 사용 가능
+				    					// 전달된 결과가 1이면 : 사용 불가
+				    					
+				    					if(data == 0) {
+				    						alert("사용 가능한 아이디입니다.");
+				    			
+				    					} else {
+				    						alert("이미 사용 중인 아이디입니다.");
+				    					}
+				    				}, 
+				    				error : function() {
+				    					console.log("전송 실패!");
+				    				}
+    						})
+  					  })
                     
                 </script>
-
-                
+               
             </div>
     </div>
 

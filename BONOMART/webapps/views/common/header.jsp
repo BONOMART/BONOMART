@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import = "com.bn.jsp.member.model.vo.Member" %>
+
+<%
+		Member m  = (Member)session.getAttribute("member");
+%>
 <script src="/bono/assets/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script>
@@ -11,6 +17,11 @@
 			return false;
 		});
 	});
+	
+	// 게스트 아이콘 클릭 시, 마이 페이지(회원 정보 수정)로 이동.
+	function goMypage() {
+		location.href='/bono/views/member/memberDetail.jsp';
+	}
 </script>
 <div id="wrap" class="wrap" style="font-family:'Malgun Gothic'; font-size:16px;">
     <div class="content">
@@ -104,22 +115,32 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/bono/views/member/memberUpdate.jsp">
+                    <a href="#" class="menuBtn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16" style="vertical-align: middle;">
                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                         </svg>
                         &nbsp; 회원관리
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16" style="margin-left: 30px;">
+  							<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+						</svg>
                     </a>
+                    <div class="accmenu">
+                    	<a href="/bono/views/member/memberJoin.jsp" >회원가입</a>
+                    	<a href="/bono/views/member/memberUpdate.jsp" >내 정보 수정</a>
+                    	<a href="/bono/views/member/memberDetail.jsp" >내 정보 조회</a>
+                    </div>
                 </li>
               </ul>
         </div>
         <div class="main-wrapper">
             <div id="main">
                 <div class="header bg-gradient-topbar">
+                <% if ( m != null ) { %>
                     <p id="headerUserName" style="margin-top:15px;">
-                    	<b>관리자</b>
+                    	<b><%= m.getUserName() %>님</b>
                     </p>
                     <span id="headerIconWrapper">
-                        <i class="fa fa-user-circle" aria-hidden="true" id="headerIcon"></i>
+                        <i class="fa fa-user-circle" aria-hidden="true" id="headerIcon" onclick="goMypage()"></i>
                     </span>
+                    <% } %>
                 </div>
