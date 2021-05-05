@@ -20,6 +20,8 @@
 	svg:hover {
 		cursor: pointer;
 	}
+	
+	
 </style>
 
 </head>
@@ -45,7 +47,7 @@
 							
 							상품코드 
 							<div class="col-sm-3">
-								<select id="p_no" class="form-control">
+								<select id="p_no" class="form-control" >
 									<option value="">선택</option>
 								</select>
 							</div>
