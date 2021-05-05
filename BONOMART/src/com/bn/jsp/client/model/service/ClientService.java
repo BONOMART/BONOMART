@@ -107,7 +107,18 @@ public class ClientService {
 		return list;
 		
 	}
-	
+
+	public ArrayList<String> checkInsert(ArrayList<String> list) {
+		con =  getConnection();
+		
+		ArrayList<String> result = dao.checkInsert(con, list);
+		
+		close(con);
+		
+		return result;
+	}
+
+
 	 
 	
 	

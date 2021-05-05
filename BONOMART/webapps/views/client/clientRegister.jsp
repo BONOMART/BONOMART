@@ -27,43 +27,73 @@
 
 <script>
 	function addTable() {
-            innerHtml = '';
+		
+			$.ajax({
+				url : '/bono/insertCheck.cl',
+				type : 'get',
+				data : { 
+					c_code : $('#c_code').val()
+				   ,c_title : $('#c_title').val()
+				   ,c_phone : $('#c_phone').val()
+				   ,c_account : $('#c_account').val()
+			},
+				async : 'false',
+				success : function( data ) {
+					var msg="";
+					
+					for(var s in data) {
+						msg+=(data[s])+" 은 이미 사용중입니다\n";	
+						
+					}
+					if(msg!=""){
+						alert(msg);
+						
+					} else {
+			            innerHtml = '';
+			        	
+						var numb = $('#inputval tr:last>td:first-child').text();
+			            var c_code = $('#c_code').val();
+			            var c_title = $('#c_title').val();
+			            var b_name = $('#bankInput').val();
+			            var b_code = $('#bankCodeInput').val();
+			            var c_who = $('#c_who').val();
+			            var c_phone = $('#c_phone').val();
+			            var c_account = $('#c_account').val();
+			            var c_addr = $('#c_addr').val();
+			            
+			            numb = Number(numb)+1;
+			            
+			            // 등록 후 인풋값 empty 만들기
+						$('#c_code').val("");
+						$('#c_title').val("");
+						$('#bankInput').val("은행명을 고르세요");
+						$('#c_who').val("");
+						$('#c_phone').val("");
+						$('#c_account').val("");
+						$('#c_addr').val("");
+			          	
+			            innerHtml = "<tr id='input"+numb+"'> <td>" + numb + "</td> "
+			            innerHtml += "<td>" + c_code + "</td> "
+			            innerHtml += " <td>" + c_title + "</td> " 
+			            innerHtml += " <td>" + b_name + "</td> " 
+			            innerHtml += " <td>" + c_who + "</td> " 
+			            innerHtml += " <td>" + c_phone + "</td>  "
+			            innerHtml += " <td>" + c_account + "</td>"
+			            innerHtml += " <td>" + c_addr + "</td>"
+			            innerHtml += "<input type='hidden' name='b_code' value='"+b_code+"'/> </tr>"
+			
+			            	
+			            $('#inputval').append(innerHtml);
+						
+					}
+					
+				}
+			
+			});
+			
 
-			var numb = $('#inputval tr:last>td:first-child').text();
-            var c_code = $('#c_code').val();
-            var c_title = $('#c_title').val();
-            var b_name = $('#bankInput').val();
-            var b_code = $('#bankCodeInput').val();
-            var c_who = $('#c_who').val();
-            var c_phone = $('#c_phone').val();
-            var c_account = $('#c_account').val();
-            var c_addr = $('#c_addr').val();
-            
-            numb = Number(numb)+1;
-            console.log(numb);
-            
-            // 등록 후 인풋값 empty 만들기
-			$('#c_code').val("");
-			$('#c_title').val("");
-			$('#bankInput').val("은행명을 고르세요");
-			$('#c_who').val("");
-			$('#c_phone').val("");
-			$('#c_account').val("");
-			$('#c_addr').val("");
-          	
-            innerHtml = "<tr id='input"+numb+"'> <td>" + numb + "</td> "
-            innerHtml += "<td>" + c_code + "</td> "
-            innerHtml += " <td>" + c_title + "</td> " 
-            innerHtml += " <td>" + b_name + "</td> " 
-            innerHtml += " <td>" + c_who + "</td> " 
-            innerHtml += " <td>" + c_phone + "</td>  "
-            innerHtml += " <td>" + c_account + "</td>"
-            innerHtml += " <td>" + c_addr + "</td>"
-            innerHtml += "<input type='hidden' name='b_code' value='"+b_code+"'/> </tr>"
-
-            	
-            $('#inputval').append(innerHtml);
-
+	            
+			
             $('#inputval tr').on('click',function(){
             	var listNum = $(this).children().eq(0).text();
             	var m_code = $(this).children().eq(1).text();
@@ -181,7 +211,7 @@
 			data : { name : JSON.stringify(list) },
 			async : 'false',
 			success : function( data ) {
-				location.href = "/bono/selectlist.cl"
+				
 				
 			}
 		
@@ -200,10 +230,11 @@
                         <h3>거래처 등록</h3>
                         <!-- 거래처 등록을 위한 폼 -->
                         <div class="product_select">
-                            <form action="" type="POST">
+                            <form action="/bono/insertCheck.cl" type="get">
                                 <div class="select">
                                 
                                     <div class="item">
+                                    	<input type="hidden" id="insertCheckInput" value="0"/>
                                         <div>
                                             <span class="foamSpan">거래처 코드</span><div class="col-sm-8"><input type="text" class="form-control" id="c_code"></div>
                                         </div>
@@ -235,7 +266,7 @@
                                     	<span class="foamaddSpan">주소</span>
                                     	<div class="foamaddDiv"><input type="text" class="form-control" id="c_addr"></div>
                                 </div>
-                            </form>
+
 
                             <!-- 상품 하단 리스트 등록 버튼 및 하단 리스트에 원하는 상품 검색할 수 있는 검색버튼 -->
                             <div class="submit_btn">

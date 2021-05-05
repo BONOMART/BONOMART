@@ -292,6 +292,63 @@ public class ClientDAO {
 		
 		return list;
 	}
+
+	public ArrayList<String> checkInsert(Connection con, ArrayList<String> list) {
+		ArrayList<String> result = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String c_no=list.get(0);
+		String c_name=list.get(1);
+		String c_tel=list.get(2);
+		String c_account= list.get(3);
+		System.out.println();
+		
+		String sql1 = prop.getProperty("insertCheckC_NO");
+		String sql2 = prop.getProperty("insertCheckC_NAME");
+		String sql3 = prop.getProperty("insertCheckC_TEL");
+		String sql4 = prop.getProperty("insertCheckC_ACCOUNT");
+		
+		try {
+			
+			ps= con.prepareStatement(sql1);
+			ps.setString(1, c_no);
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				result.add("거래처 코드 : "+rs.getString(1));
+			}
+			
+			ps= con.prepareStatement(sql2);
+			ps.setString(1, c_name);
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				result.add("거래처 명 : "+rs.getString(1));
+			}
+			
+			ps= con.prepareStatement(sql3);
+			ps.setString(1, c_tel);
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				result.add("담당자 번호 : "+rs.getString(1));
+			}
+			
+			ps= con.prepareStatement(sql4);
+			ps.setString(1, c_account);
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				result.add("계좌번호 : "+rs.getString(1));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		
+		return result;
+	}
 	
 	
 	
