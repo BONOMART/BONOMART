@@ -14,7 +14,6 @@
 <body>
 <%@include file="/views/common/header.jsp" %>
    <!-- 여기 부터 회원정보 수정내용-->
-	<% if ( m != null ) { %>
    <section class="container">
 		<div class="update-contents">
             <div class="contents-inner" style="display:block;">
@@ -109,7 +108,7 @@
                                     </select>
                                 </div>
                                 <div class="button-wrap">
-                                    <button type="submit" value="변경" class="form-button" id = "updateExtra" name="updateExtra" onclick="updateExtra()">변경</button>&nbsp;
+                                    <button type="submit" value="변경" class="form-button" id = "updateExtra" name="updateExtra" >변경</button>&nbsp;
                                     <button type="reset" value="취소" class="form-button">취소</button>
                                 </div>
                             </div>
@@ -119,7 +118,6 @@
             </div>
         </div>
     </section>
-	<% } %>
     <!-- 여기 까지-->
 <%@include file="/views/common/footer.jsp" %>
 

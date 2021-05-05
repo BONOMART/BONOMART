@@ -23,6 +23,7 @@
 		location.href='/bono/views/member/memberDetail.jsp';
 	}
 </script>
+<% if ( m != null ) { %>
 <div id="wrap" class="wrap" style="font-family:'Malgun Gothic'; font-size:16px;">
     <div class="content">
         <div class="aside bg-gradient-sidebar">

@@ -52,7 +52,7 @@ public class MemberLogin extends HttpServlet {
 			
 			session.setAttribute("member", loginMember);
 			
-			response.sendRedirect("/bono/index.jsp");
+			response.sendRedirect("/bono/views/main/mainPage.jsp");
 		} else {
 			// 로그인 실패!
 			
