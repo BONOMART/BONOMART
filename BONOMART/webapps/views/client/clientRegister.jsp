@@ -84,6 +84,29 @@
 			
 			            	
 			            $('#inputval').append(innerHtml);
+			            
+			            $('#inputval tr').on('click',function(){
+			            	var listNum = $(this).children().eq(0).text();
+			            	var m_code = $(this).children().eq(1).text();
+			            	var m_title = $(this).children().eq(2).text();
+			            	var m_b_name = $(this).children().eq(3).text();
+			            	var m_who = $(this).children().eq(4).text();
+			            	var m_phone = $(this).children().eq(5).text();
+			            	var m_account = $(this).children().eq(6).text();
+			            	var m_addr = $(this).children().eq(7).text();
+			            	
+			            	$("#listNum").val(listNum);
+			            	$("#m_code").val(m_code);
+			            	$("#m_title").val(m_title);
+			            	$("#bankInputMod").val(m_b_name);
+			            	$("#m_who").val(m_who);
+			            	$("#m_phone").val(m_phone);
+			            	$("#m_account").val(m_account);
+			            	$("#m_addr").val(m_addr);
+			            	
+			            	$("#myModal").modal();
+
+			            });
 						
 					}
 					
@@ -91,36 +114,6 @@
 			
 			});
 			
-
-	            
-			
-            $('#inputval tr').on('click',function(){
-            	var listNum = $(this).children().eq(0).text();
-            	var m_code = $(this).children().eq(1).text();
-            	var m_title = $(this).children().eq(2).text();
-            	var m_b_name = $(this).children().eq(3).text();
-            	var m_who = $(this).children().eq(4).text();
-            	var m_phone = $(this).children().eq(5).text();
-            	var m_account = $(this).children().eq(6).text();
-            	var m_addr = $(this).children().eq(7).text();
-            	
-            	$("#listNum").val(listNum);
-            	$("#m_code").val(m_code);
-            	$("#m_title").val(m_title);
-            	$("#bankInputMod").val(m_b_name);
-            	$("#m_who").val(m_who);
-            	$("#m_phone").val(m_phone);
-            	$("#m_account").val(m_account);
-            	$("#m_addr").val(m_addr);
-            	
-            	$("#myModal").modal();
-
-            });
-            
-
-            
-
-
 	}
 	
     function modalComBtn(){
