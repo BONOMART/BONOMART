@@ -61,7 +61,7 @@
                     </a>
                     <div class="accmenu">
                     	<a href="/bono/views/sale/salepage.jsp" >판매등록</a>
-                    	<a href="/bono/views/sale/saleList.jsp" >판매조회</a>
+                    	<a href="/bono/selectList.sa" >판매조회</a>
                     </div>
                 </li>
                 <li>

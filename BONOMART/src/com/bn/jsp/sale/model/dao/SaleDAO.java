@@ -204,6 +204,154 @@ public class SaleDAO {
 		return list;
 	}
 
+	public int deleteSale(Connection con, int s_no) {
+		
+		int result = 0;
+		PreparedStatement ps = null;
+		
+		String sql = prop.getProperty("deleteSale");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, s_no);
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		
+		} finally {
+			close(con);
+		}
+		
+		
+		return result;
+	}
+
+	public int updateSale(Connection con, Sale s) {
+		
+		int result = 0;
+		PreparedStatement ps = null;
+		
+		String sql = prop.getProperty("updateSale");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, s.getS_quan());
+			ps.setInt(2, s.getS_no());
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			close(ps);
+		}
+		
+		return result;
+	}
+
+	public ArrayList<SaleJoin> selectSearchList(Connection con, int currentPage, String s_search, String s_sort) {
+		
+		ArrayList<SaleJoin> list = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		
+		if ( s_sort.equals("p_no") ) {
+			
+			sql = prop.getProperty("selectSearchList1");
+			
+		} else if ( s_sort.equals("p_name") ) {
+			
+			sql = prop.getProperty("selectSearchList2");
+			
+		}
+		
+		
+		// 1페이지 : 1-10번 글, 2페이지 : 11-20번 글, 3페이지 : 21-30번 글
+		int startRow = (currentPage - 1) * 10 + 1;
+		int endRow = currentPage * 10;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			// 여기도 다르게
+			ps.setString(1, s_search);
+			ps.setInt(2, endRow);
+			ps.setInt(3, startRow);
+			
+			rs = ps.executeQuery();
+			
+			while( rs.next() ) {
+				
+				SaleJoin s = new SaleJoin();
+				
+				s.setS_no(rs.getInt("s_no"));
+				s.setS_date(rs.getDate("s_date"));
+				s.setP_no(rs.getString("p_no"));
+				s.setP_name(rs.getString("p_name"));
+				s.setS_quan(rs.getInt("s_quan"));
+				s.setS_total(rs.getInt("s_total"));
+				
+				list.add(s);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return list;
+	}
+
+	public int getSearchListCount(Connection con, String s_search, String s_sort) {
+
+		int result = 0;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = "";
+		
+		if ( s_sort.equals("p_no") ) {
+			sql = prop.getProperty("searchListCount1");
+			
+		} else if ( s_sort.equals("p_name") ) {
+			sql = prop.getProperty("searchListCount2");
+		}
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, s_search);
+			
+			rs = ps.executeQuery();
+			
+			if ( rs.next() ) {
+				result = rs.getInt(1);
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return result;
+	}
+
+	
+
 	
 
 	

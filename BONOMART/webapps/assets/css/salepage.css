@@ -85,6 +85,18 @@ footer {
 	padding-right: 40px;
 	padding-bottom: 30px;
 }
+
+#updateBtn {
+	color: white;
+	background: #4e73df;
+	border: 1px solid #4e73df;
+	border-radius: 3px;
+}
+
+.table th{
+           border-top: 0px solid black;
+        }
+
 /* DB 등록버튼 끝 */
 
 

@@ -14,16 +14,16 @@ import com.bn.jsp.sale.model.vo.PageInfo;
 import com.bn.jsp.sale.model.vo.SaleJoin;
 
 /**
- * Servlet implementation class SaleSelectList
+ * Servlet implementation class SaleSearch
  */
-@WebServlet("/selectList.sa")
-public class SaleSelectList extends HttpServlet {
+@WebServlet("/search.sa")
+public class SaleSearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SaleSelectList() {
+    public SaleSearch() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,6 +35,9 @@ public class SaleSelectList extends HttpServlet {
 		
 		ArrayList<SaleJoin> list = new ArrayList<>();
 		
+		String s_search = request.getParameter("searchData");
+		String s_sort = request.getParameter("searchSort");
+
 		SaleService service = new SaleService();
 		
 		// 페이지 처리 --------------------------------------------------------------------------------
@@ -43,38 +46,41 @@ public class SaleSelectList extends HttpServlet {
 		int maxPage;    // 실제 끝 페이지  1, 2, 3, 4, .. , (20)
 		int currentPage;   // 현재 페이지 
 		int limit = 10;      // 한 번에 보여줄 페이지 수
-		
+				
 		currentPage = 1;
-		
+				
 		// 만약 사용자가 다른 페이지 번호에서 들어온다면
 		if ( request.getParameter("currentPage") != null ) {		
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
-		
-		// 총 게시글 수 확인
-		int listCount = service.getListCount();
 				
+		// 총 게시글 수 확인
+		int listCount = service.getSearchListCount(s_search, s_sort);
+						
 		// maxPage  ( 10으로 나눴을 때 남은 애들까지 페이지에 넣기 위함 )
 		maxPage = (int) ( (double) listCount/10 + 0.9 );
-				
+						
 		// 한 번에 보일 페이지 수 
 		// 시작 페이지 ( 현재 페이지가 8이면 1페이지 부터, 13이면 11페이지 부터 )
 		startPage =  (int) ( ((double) currentPage/10 + 0.9) - 1 ) * limit + 1;
-				
+						
 		// 끝 페이지 ( 현재 페이지가 8이면 끝 페이지는 10, 13이면 20페이지 )
 		// endPage = startPage + limit - 1;
 		endPage = startPage + 9;
-				
+						
 		// 만약 최종 페이지가 끝페이지보다 작다면
 		if ( maxPage < endPage ) {
 			endPage = maxPage;       // 최종 페이지가 15이면 끝페이지가 15가 되도록
 		}
-		
+				
 		//--------------------------------------------------------------------------------------------
-	
-		list = service.selectList(currentPage);
+		
+		// search, sort 넘기기
+		list = service.selectSearchList(currentPage, s_search, s_sort);
 		
 		request.setAttribute("list", list);
+		request.setAttribute("searchData", s_search);
+		request.setAttribute("searchSort", s_sort);
 		
 		PageInfo pi = new PageInfo(startPage, endPage, maxPage, currentPage, limit, listCount);
 	

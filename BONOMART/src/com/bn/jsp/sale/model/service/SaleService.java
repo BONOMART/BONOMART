@@ -95,5 +95,63 @@ public class SaleService {
 		return list;
 	}
 
+	public int deleteSale(int s_no) {
+		
+		con = getConnection();
+		
+		int result = dao.deleteSale(con, s_no);
+		
+		if (result > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+	public int updateSale(Sale s) {
+		
+		con = getConnection();
+		
+		int result = dao.updateSale(con, s);
+		
+		if (result > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+	public ArrayList<SaleJoin> selectSearchList(int currentPage, String s_search, String s_sort) {
+		
+		con = getConnection();
+		
+		ArrayList<SaleJoin> list = dao.selectSearchList(con, currentPage, s_search, s_sort);
+		
+		close(con);
+		
+		return list;
+	}
+
+	public int getSearchListCount(String s_search, String s_sort) {
+		
+		con = getConnection();
+		
+		int result = dao.getSearchListCount(con, s_search, s_sort);
+		
+		close(con);
+		
+		return result;
+	}
+
+	
+
 	
 }
