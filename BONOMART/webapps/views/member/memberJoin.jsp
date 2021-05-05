@@ -16,7 +16,7 @@
                 JOIN
             </p>
             <div id="joinArea">
-                <form action="/bono/insert.me" method="post" id="joinForm">
+                <form action="/bono/insert.me" method="post" id="joinForm" name="joinForm">
                     <div class="inputArea">
                         <label class="text">이름</label>
                         <input class="form-control form-control-sm" type="text" name="userName" required>
@@ -90,11 +90,18 @@
                         });
                     });        
                     
+                    // 가입하기 버튼 기능.
                     function login() {
                     	
-                    	var check = confirm('회원 가입이 완료되었습니다.');
+                    	if(!document.joinForm.userPwd.value) {
+                    		alert("비밀번호를 입력하지 않으셨습니다.");
+                    		return false;
+                    	}
                     	
-						$('#joinForm').submit();
+                    	else {
+                    		var check = confirm('회원 가입이 완료되었습니다.');
+                    		$('#joinForm').submit();
+                    	}
 					}
                     
                     

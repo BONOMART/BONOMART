@@ -33,7 +33,7 @@ public class MemberUpdateExtra extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String email = request.getParameter("email");
+		String email = request.getParameter("email") + request.getParameter("emailSelect");
 		String phone = request.getParameter("phone");
 		String dCode = request.getParameter("dcode");
 		String jCode = request.getParameter("jcode");

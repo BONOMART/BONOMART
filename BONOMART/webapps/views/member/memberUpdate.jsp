@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="form-wrap">
                                     <div class="form-div left-radius"> 새 비밀번호 확인 </div>
-                                    <input type="password" name="userPwd2" class="form-input right-radius" placeholder="현재 비밀번호를 입력하세요">
+                                    <input type="password" name="userPwd2"  id="userPwd2" class="form-input right-radius" placeholder="현재 비밀번호를 입력하세요">
                                     <span id="check"></span>
                                 </div>
                                 <div class="button-wrap">
@@ -109,8 +109,8 @@
                                     </select>
                                 </div>
                                 <div class="button-wrap">
-                                    <input type="button" value="변경" class="form-button" id = "updateExtra" name="updateExtra" onclick="updateExtra()">&nbsp;
-                                    <input type="reset" value="취소" class="form-button">
+                                    <button type="submit" value="변경" class="form-button" id = "updateExtra" name="updateExtra" onclick="updateExtra()">변경</button>&nbsp;
+                                    <button type="reset" value="취소" class="form-button">취소</button>
                                 </div>
                             </div>
                         </form> <!-- 선택정보 변경 폼 끝-->
@@ -189,8 +189,7 @@
     	}
         */
         
-        
-        /*
+
         // 	비밀번호 변경
         $('#updatePwd').on('click', function() {
         	
@@ -220,31 +219,35 @@
 	        		});
         		}
         	});
-			*/
+			
         
-		// 회원 탈퇴
+     	// 회원 탈퇴
 		function deleteMember() { 
 			// 쿼리 스트링
 			location.href = "/bono/delete.me?mid=<%=m.getUserId()%>"; 
 		}
-        
-        
+		
+      
+        /*
         // 	선택 정보 변경
         $('#updateExtra').on('click', function() {
         	
-        		var jsonData = {};
+        		//var jsonData = {};
         		
-        		jsonData.email = $('input[name=email]').val() + $('select[name=emailSelect]');
-        		jsonData.phone = $('input[name=phone]').val();
-        		jsonData.dcode = $('select[name=dcode]').val();
-        		jsonData.jcode = $('select[name=jcode]').val();
+        		//jsonData.email = $('input[name=email]').val() + $('select[name=emailSelect]');
+        		//jsonData.phone = $('input[name=phone]').val();
+        		//jsonData.dcode = $('select[name=dcode]').val();
+        		//jsonData.jcode = $('select[name=jcode]').val();
         	
-        		console.log(jsonData);
+        		//console.log(jsonData);
         		
         		$.ajax({
         				url : "/bono/updateExtra.me",
         				type : "post",
-        				data : jsonData,
+        				data : {
+        					
+        				}
+        				cache : false,			// ajax 재 호출 시, 무반응을 해결.(cache에 저장된 ajax를 제거)
         				success : function(data) {
         					console.log(data);
         					alert("선택정보 변경 성공");
@@ -256,7 +259,9 @@
         				
         		});
         });
-			
+		*/	
+		
+		
 		/*
         // 전화번호, 이메일, 부서, 직급 변경
         function updateExtra() {
@@ -264,6 +269,8 @@
         	confirm('선택정보가 변경되었습니다.');
         }
      */
+     
+     
     </script>
 </body>
 </html>
