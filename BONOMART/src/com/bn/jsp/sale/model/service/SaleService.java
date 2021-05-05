@@ -1,10 +1,16 @@
 package com.bn.jsp.sale.model.service;
 
+import static com.bn.jsp.common.JDBCTemplate.close;
+import static com.bn.jsp.common.JDBCTemplate.commit;
+import static com.bn.jsp.common.JDBCTemplate.getConnection;
+import static com.bn.jsp.common.JDBCTemplate.rollback;
+
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import com.bn.jsp.sale.model.dao.SaleDAO;
 import com.bn.jsp.sale.model.vo.Sale;
-import static com.bn.jsp.common.JDBCTemplate.*;
+import com.bn.jsp.sale.model.vo.SaleJoin;
 
 public class SaleService {
 
@@ -12,13 +18,140 @@ public class SaleService {
 	
 	private SaleDAO dao = new SaleDAO();
 
-	public int insertSale(Sale s) {
-		int result = 0;
+	public ArrayList selectSaleInfo(String pno) {
+		con = getConnection();
+		
+		ArrayList list = dao.selectSaleInfo(con, pno);
+		
+		close(con);
+		
+		return list;
+	}
+
+	public ArrayList<String> selectPno() {
 		
 		con = getConnection();
 		
-		result = dao.insertSale(con, s);
+		ArrayList<String> list = dao.selectPno(con);
+		
+		close(con);
+		
+		return list;
+	}
+
+
+	public int insertSale(ArrayList<Sale> list) {
+		int result1 = 0;
+		
+		
+		con = getConnection();
+		
+		for ( int i = 0 ; i < list.size() ; i++ ) {
+			
+			int result2 = 0;
+			
+			if ( list.get(i) != null ) {
+				
+				result2 = dao.insertSale(con, list.get(i));
+				
+				if ( result2 == 0 ) break;
+				
+				result1 += result2;
+			}
+			
+		}
+		
+		if ( result1 == list.size() ) {
+			System.out.println("service re : " + result1);
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		
+		return result1;
+	}
+
+	public int getListCount() {
+		con = getConnection();
+		
+		int result = dao.getListCount(con);
+		
+		close(con);
 		
 		return result;
 	}
+
+	public ArrayList<SaleJoin> selectList(int currentPage) {
+		
+		con = getConnection();
+		
+		ArrayList<SaleJoin> list = dao.selectList(con, currentPage);
+		
+		close(con);
+		
+		return list;
+	}
+
+	public int deleteSale(int s_no) {
+		
+		con = getConnection();
+		
+		int result = dao.deleteSale(con, s_no);
+		
+		if (result > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+	public int updateSale(Sale s) {
+		
+		con = getConnection();
+		
+		int result = dao.updateSale(con, s);
+		
+		if (result > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+	public ArrayList<SaleJoin> selectSearchList(int currentPage, String s_search, String s_sort) {
+		
+		con = getConnection();
+		
+		ArrayList<SaleJoin> list = dao.selectSearchList(con, currentPage, s_search, s_sort);
+		
+		close(con);
+		
+		return list;
+	}
+
+	public int getSearchListCount(String s_search, String s_sort) {
+		
+		con = getConnection();
+		
+		int result = dao.getSearchListCount(con, s_search, s_sort);
+		
+		close(con);
+		
+		return result;
+	}
+
+	
+
+	
 }
