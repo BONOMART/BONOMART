@@ -79,7 +79,7 @@ select {
 					<table class="table table-hover">
 						<thead>
 							<tr>
-								<th>#</th>
+								<th>No</th>
 								<th>거래처</th>
 								<th>상품코드</th>
 								<th>상품명</th>
