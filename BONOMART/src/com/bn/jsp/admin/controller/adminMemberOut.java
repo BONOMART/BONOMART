@@ -7,17 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bn.jsp.admin.model.service.adminService;
+
 /**
- * Servlet implementation class adminMemberAccNo
+ * Servlet implementation class adminMemberOut
  */
-@WebServlet("/accNo.ad")
-public class adminMemberAccNo extends HttpServlet {
+@WebServlet("/adminMemberOut.ad")
+public class adminMemberOut extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public adminMemberAccNo() {
+    public adminMemberOut() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +28,12 @@ public class adminMemberAccNo extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		int mno = Integer.parseInt(request.getParameter("mno"));
+	
+		adminService service = new adminService();
+		
+		int result = service.MemberOut(mno);
 	}
 
 	/**

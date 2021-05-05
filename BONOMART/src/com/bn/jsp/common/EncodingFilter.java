@@ -40,7 +40,7 @@ public class EncodingFilter implements Filter {
 	}
 
 	/**
-	 * @see Filter#init(FilterConfig)
+	 * @see Filter#init(FilterConfig)c
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub

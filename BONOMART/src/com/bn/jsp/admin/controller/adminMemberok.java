@@ -32,10 +32,11 @@ public class adminMemberok extends HttpServlet {
 		int mno = Integer.parseInt(request.getParameter("mno"));
 		String accOk  = request.getParameter("access");
 		
-		System.out.println(mno);
+
 		adminService service = new adminService();
 		
 		int result = service.MemberOk(accOk, mno);
+
 		
 	}
 

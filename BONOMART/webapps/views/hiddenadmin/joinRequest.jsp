@@ -17,7 +17,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 승인요청</title>
 <link rel="stylesheet" href="/bono/assets/css/header.css" />
 <link rel="stylesheet" href="/bono/assets/css/admin.css" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +31,7 @@
 
     <div id="graph">
                             <div id="search">
-                             <a href="/bono/searchOK.ad" style= "color:white;"><h3> 회원 승인요청</h3> </a>
+                             <a href="/bono/joinRequest.ad" style= "color:white;"><h3> 회원 승인요청</h3> </a>
                             </div> 
                          	
                             <div id = "member" >
@@ -78,7 +78,7 @@
 										<nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                     	<li class="page-item">
-                            <a class="page-link" href="/bono/searchOK.ad?currentPage=1" aria-label="Previous">
+                            <a class="page-link" href="/bono/joinRequest.ad?currentPage=1" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>                    	
                         <li class="page-item">
@@ -87,7 +87,7 @@
                                 <span aria-hidden="true">&lt;</span>
                             </a>
                         <% } else { %>
-                        	<a class="page-link" href="/bono/searchOK.ad?currentPage=<%= cur-1 %>" aria-label="Previous">
+                        	<a class="page-link" href="/bono/joinRequest.ad?currentPage=<%= cur-1 %>" aria-label="Previous">
                                 <span aria-hidden="true">&lt;</span>
                             </a>
                         <% } %>
@@ -99,7 +99,7 @@
                         		</li>
                         	<% } else {%>
                         		<li class="page-item">
-                        		<a class="page-link" href="/bono/searchOK.ad?currentPage=<%=p %>" ><%=p %></a>
+                        		<a class="page-link" href="/bono/joinRequest.ad?currentPage=<%=p %>" ><%=p %></a>
                         		</li>
                         	<% } %>
                         <% } %>
@@ -111,14 +111,14 @@
                                 <span aria-hidden="true">&gt;</span>
                             </a>
                         <% } else { %>
-                            <a class="page-link" href="/bono/searchOK.ad?currentPage=<%=cur+1 %>" aria-label="Next">
+                            <a class="page-link" href="/bono/joinRequest.ad?currentPage=<%=cur+1 %>" aria-label="Next">
                                 <span aria-hidden="true">&gt;</span>
                             </a>                        
                         <% } %>
                         </li>
                         
                     	<li class="page-item">
-                            <a class="page-link" href="/bono/?currentPage=<%= mx %>" aria-label="Next">
+                            <a class="page-link" href="/bono/joinRequest.ad?currentPage=<%= mx %>" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>                    	
                         <li class="page-item">          
@@ -138,18 +138,18 @@
 		var mno = $(this).parent().parent().children().first().attr('id');
 				
 		$.ajax({
-			url : "/bono/adminNo.ad?mno=" + mno,
+			url : "/bono/adminOk.ad?mno=" + mno,
 			type : "get",
 			data : {
 				mno,
-				access : "B" 
+				access : "N" 
 			}, success : function(data){	
 				
 				
-				location.href="/bono/searchOK.ad"
+				location.href="/bono/joinRequest.ad"
 				alert("승인 거절");
 			}, error : function(error){
-				alert("승인 거절 실패!");
+				alert("승인 거절오류!");
 			}
 			
 		});
@@ -172,7 +172,7 @@
  			}, success : function(data){	
  				
  				
- 				location.href="/bono/searchOK.ad"
+ 				location.href="/bono/joinRequest.ad"
  				alert("승인 성공!");
  			}, error : function(error){
  				alert("승인 실패!");

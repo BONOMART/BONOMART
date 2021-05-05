@@ -15,30 +15,31 @@ public class adminService {
 	
 	private Connection con;
 	private adminDAO dao = new adminDAO();
-
-	public List<Member> searchMember(String type, String content, int currentPage) {
-		
+	
+	// joinRequest 총게시글수 확인
+	public int getListCountJR() {
 		con = getConnection();
 		
-		List<Member> result = dao.searchMember(con, type, content, currentPage);
+		int result = dao.getListCountJR(con);
 		
 		close(con);
-		
-		return result ;
-	}
 
-	public ArrayList<Member> searchOkMember(int currentPage) {
+		return result;
+	}
+	
+	//joinRequest 리스트 가져오기
+	public ArrayList<Member> listJR(int currentPage) {
 		
 		con= getConnection();
 		
-		ArrayList<Member> result = dao.searchOKMember(con, currentPage );
+		ArrayList<Member> result = dao.listJR(con, currentPage );
 		
 		close(con);
 		
 		return result;
 	}
-	
 
+	// 회원 승인요청 승인과 거절
 	public int MemberOk(String accOk, int mno) {
 		
 		con = getConnection();
@@ -47,45 +48,101 @@ public class adminService {
 		
 		if(result > 0) commit(con);
 		else rollback(con);
+
+		close(con);
+		
+		return result;
+	}
+	
+	// searhMemberList 총게시글수 확인
+	public int getListCountSM(String type, String content) {
+		con = getConnection();
+		
+		int result = dao.getListCountSM(con, type, content);
 		
 		close(con);
 		
 		return result;
 	}
 
-	public int MemberNo(String accOk, int mno) {
+	// searhMemberList  리스트 가져오기
+	public ArrayList<Member> listSM(int currentPage, String type, String content) {
+	con= getConnection();
+		
+		ArrayList<Member> result = dao.listSM(con, currentPage,type, content );
+		
+		close(con);
+		
+		return result;
+	}
+
+	// searchMemberList null값일때 게시글수 가져오기
+	public int getListCountad() {
 		con = getConnection();
 		
-		int result = dao.MemberNo(con, accOk, mno);
+		int result = dao.getListCountad(con);
+		
+		close(con);
+
+		return result;
+	}
+	
+	// searchMemberList null값일때 리스트가져오기
+	public ArrayList<Member> searchOkMemberad(int currentPage) {
+		
+		con= getConnection();
+		
+		ArrayList<Member> result = dao.searchOKMemberad(con, currentPage );
+		
+		close(con);
+		
+		return result;
+	}
+	
+	//탈퇴 버튼
+	public int MemberOut(int mno) {
+		con = getConnection();
+		
+		int result = dao.MemberOut(con, mno);
 		
 		if(result > 0) commit(con);
 		else rollback(con);
-		
+
 		close(con);
 		
 		return result;
+	
 	}
 
-	public int getListCount() {
-		con = getConnection();
-		
-		int result = dao.getListCount(con);
-		
-		close(con);
+	
+	
+	
+	
+//	public List<Member> searchMember(String type, String content, int currentPage) {
+//		
+//		con = getConnection();
+//		
+//		List<Member> result = dao.searchMember(con, type, content, currentPage);
+//		
+//		close(con);
+//		
+//		return result ;
+//	}
 
-		return result;
+
+	
+
+
+
+
+
+
+
+	
+
+
 	}
 
-	public int getListCount2(String type, String content) {
-		con = getConnection();
-		
-		int result = dao.getListCount2(con, type, content);
-		
-		close(con);
-		
-		return result;
-	}
 
 
 
-}

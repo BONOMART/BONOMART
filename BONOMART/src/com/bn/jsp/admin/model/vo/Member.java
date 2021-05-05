@@ -16,11 +16,34 @@ public class Member implements Serializable  {
 	private String job;
 	private String access;
 	private String joinacc;
-	
+	private String type;
+	private String content;
 	
 	
 	public Member() {
 		super();
+	}
+
+
+
+
+
+
+	public Member(int userNo, String userName, String userId, String userPwd, String email, String phone, String dept,
+			String job, String access, String joinacc, String type, String content) {
+		super();
+		this.userNo = userNo;
+		this.userName = userName;
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.email = email;
+		this.phone = phone;
+		this.dept = dept;
+		this.job = job;
+		this.access = access;
+		this.joinacc = joinacc;
+		this.type = type;
+		this.content = content;
 	}
 
 
@@ -173,6 +196,28 @@ public class Member implements Serializable  {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
+
+	public String getContent() {
+		return content;
+	}
+
+
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	

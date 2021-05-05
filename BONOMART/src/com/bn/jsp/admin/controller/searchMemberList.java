@@ -12,20 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bn.jsp.admin.model.service.adminService;
 import com.bn.jsp.admin.model.vo.Member;
-import com.google.gson.Gson;
 import com.bn.jsp.admin.model.vo.PageInfo;
 
 /**
- * Servlet implementation class adminSearchOK
+ * Servlet implementation class adminSearch2
  */
-@WebServlet("/searchOK.ad")
-public class adminSearchOK extends HttpServlet {
+@WebServlet("/searchList.ad")
+public class searchMemberList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public adminSearchOK() {
+    public searchMemberList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,6 +36,8 @@ public class adminSearchOK extends HttpServlet {
 		
 		ArrayList<Member> list = new ArrayList<>();
 		adminService service = new adminService();
+		String type = request.getParameter("type");
+		String content = request.getParameter("content");
 		
 		// 10개 씩 자르기 위한 변수들
 				int startPage;		// 시작 페이지   (1), 2, 3, 4, 5, ...... 20
@@ -57,7 +58,7 @@ public class adminSearchOK extends HttpServlet {
 				}
 				
 				//  총 게시글 확인
-				int listCount = service.getListCount();
+				int listCount = service.getListCountSM(type,content);
 				
 			
 				
@@ -80,22 +81,23 @@ public class adminSearchOK extends HttpServlet {
 				//  -------------------------- 페이처리 끝! -----------------------------//
 			
 		
-		list = service.searchOkMember(currentPage);
+		list = service.listSM(currentPage,type,content);
 		
 		request.setAttribute( "list", list);
 		
 		PageInfo pi = new PageInfo(startPage, endPage, maxPage, currentPage,
-													limit, listCount);
+													limit, listCount,type,content);
 		request.setAttribute("pi", pi);
+		
+		request.setAttribute("type", type);
+		request.setAttribute("content", content);
 
 		
 		RequestDispatcher view =
-				request.getRequestDispatcher("views/hiddenadmin/admin2.jsp");
+				request.getRequestDispatcher("views/hiddenadmin/searchMemberList.jsp");
 	
 		view.forward(request, response);
-	
-		
-	}
+			}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

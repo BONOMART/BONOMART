@@ -10,8 +10,27 @@ public class PageInfo implements Serializable {
 	private int currentPage;  // 현재 페이지
 	private int limit = 10;      // 한번에 보여줄 페이지 수
 	private int listCount; // 총 게시글 수
+	private String type;
+	private String content;
 	
 	public PageInfo() { }
+
+	
+	
+	public PageInfo(int startPage, int endPage, int maxPage, int currentPage, int limit, int listCount, String type,
+			String content) {
+		super();
+		this.startPage = startPage;
+		this.endPage = endPage;
+		this.maxPage = maxPage;
+		this.currentPage = currentPage;
+		this.limit = limit;
+		this.listCount = listCount;
+		this.type = type;
+		this.content = content;
+	}
+
+
 
 	public PageInfo(int startPage, int endPage, int maxPage, int currentPage, int limit, int listCount) {
 		super();
@@ -76,4 +95,30 @@ public class PageInfo implements Serializable {
 	public void setListCount(int listCount) {
 		this.listCount = listCount;
 	}
+
+
+
+	public String getType() {
+		return type;
+	}
+
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
+
+	public String getContent() {
+		return content;
+	}
+
+
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
+	
 }

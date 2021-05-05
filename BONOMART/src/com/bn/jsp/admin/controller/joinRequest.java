@@ -12,20 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bn.jsp.admin.model.service.adminService;
 import com.bn.jsp.admin.model.vo.Member;
+import com.google.gson.Gson;
 import com.bn.jsp.admin.model.vo.PageInfo;
 
-
 /**
- * Servlet implementation class adminSearchLogin
+ * Servlet implementation class adminSearchOK
  */
-@WebServlet("/MemberList.ad")
-public class adminSearchLogin extends HttpServlet {
+@WebServlet("/joinRequest.ad")
+public class joinRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public adminSearchLogin() {
+    public joinRequest() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -57,7 +57,7 @@ public class adminSearchLogin extends HttpServlet {
 				}
 				
 				//  총 게시글 확인
-				int listCount = service.getListCountad();
+				int listCount = service.getListCountJR();
 				
 			
 				
@@ -80,7 +80,7 @@ public class adminSearchLogin extends HttpServlet {
 				//  -------------------------- 페이처리 끝! -----------------------------//
 			
 		
-		list = service.searchOkMemberad(currentPage);
+		list = service.listJR(currentPage);
 		
 		request.setAttribute( "list", list);
 		
@@ -90,7 +90,7 @@ public class adminSearchLogin extends HttpServlet {
 
 		
 		RequestDispatcher view =
-				request.getRequestDispatcher("views/hiddenadmin/searchMemberList.jsp");
+				request.getRequestDispatcher("views/hiddenadmin/joinRequest.jsp");
 	
 		view.forward(request, response);
 	
