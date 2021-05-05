@@ -1,8 +1,6 @@
 package com.bn.jsp.product.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,21 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bn.jsp.product.model.service.ProductService;
-import com.bn.jsp.product.model.vo.PagePr;
-import com.bn.jsp.product.model.vo.Product;
-import com.google.gson.Gson;
 
 /**
- * Servlet implementation class ProductList
+ * Servlet implementation class ProductDelete
  */
-@WebServlet("/product.li")
-public class ProductList extends HttpServlet {
+@WebServlet("/product.de")
+public class ProductDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductList() {
+    public ProductDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,24 +29,15 @@ public class ProductList extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		String p_no = request.getParameter("p_no");
+		
 		ProductService service = new ProductService();
 		
-		
-		
-		
-		ArrayList<Product> list= service.selectList();
+		int result = service.deleteProduct(p_no);
 		
 	
-		
-		
-		response.setContentType("application/json; charset=UTF-8");
-		
-		new Gson().toJson(list, response.getWriter());
-		
-		
-		
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

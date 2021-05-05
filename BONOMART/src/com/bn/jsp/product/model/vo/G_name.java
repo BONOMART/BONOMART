@@ -9,6 +9,8 @@ public class G_name  implements Serializable{
 	private String g_name;
 	private String g_code;
 	
+	
+	
 	public G_name () {}
 	
 	public G_name(String g_name, String g_code) {
@@ -18,6 +20,17 @@ public class G_name  implements Serializable{
 	}
 
 	
+	
+
+	public G_name(String g_name, String g_code, String c_name, String c_code) {
+		super();
+		this.g_name = g_name;
+		this.g_code = g_code;
+
+	}
+
+	
+
 	@Override
 	public String toString() {
 		return "G_name [g_name=" + g_name + ", g_code=" + g_code + "]";
@@ -38,6 +51,7 @@ public class G_name  implements Serializable{
 	public void setG_code(String g_code) {
 		this.g_code = g_code;
 	}
+
 	
 	
 	

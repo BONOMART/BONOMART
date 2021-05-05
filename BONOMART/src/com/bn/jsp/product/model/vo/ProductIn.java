@@ -12,10 +12,15 @@ public class ProductIn implements Serializable {
 	private int min_quan;
 	private int r_price;
 	private int s_price;
+	private String c_no;
 	
 	public ProductIn () {}
 	
-	public ProductIn(String p_no, String g_code, String p_name, int min_quan, int r_price, int s_price) {
+	
+
+	
+
+	public ProductIn(String p_no, String g_code, String p_name, int min_quan, int r_price, int s_price, String c_no) {
 		super();
 		this.p_no = p_no;
 		this.g_code = g_code;
@@ -23,12 +28,17 @@ public class ProductIn implements Serializable {
 		this.min_quan = min_quan;
 		this.r_price = r_price;
 		this.s_price = s_price;
+		this.c_no = c_no;
 	}
+
+
+
+
 
 	@Override
 	public String toString() {
-		return "ProductInsert [p_no=" + p_no + ", g_code=" + g_code + ", p_name=" + p_name + ", min_quan=" + min_quan
-				+ ", r_price=" + r_price + ", s_price=" + s_price + "]";
+		return "ProductIn [p_no=" + p_no + ", g_code=" + g_code + ", p_name=" + p_name + ", min_quan=" + min_quan
+				+ ", r_price=" + r_price + ", s_price=" + s_price + ", c_no=" + c_no + "]";
 	}
 
 	public String getP_no() {
@@ -77,6 +87,22 @@ public class ProductIn implements Serializable {
 
 	public void setS_price(int s_price) {
 		this.s_price = s_price;
+	}
+
+
+
+
+
+	public String getC_no() {
+		return c_no;
+	}
+
+
+
+
+
+	public void setC_no(String c_no) {
+		this.c_no = c_no;
 	}
 	
 	
