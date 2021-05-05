@@ -211,7 +211,7 @@
 			data : { name : JSON.stringify(list) },
 			async : 'false',
 			success : function( data ) {
-				
+				location.href="/bono/selectlist.cl"
 				
 			}
 		
