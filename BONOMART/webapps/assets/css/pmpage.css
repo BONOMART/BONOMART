@@ -96,3 +96,10 @@ footer {
 	align-items: center;
 	
 }
+
+select {
+	width: 175px;
+	padding: 5px;
+	justify-content: center;
+	align-items: center;
+}
