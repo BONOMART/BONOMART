@@ -1,7 +1,6 @@
 package com.bn.jsp.mainPage.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,14 +15,14 @@ import com.google.gson.Gson;
 /**
  * Servlet implementation class MainEarning
  */
-@WebServlet("/earn.mp")
-public class MainEarning extends HttpServlet {
+@WebServlet("/earnDate.mp")
+public class MainEarningDate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MainEarning() {
+    public MainEarningDate() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,11 +34,11 @@ public class MainEarning extends HttpServlet {
 		
 		MainService service = new MainService();
 		
-		ArrayList<MainPageInfo> list = service.selectEarning();
+		MainPageInfo mp = service.selectEarningDate();
 		
 		response.setContentType("application/json; charset=UTF-8");
 		
-		new Gson().toJson(list, response.getWriter());
+		new Gson().toJson(mp, response.getWriter());
 	}
 
 	/**
