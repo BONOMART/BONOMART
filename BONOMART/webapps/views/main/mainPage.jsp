@@ -119,7 +119,7 @@
                     </thead>
                     <tbody id="lackorder">
                          <tr>
-                             <td>1</td>
+                             <td></td>
                              <td>재고가 부족한 상품이 없습니다.</td>
                              <td></td>
                              <td><button onclick="" style="display:none">발주</button></td>
@@ -127,7 +127,7 @@
                              <input type="hidden" class="lackcno" />
                          </tr>
                          <tr>
-                             <td>2</td>
+                             <td></td>
                              <td>재고가 부족한 상품이 없습니다.</td>
                              <td></td>
                              <td><button onclick="" style="display:none">발주</button></td>
@@ -135,7 +135,7 @@
                              <input type="hidden" class="lackcno" />
                          </tr>
                          <tr>
-                             <td>3</td>
+                             <td></td>
                              <td>재고가 부족한 상품이 없습니다.</td>
                              <td></td>
                              <td><button onclick="" style="display:none">발주</button></td>
@@ -143,7 +143,7 @@
                              <input type="hidden" class="lackcno" />
                          </tr>
                          <tr>
-                             <td>4</td>
+                             <td></td>
                              <td>재고가 부족한 상품이 없습니다.</td>
                              <td></td>
                              <td><button onclick="" style="display:none">발주</button></td>
@@ -151,7 +151,7 @@
                              <input type="hidden" class="lackcno" />
                          </tr>
                          <tr>
-                             <td>5</td>
+                             <td></td>
                              <td>재고가 부족한 상품이 없습니다.</td>
                              <td></td>
                              <td><button onclick="" style="display:none">발주</button></td>
@@ -435,7 +435,8 @@
 			type : "post",
 			success : function(data) {
 				for(var i in data){
-					
+				var b = Number(i)+1;
+				$('#lackorder tr').eq(i).children().eq(0).text(b);
 				$('#lackorder tr').eq(i).children().eq(1).text(data[i].p_name);
 				$('#lackorder tr').eq(i).children().eq(2).text(data[i].p_quan);
 				$('#lackorder tr').eq(i).children().eq(3).children().css('display','inline-block');
