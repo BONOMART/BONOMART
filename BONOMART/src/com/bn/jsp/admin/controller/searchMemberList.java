@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bn.jsp.admin.model.service.adminService;
-import com.bn.jsp.admin.model.vo.Member;
+import com.bn.jsp.admin.model.vo.Member2;
 import com.bn.jsp.admin.model.vo.PageInfo;
 
 /**
@@ -34,7 +34,7 @@ public class searchMemberList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Member> list = new ArrayList<>();
+		ArrayList<Member2> list = new ArrayList<>();
 		adminService service = new adminService();
 		String type = request.getParameter("type");
 		String content = request.getParameter("content");

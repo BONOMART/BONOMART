@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 
-import com.bn.jsp.admin.model.vo.Member;
+import com.bn.jsp.admin.model.vo.Member2;
 
 import static com.bn.jsp.common.JDBCTemplate.*;
 
@@ -65,9 +65,9 @@ public class adminDAO {
 	}
 	
 	//joinRequest 리스트 가져오기
-	public ArrayList<Member> listJR(Connection con, int currentPage) {
+	public ArrayList<Member2> listJR(Connection con, int currentPage) {
 
-		ArrayList<Member> result = new ArrayList<>() ;
+		ArrayList<Member2> result = new ArrayList<>() ;
 		PreparedStatement ps  = null;	
 		ResultSet rs = null;
 		
@@ -86,7 +86,7 @@ public class adminDAO {
 			
 			while(rs.next()) {
 				
-				Member me = new Member();
+				Member2 me = new Member2();
 				
 				me.setUserNo( rs.getInt("M_NO"));
 				me.setUserName(rs.getString("M_NAME"));
@@ -300,9 +300,9 @@ public class adminDAO {
 
 	
 	//searchMemberList 리스트 가져오기
-	public ArrayList<Member> listSM(Connection con, int currentPage, String type, String content) {
-		Member me = null;
-		ArrayList<Member> result = new ArrayList<>() ;
+	public ArrayList<Member2> listSM(Connection con, int currentPage, String type, String content) {
+		Member2 me = null;
+		ArrayList<Member2> result = new ArrayList<>() ;
 		PreparedStatement ps  = null;	
 		ResultSet rs = null;
 		String sql = "";
@@ -327,7 +327,7 @@ public class adminDAO {
 							
 					while(rs.next()) {
 							
-						me = new Member();
+						me = new Member2();
 						
 						me.setUserNo( rs.getInt("M_NO"));
 						me.setUserName(rs.getString("M_NAME"));
@@ -367,7 +367,7 @@ public class adminDAO {
 							
 					while(rs.next()) {
 							
-						me = new Member();
+						me = new Member2();
 						
 						me.setUserNo( rs.getInt("M_NO"));
 						me.setUserName(rs.getString("M_NAME"));
@@ -407,7 +407,7 @@ public class adminDAO {
 							
 					while(rs.next()) {
 							
-						me = new Member();
+						me = new Member2();
 						
 						me.setUserNo( rs.getInt("M_NO"));
 						me.setUserName(rs.getString("M_NAME"));
@@ -446,7 +446,7 @@ public class adminDAO {
 						
 				while(rs.next()) {
 						
-					me = new Member();
+					me = new Member2();
 					
 					me.setUserNo( rs.getInt("M_NO"));
 					me.setUserName(rs.getString("M_NAME"));
@@ -485,7 +485,7 @@ public class adminDAO {
 						
 				while(rs.next()) {
 						
-					me = new Member();
+					me = new Member2();
 					
 					me.setUserNo( rs.getInt("M_NO"));
 					me.setUserName(rs.getString("M_NAME"));
@@ -547,9 +547,9 @@ public class adminDAO {
 
 	
 	// searchMemberList null값일때 리스트가져오기
-	public ArrayList<Member> searchOKMemberad(Connection con, int currentPage) {
+	public ArrayList<Member2> searchOKMemberad(Connection con, int currentPage) {
 
-		ArrayList<Member> result = new ArrayList<>() ;
+		ArrayList<Member2> result = new ArrayList<>() ;
 		PreparedStatement ps  = null;	
 		ResultSet rs = null;
 		
@@ -568,7 +568,7 @@ public class adminDAO {
 			
 			while(rs.next()) {
 				
-				Member me = new Member();
+				Member2 me = new Member2();
 				
 				me.setUserNo( rs.getInt("M_NO"));
 				me.setUserName(rs.getString("M_NAME"));

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ page import="com.bn.jsp.admin.model.vo.*, java.util.*" %>
     <% 
-    	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+    	ArrayList<Member2> list = (ArrayList<Member2>)request.getAttribute("list");
     
 		PageInfo pi = (PageInfo) request.getAttribute("pi");
 		
@@ -44,7 +44,6 @@
                                                <th> 회원번호 </th>
                                                <th> 이 름 </th>
                                                <th> 아이디 </th>
-                                               <th> 비밀번호 </th>
                                                <th> 이메일 </th>
                                                <th> 연락처 </th>
                                                <th> 직 급 </th>
@@ -52,17 +51,16 @@
                                                <th> 가입승인 </th>
                                            </tr>
                                            </thead>
-                                <% for( Member m : list)  { %>
+                                <% for( Member2 me : list)  { %>
                              
                                          <tr id ="tbody">
-                                        	<td id="<%=m.getUserNo() %>"> <%=m.getUserNo() %> </td>
-                                          <td> <%=m.getUserName()%></td>
-                                          <td> <%=m.getUserId() %>  </td>
-                                          <td><%=m.getUserPwd() %>  </td>
-                                          <td> <%=m.getEmail() %> </td>
-                                          <td> <%=m.getPhone() %>  </td>
-                                          <td> <%=m.getJob() %>  </td>
-                                          <td> <%=m.getDept() %>  </td>
+                                        	<td id="<%=me.getUserNo() %>"> <%=me.getUserNo() %> </td>
+                                          <td> <%=me.getUserName()%></td>
+                                          <td> <%=me.getUserId() %>  </td>
+                                          <td> <%=me.getEmail() %> </td>
+                                          <td> <%=me.getPhone() %>  </td>
+                                          <td> <%=me.getJob() %>  </td>
+                                          <td> <%=me.getDept() %>  </td>
                                           <td>
                                            <button type="button" class="btn btn-success" name="Ok"> 승 &nbsp; 인 </button>
                                           <button type="button" class="btn btn-danger"  name="No">  거&nbsp; 절 </button> </td>

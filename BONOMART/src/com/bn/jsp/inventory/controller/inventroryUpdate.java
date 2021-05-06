@@ -39,14 +39,15 @@ public class inventroryUpdate extends HttpServlet {
 		
 		int result = service.updateInventory(in);
 		
-//		if (result > 0) {
-//			response.sendRedirect("selectList.sa");
-//		} else {
-//			request.setAttribute("error-msg", "판매정보 수정 실패");
-//			
-//			request.getRequestDispatcher("views/common/errorPage.jsp")
-//			       .forward(request, response);
+	 if (result > 0) {
+			response.sendRedirect("selectList.sa");
+	  } else {
+			request.setAttribute("error-msg", "재고 수정 실패");
+		
+		request.getRequestDispatcher("views/common/errorPage.jsp")
+			       .forward(request, response);
 		}
+	}
 	
 
 	/**

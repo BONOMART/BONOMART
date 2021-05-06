@@ -2,7 +2,7 @@ package com.bn.jsp.admin.model.vo;
 
 import java.io.Serializable;
 
-public class Member implements Serializable  {
+public class Member2 implements Serializable  {
 	
 	private static final long serialVersionUID = 1100L;
 	
@@ -20,7 +20,7 @@ public class Member implements Serializable  {
 	private String content;
 	
 	
-	public Member() {
+	public Member2() {
 		super();
 	}
 
@@ -29,7 +29,7 @@ public class Member implements Serializable  {
 
 
 
-	public Member(int userNo, String userName, String userId, String userPwd, String email, String phone, String dept,
+	public Member2(int userNo, String userName, String userId, String userPwd, String email, String phone, String dept,
 			String job, String access, String joinacc, String type, String content) {
 		super();
 		this.userNo = userNo;
@@ -48,7 +48,7 @@ public class Member implements Serializable  {
 
 
 
-	public Member(int userNo, String userName, String userId, String userPwd, String email, String phone, String dept,
+	public Member2(int userNo, String userName, String userId, String userPwd, String email, String phone, String dept,
 			String job, String access, String joinacc) {
 		super();
 		this.userNo = userNo;
