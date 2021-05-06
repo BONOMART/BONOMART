@@ -181,6 +181,7 @@ public class ProductDAO {
 					ps = con.prepareStatement(sql);
 					
 					ps.setString(1, name);
+				
 					
 					rs = ps.executeQuery();
 					
@@ -258,7 +259,7 @@ public class ProductDAO {
 				ps.setString(6, p.getC_name());
 				ps.setString(7, p.getP_no());
 			
-				System.out.println(p);
+				
 				
 				result = ps.executeUpdate();
 			}
@@ -330,6 +331,9 @@ public class ProductDAO {
 			ps = con.prepareStatement(sql);
 			
 			ps.setString(1, name);
+			ps.setString(2, name);
+			ps.setString(3, name);
+			ps.setString(4, name);
 			
 			rs = ps.executeQuery();
 			
@@ -346,9 +350,7 @@ public class ProductDAO {
 				p.setC_name(rs.getString("c_name"));
 				p.setC_no(rs.getString("c_no"));
 				p.setG_name(rs.getString("g_name"));
-				
-				
-				
+					
 				list.add(p);
 			} 
 		} catch (SQLException e) {
