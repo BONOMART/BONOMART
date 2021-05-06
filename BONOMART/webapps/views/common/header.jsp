@@ -113,7 +113,13 @@
                             <path d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383L5.93 1.757zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1z"/>
                         </svg>
                         &nbsp; 재고관리
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16" style="margin-left: 14px;">
+  							<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+						</svg>
                     </a>
+                     <div class="accmenu">
+                    	<a href="/bono/inventoryLogin.in" >재고조회</a>
+                    </div>
                 </li>
                 <li>
                     <a href="#" class="menuBtn">
@@ -129,6 +135,8 @@
                     	<a href="/bono/views/member/memberJoin.jsp" >회원가입</a>
                     	<a href="/bono/views/member/memberUpdate.jsp" >내 정보 수정</a>
                     	<a href="/bono/views/member/memberDetail.jsp" >내 정보 조회</a>
+                    	<a href="/bono/joinRequest.ad">회원 승인요청</a>
+                    	<a href="/bono/MemberList.ad">회원권한회수</a>
                     </div>
                 </li>
               </ul>
@@ -137,7 +145,7 @@
             <div id="main">
                 <div class="header bg-gradient-topbar">
                     <p id="headerUserName" style="margin-top:15px;">
-                    	<b><%= m.getUserName() %>님</b>
+                    	<b><%=m.getUserName() %>님</b>
                     </p>
                     <span id="headerIconWrapper">
                         <i class="fa fa-user-circle" aria-hidden="true" id="headerIcon" onclick="goMypage()"></i>
