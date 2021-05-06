@@ -101,27 +101,7 @@
         margin-top: 7%;
         color: rgba(0, 0, 255, 0.15); "></i>
         
-        <script>
-        	$(function() {
-        		$.ajax({
-					url : "/bono/earn.mp",
-					type : "post",
-					success : function(data) {
-					
-						console.log(data);
-						
-						var $date = data[i].date;
-						var $d_amount = data[i].amount;
-						for(var i in data) {
-							
-						}
-					
-					}, error : function(error) {
-						console.log("상품정보 에러발생");
-					}
-				});
-        	});
-        </script>
+   
                          </div>
                     </div>     
                 </div>
