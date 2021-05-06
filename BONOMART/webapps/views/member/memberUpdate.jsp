@@ -189,7 +189,6 @@
     	}
         */
         
-
         // 	비밀번호 변경
         $('#updatePwd').on('click', function() {
         	
@@ -219,8 +218,7 @@
 	        		});
         		}
         	});
-			
-        
+
      	// 회원 탈퇴
 		function deleteMember() { 
 			// 쿼리 스트링

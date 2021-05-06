@@ -53,20 +53,6 @@ public class MemberUpdatePwd extends HttpServlet {
 		MemberService service = new MemberService();
 		
 		int result = service.updateMemberPwd(m);
-		
-		if(result > 0) {
-			// session.setAttribute("member", m);
-			session.invalidate();
-			
-			response.sendRedirect("index.jsp");
-		} else {
-			
-			RequestDispatcher view = request.getRequestDispatcher("view/common/errorPage.jsp");
-			
-			request.setAttribute("error-msg", "회원 정보 수정 실패");
-			
-			view.forward(request, response);
-		}
 	}
 
 	/**

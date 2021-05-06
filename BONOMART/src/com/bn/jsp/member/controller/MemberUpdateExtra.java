@@ -61,7 +61,7 @@ public class MemberUpdateExtra extends HttpServlet {
 			// session.setAttribute("member", m);
 			session.invalidate();
 			
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("intro.jsp");
 		} else {
 			
 			RequestDispatcher view = request.getRequestDispatcher("view/common/errorPage.jsp");
