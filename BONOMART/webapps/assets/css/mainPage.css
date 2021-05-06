@@ -240,12 +240,18 @@
         background-color: rgba(255, 255, 255, 0.2);
     }
     
-	@media (width :500px ) {
+	@media screen and (max-width: 1360px) {
 		.chart-pie {
 			display : none;
 		}
 		.dash-card {
 			display : none;
+		}
+		.chart-line {
+			width : 93%;
+		}
+		.order {
+			width : 93%;
 		}
 	}
 	
