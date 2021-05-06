@@ -60,8 +60,6 @@
 											<div id="text1"> &nbsp;<input type="text" name="content" size="50"/>    &nbsp; &nbsp;
 											<button type="submit" class="btn btn-primary" id="btn1">조 회</button>
 											</div>
-											 <div id="result">
-											</div>
 									      </div>                                
                    					   </form>                                
                                                   	
@@ -99,8 +97,8 @@
                                        </div> 
 									</div>
 											
-										<!-- 페이지 네이션 -->
-										<div style="padding-top: 20px; padding-bottom: 10px;"></div> 
+				<!-- 페이지 네이션 -->
+				<div style="padding-top: 20px; padding-bottom: 10px;"></div> 
 					
 					<!-- 검색창과 소트창이 null이라면 (아무것도 검색하지 않았다면) 기본 리스트 -->
 					<% if (type == null || content == null)  {%>
@@ -224,12 +222,12 @@
 		});
  
  
- 	$(function(){ 
+/*  	$(function(){ 
  		$('#color').on('selected', function() {
  			
  			var option =  $('#color', )
  		});
- 	});
+ 	}); */
  	
  	// 검색버튼 클릭
  
@@ -251,12 +249,9 @@
 			error : function(error) {
 				console.log("회원 삭제 전송 실패");
 			} 
-		});
-		
-		// 화면에서도 지우기
-		$(this).parent().parent().remove();
-		
-	
+		  });
+		  // 화면에서도 지우기
+		  $(this).parent().parent().remove();
 		});
 
 

@@ -5,7 +5,6 @@ import static com.bn.jsp.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.bn.jsp.admin.model.dao.adminDAO;
 import com.bn.jsp.admin.model.vo.Member;
