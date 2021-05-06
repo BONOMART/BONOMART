@@ -14,11 +14,33 @@ public class MainService {
 	
 	private MainDAO dao = new MainDAO();
 
-	public ArrayList<MainPageInfo> selectEarning() {
+	public MainPageInfo selectEarningDate() {
 
 		con = getConnection();
 		
-		ArrayList<MainPageInfo> list = dao.selectEarning(con);
+		MainPageInfo mp = dao.selectEarningDate(con);
+		
+		close(con);
+		
+		return mp;
+	}
+
+	public MainPageInfo selectEarningMonth() {
+		
+		con = getConnection();
+		
+		MainPageInfo mp = dao.selectEarningMonth(con);
+		
+		close(con);
+		
+		return mp;
+	}
+
+	public ArrayList<MainPageInfo> selectLatest5days() {
+		
+		con = getConnection();
+		
+		ArrayList<MainPageInfo> list = dao.selectLatest5days(con);
 		
 		close(con);
 		
