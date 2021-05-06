@@ -30,16 +30,6 @@ public class Order implements Serializable {
 		this.c_no = c_no;
 	}
 
-//	public Order(int o_no, String o_quan, Date o_date, String o_status, String p_no, int m_no) {
-//		super();
-//		this.o_no = o_no;
-//		this.o_quan = o_quan;
-//		this.o_date = o_date;
-//		this.o_status = o_status;
-//		this.p_no = p_no;
-//		this.m_no = m_no;
-//	}
-
 	public Order(int o_no, String o_quan, Date o_date, String o_status, String p_no, int m_no) {
 		super();
 		this.o_no = o_no;

@@ -200,6 +200,8 @@
             
 		<script>
 	       	
+			var arr =[];
+		
 	        $(function() {
 	        	$('.deleteRow').on('click',function() {
 	        		var self = this;
@@ -207,7 +209,7 @@
 	        		
 	        		/* alert(o_no); */
 	        		
-	        		if(confirm("real delete?")) {
+	        		if(confirm("정말 삭제학시겠습니까?")) {
 		        		$.ajax({
 		        			url: "/bono/OrderListDelete.do",
 		        			type: "POST",
@@ -226,11 +228,11 @@
 	        	});
 
 	        	$('.updateRow').on('click', function() {
-	        		console.log("nn");
+
 	        		var update = $(this).parent().siblings('td#order_Oquan');
 	        		
 	        		update.replaceWith('<td id="order_Oquan">' +
-	        								'<input type="number" id="change_o_quan" style="width: 70px; margin-top: 7px;">' +
+	        								'<input type="number" id="up_o_quan" style="width: 70px; margin-top: 7px;">' +
 	        								'<button id="updateBtn">수정</button> </td>');
 	        		
 	        		$('#updateBtn').on('click', function() {
@@ -251,6 +253,7 @@
 	        				success : function(data) {
 	        					for (var i in data) {
 	        						arr[i] = data[i];
+	        						console.log(arr[i]);
 	        					}
 	        				},
 	        				error : function(error) {
@@ -258,8 +261,7 @@
 	        				}
 	        			});
 	        			
-	        			var price = success_Update*arr[i];
-	        			
+	        			var price = success_Update*arr[1];
 	        			a_price.text(price);
 	        			
 	        			$.ajax({

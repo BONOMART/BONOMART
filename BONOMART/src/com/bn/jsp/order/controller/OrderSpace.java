@@ -32,7 +32,7 @@ public class OrderSpace extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String pno = request.getParameter("p_no");
+		String pno = request.getParameter("order_Pno");
 		
 		OrderService service = new OrderService();
 		
