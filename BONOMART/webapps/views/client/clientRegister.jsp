@@ -359,7 +359,7 @@
 										
 										<div class="modal-footer">
 											<button type="button" class="btn btn-primary"
-							                    	onclick="modalComBtn()">등록</button>
+							                    	onclick="modalComBtn()">수정</button>
 							                <button type="button" class="btn btn-primary"
 							                    	onclick="modalDelBtn()" style="background:red;">삭제</button>
 											<button type="button" class="btn btn-secondary"
