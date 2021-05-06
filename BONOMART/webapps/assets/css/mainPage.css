@@ -56,7 +56,7 @@
 
     .dash-card { 
        height: 100%;
- 	   width : 100%;   
+ 	   width : 40%;   
        margin-left: 15px;
     }
 
@@ -174,7 +174,7 @@
     
     .order { 
         display : inline-block;
- 	    width : 3200px;
+ 	    width : 60%;
         height: 385px;
         background: white;
         padding: 10px;
@@ -240,3 +240,13 @@
         color: rgba(255, 255, 255, 0.6);
         background-color: rgba(255, 255, 255, 0.2);
     }
+    
+	@media (width :500px ) {
+		.chart-pie {
+			display : none;
+		}
+		.dash-card {
+			display : none;
+		}
+	}
+	

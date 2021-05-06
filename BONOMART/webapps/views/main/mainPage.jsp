@@ -84,7 +84,7 @@
                 </div>  
                    
                 <!-- 여백 -->
-                <div class="pyo1-2"></div>
+                <br />
 
 
                  <div class="month-card">
