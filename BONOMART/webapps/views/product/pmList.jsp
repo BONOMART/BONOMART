@@ -27,7 +27,6 @@
 				
 				<div class="product_search_list">
 					<table class="table table-hover">
-					
 						<thead>
 							<tr>
 								<th>#</th>
@@ -126,5 +125,6 @@
 			</div>
 		</div>
 	</div>
+	<%@include file="../common/footer.jsp" %>
 </body>
 </html>

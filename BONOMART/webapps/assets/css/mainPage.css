@@ -1,53 +1,46 @@
 @charset "UTF-8";
 
 
-.chart-line {
+ .chart-line {
         display : inline-block;
         margin-left: 20px;
-        width:  1050px;
- 	    height : 400px;
+        width: 1170px;
+ 	    height: 405px;
         background: white;
         padding: 10px;
         border-radius : 15px;
+        margin-top: 15px;
     }
 	
     .chart-day {
 	    display : inline-block;
         width : 100%;
- 	    height : 380px;
+ 	    height: 394px;
     }
 
 	.chart-month {
 	    display : inline-block;
         width : 100%;
- 	    height : 380px;
-        display: none; 
+ 	    height : 394px;
+        display: none;  
 	}
 
-    @media screen and (max-width: 1400px) {
-        .chart-rank {
-            display: none;
-        }
-    }
-    @media screen and (min-width: 200px) {
-        .chart-rank {
-            display: show;
-        }
-    }
-
     .chart-rank {
-        width : 500px;
- 	    height : 100%;
+        display : inline-block;
+        width : 94%;
+ 	    height : 101%;
         background: white;
         padding: 10px;
         margin-left: 10px;
-        border-radius : 15px;
+        border-radius : 15px;  
     }
    
     .chart-pie {
         display : inline-block;
- 	    width : 600px;
+ 	    width : 470px;
  	    height : 400px;
+        margin-bottom: 10px;
+        margin-top: 10px;
     }
 
     .select-div {
@@ -59,12 +52,6 @@
         display: flex;
         justify-content: center;
         margin-top: 10px;
-    }
-
-    @media screen and (max-width: 1850px) {
-        .dash-card {
-            display: none;
-        }
     }
 
     .dash-card { 
@@ -88,7 +75,7 @@
 
    .day-money {
         display: inline-block;
-        height: 182.5px;
+        height: 180px;
         width : 45%;
         font-weight: bold;
         border-left : 20px solid blue;
@@ -101,7 +88,7 @@
         width : 45%; 
    }
    
-   .fa {
+   .fa-krw {
         font-size: 140px;
         opacity: 0.3;
         margin-left: 20%;
@@ -124,7 +111,7 @@
    .month-card { 
         display : inline-block;
  	    width : 100%;
-        height: 182.5px;
+        height: 173px;
         background: white;
         padding: 10px;
         border-radius : 15px; 
@@ -137,7 +124,7 @@
 
    .month-money {
         display: inline-block;
-        height: 180px;
+        height: 173px;
         width : 45%;
         font-weight: bold;
         border-left : 20px solid rgba(0, 205, 226, 0.70);
@@ -148,9 +135,10 @@
         float: right;
         height: 135px;
         width : 45%; 
+        margin-right: 20px;
    }
    
-   .fa {
+    .fa-krw {
         font-size: 160px;
         opacity: 0.3;
         margin-left: 25%;
@@ -173,7 +161,7 @@
 
     .pyo1-2{
         width : 40%;
-        height: 13px;
+       height: 10px;
     }
 
 
@@ -183,16 +171,18 @@
         background: white;
         padding: 10px;
         border-radius : 15px;
+        
       
     }
     
     .order { 
         display : inline-block;
  	    width : 3200px;
-        height: 400px;
+        height: 385px;
         background: white;
         padding: 10px;
         border-radius : 15px;
+        margin-left: 5px;
         margin-right: 30px;
         
     }

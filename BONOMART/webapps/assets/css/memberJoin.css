@@ -37,7 +37,7 @@ html, body {
         }
 
         #title {
-            font-size: 300%;
+            font-size: 350%;
             font-weight: bolder;
             max-width: 100%;
             margin-top: 20px;
@@ -45,7 +45,7 @@ html, body {
 
         #joinArea {
             width: 600;
-            font-size: 11pt;
+            font-size: 13pt;
             font-weight: bold;
             display: inline-block;
             margin-top: -10px;
@@ -73,7 +73,8 @@ html, body {
         }
 
         .form-control-sm {
-            width: 300px;
+            width: 350px;
+            height: 35px;
         }
 
         button:hover {

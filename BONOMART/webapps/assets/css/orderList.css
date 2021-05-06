@@ -2,7 +2,13 @@
 
 /* 게시판 css */
         .table {
+            margin-left: auto;
+            margin-right: auto;
             text-align: center;
+            width: 70%;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 1px 1px 1px 1px lightgray;
         }
 
         .wrapper {
@@ -28,7 +34,11 @@
             justify-content: center;
             align-items: center;
         }
-
+		
+		.table th{
+           border-top: 0px solid black;
+        }
+		
         .item {
             width: 30%;
             padding: 5px;
@@ -98,3 +108,8 @@
             padding-left: 40px;
             padding-bottom: 30px;
         }
+        
+        svg:hover {
+        	cursor: pointer;
+        }
+        

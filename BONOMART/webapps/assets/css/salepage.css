@@ -1,7 +1,13 @@
 @charset "UTF-8";
-
+footer {
+	position: relative;
+    padding: 2px;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+    background: white;
+}
 .wrapper {
-	height: 920px;
 	background: whitesmoke;
 }
 
@@ -49,8 +55,9 @@
 /* 판매상품 정보입력 끝 */
 
 /* 테이블 */
-.product_list {
-	overflow: auto;
+.sale_list {
+	height: 500px;
+	overflow-y: scroll;
 }
 
 .table {

@@ -4,6 +4,7 @@ html,body{
     height: 100%;
     margin: 0;
     background: whitesmoke;
+    font-size: 15px;
 }
 
 .wrap {
@@ -31,7 +32,6 @@ html,body{
 }
 .main-wrapper{
     width: 100%;
-    overflow-x: hidden;
 }
 .sidebar-nav {
     width: 200px;
@@ -57,6 +57,10 @@ html,body{
     color: #fff;
     background: rgba(218, 217, 217, 0.5);
     transition-duration: 0.3s;
+
+}
+.accmenu a:hover{
+    border-radius:15px;		
 }
 
 .sidebar-nav > .sidebar-brand {
@@ -104,4 +108,8 @@ main {
     line-height: 1.6;
     margin-right: 50px;
     color: #4e73df;
+}
+.accmenu{
+	background: #5a81f8;
+	border-radius: 15px;
 }
