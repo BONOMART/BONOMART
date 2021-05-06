@@ -105,7 +105,7 @@ select {
 	</div>
 	
 	
-	
+		<!-- 모달창-->
 	  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="myModal">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -199,7 +199,9 @@ select {
 		
 		
 		
-	<script>
+<script>
+	
+	// 상품조회 리스트
 	$(function(){
 		$.ajax({
 			url : '/bono/product.li',
@@ -218,9 +220,9 @@ select {
 			        innerHtml += "<td>" + data[i].s_price  + "</td>"
 			        innerHtml += "<td>" + data[i].g_name + "</td></tr>"
 			       
-			        $("#plist").append(innerHtml);
-			         
+			        $("#plist").append(innerHtml);			         
 				}
+				
 				$.ajax({
 					url : '/bono/product.gr',
 					type : 'get',
@@ -235,7 +237,7 @@ select {
 							$("#gname").append(innerHtml);
 						}
 					}
-				})
+				});
 				
 			$.ajax({
 				url : '/bono/product.cl',
@@ -250,9 +252,8 @@ select {
 							
 							$("#cname").append(innerHtml);
 					}
-					
 				}
-			})
+			});
 				
 				  $("#plist tr").on('click', function() {
 					  $.ajax({
@@ -272,8 +273,8 @@ select {
 							  
 							  $("#myModal").modal();
 						  }  
-					  });       	
-			         })   
+					  }) 	
+			         });
 			         
 			    $('#searchBtn').on('click', function(){
 			    	$.ajax({
@@ -285,109 +286,111 @@ select {
 			    			
 			    		}
 			    	})
-			    })     
-			         
-			         
-			         
+			    });             
 			}
-		})	
+		});	
 	})
 	
-	       function modalComBtn() {
-					           var list = [] ; 
-					    	   var Arraydata = {};
-					          
-
-					           $('.select').each(function(){
-					               Arraydata={
-					                   "p_no" : $(this).find('input:eq(0)').val()
-					                   , "p_name" : $(this).find('input:eq(1)').val()
-					                   , "min_quan" : $(this).find('input:eq(2)').val()
-					                   , "r_price" : $(this).find('input:eq(3)').val()
-					                   , "s_price" : $(this).find('input:eq(4)').val()
-					                   ,"g_name" : $("#gname").find("option:selected").text()
-					                   ,"c_name" : $("#cname").find("option:selected").text()
-					                  
-					                   	
-					               }    
-					               list.push(Arraydata)
-					           }); 
-					        
-					           jQuery.ajaxSettings.traditional = true;
-					            $.ajax({
-					                //contentType:"application/json",
-					                type:"POST",
-					                data: {'list' : JSON.stringify(list) },
-					                url:"/bono/product.up",
-					                success:function(data){
-											location.href = "../product/pmList.jsp"
-												 $("#myModal").modal();
-					                }		                
-					            })
-			}
 	
+	// 모달로 수정기능			
+	function modalComBtn() {
+		
+			var list = [] ; 
+			var Arraydata = {};
+					          
+			 $('.select').each(function(){
+					 Arraydata={
+				 	    "p_no" : $(this).find('input:eq(0)').val()
+				  	   , "p_name" : $(this).find('input:eq(1)').val()
+				   	   , "min_quan" : $(this).find('input:eq(2)').val()
+				  	   , "r_price" : $(this).find('input:eq(3)').val()
+			  		   , "s_price" : $(this).find('input:eq(4)').val()
+				  	   ,"g_name" : $("#gname").find("option:selected").text()
+				 	    ,"c_name" : $("#cname").find("option:selected").text()			    					                   	
+				        }    
+				 
+						 list.push(Arraydata)
+			   }); 
+					        
+			   jQuery.ajaxSettings.traditional = true;
+				 $.ajax({
+				  //contentType:"application/json",
+						   	   type:"POST",
+						       data: {'list' : JSON.stringify(list) },
+						       url:"/bono/product.up",
+						        success:function(data){
+											location.href = "../product/pmList.jsp"
+											 $("#myModal").modal();
+						     	}		                
+				  });
+				};
+				
+	// 모달로 삭제기능
 	function modalDelBtn() {
-		   $.ajax({
-	            url : "/bono/product.de",              
-	            type : "get",                       
-	            data : {                            
-	               p_no : $('#lscode').val()  
-	            }, success : function (data) {       
-	            	location.href = "../product/pmList.jsp"
-	            }
-	            })
-	            
-	         }
-	function searchBt() {
-		$("#plist tr").remove()
 	 	$.ajax({
-	    		url : '/bono/product.se',
-	    		type : 'get',
-	    		data : {
-	    			p_no : $('#keyword').val()
-	    		}, success : function(data){
+	  	    url : "/bono/product.de",              
+	  	     type : "get",                       
+	  	     data : {                            
+	     	        	  p_no : $('#lscode').val()  
+		       }, success : function (data) {       
+		            	location.href = "../product/pmList.jsp"
+	 	         }
+	 	   });           
+ 	};
+ 
+	// 검색기능
+	function searchBt() {
+		
+		$("#plist tr").remove()
+		
+		 $.ajax({
+	    			url : '/bono/product.se',
+	    			type : 'get',
+	    			data : {
+	    						p_no : $('#keyword').val()
+	    			}, success : function(data){
 	    			
-	    			for (var i in data) {
+	    						for (var i in data) {
 						
-						var innerHtml = ""
-						var b = Number(i)+1
-					    innerHtml = "<tr> <td> " +(b) + "</td>" 
-				        innerHtml += "<td>" +  data[i].c_name  + "</td>" 
-				        innerHtml += "<td>" + data[i].p_no  + "</td>" 
-				        innerHtml += "<td>" + data[i].p_name  + "</td>"
-				        innerHtml += "<td>" + data[i].min_quan  + "</td>"
-				        innerHtml += "<td>" + data[i].r_price  + "</td>"
-				        innerHtml += "<td>" + data[i].s_price  + "</td>"
-				        innerHtml += "<td>" + data[i].g_name + "</td></tr>"
+								var innerHtml = ""
+								var b = Number(i)+1
+							
+					   			 innerHtml = "<tr> <td> " +(b) + "</td>" 
+				    	  		 innerHtml += "<td>" +  data[i].c_name  + "</td>" 
+				     	 	 	 innerHtml += "<td>" + data[i].p_no  + "</td>" 
+				    	  		 innerHtml += "<td>" + data[i].p_name  + "</td>"
+				    		     innerHtml += "<td>" + data[i].min_quan  + "</td>"
+				    	 	  	 innerHtml += "<td>" + data[i].r_price  + "</td>"
+				    	 	  	 innerHtml += "<td>" + data[i].s_price  + "</td>"
+				  	 	  	 	 innerHtml += "<td>" + data[i].g_name + "</td></tr>"
 				       
-				        $("#plist").append(innerHtml);
+				     			  $("#plist").append(innerHtml);
 				         
-					}
-	    			  $("#plist tr").on('click', function() {
-						  $.ajax({
-							  url :'/bono/product.mo',
-							  type : "get",
-							  data : {
-								 p_no : $(this).find('td:eq(2)').text()
-							  }, success : function(data){
-								  console.log(data)
-								  $("#lscode").val(data.p_no)
-								  $("#lpname").val(data.p_name)
-								  $("#lminnum").val(data.min_quan)
-								  $("#lingo").val(data.r_price)
-								  $("#loutgo").val(data.s_price)
-								  $('#gname').find('option:selected').text(data.g_name)
-								  $('#cname').find('option:selected').text(data.c_name)
+						}
+	    				  $("#plist tr").on('click', function() {
+							  $.ajax({
+								  url :'/bono/product.mo',
+								  type : "get",
+								  data : {
+											 p_no : $(this).find('td:eq(2)').text()
+								  }, success : function(data){
 								  
-								  $("#myModal").modal();
-							  }  
-						  });       	
-				         })   
-	    		}
-	    		
-	    	})
-	     
-	}
+								 
+									  $("#lscode").val(data.p_no)
+									  $("#lpname").val(data.p_name)
+									  $("#lminnum").val(data.min_quan)
+									  $("#lingo").val(data.r_price)
+									  $("#loutgo").val(data.s_price)
+									  $('#gname').find('option:selected').text(data.g_name)
+									  $('#cname').find('option:selected').text(data.c_name)
+								  
+									  $("#myModal").modal();
+								  }  
+							  });       	
+					         })   
+	    			}			
+	   	 	});   
+		};
 
 	</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
