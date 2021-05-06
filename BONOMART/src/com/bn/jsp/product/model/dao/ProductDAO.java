@@ -320,20 +320,27 @@ public class ProductDAO {
 		
 		return result;
 	}
-	public ArrayList<Product> search(Connection con, String name) {
+	public ArrayList<Product> search(Connection con, String name, String select) {
 		ArrayList<Product> list = new ArrayList<>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String sql = prop.getProperty("search");
+		
+		
+		String sql =  " SELECT P.*,C_NAME,G_NAME" 
+						+" FROM BN_PRODUCT P"
+						+" JOIN BN_CLIENT C ON (C.C_NO = P.C_NO)" 
+						+" JOIN BN_GROUP G ON (G.G_CODE = P.G_CODE)"
+						+" WHERE P_STATUS = 'Y' AND "+ select +" LIKE ?" ;
 		
 		try {
 			ps = con.prepareStatement(sql);
+			System.out.println(select);
+			System.out.println(name);
 			
-			ps.setString(1, name);
-			ps.setString(2, name);
-			ps.setString(3, name);
-			ps.setString(4, name);
+		
+		
+			ps.setString(1, '%' + name + '%');
 			
 			rs = ps.executeQuery();
 			
@@ -352,7 +359,9 @@ public class ProductDAO {
 				p.setG_name(rs.getString("g_name"));
 					
 				list.add(p);
+				
 			} 
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -361,5 +370,6 @@ public class ProductDAO {
 			close(ps);
 	}
 		return list;
+	
 	}
 }
