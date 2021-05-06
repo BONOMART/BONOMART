@@ -225,10 +225,10 @@
 		var arr = [];
 	
 	$(function() { 
-	
+		
 		// 연필 클릭 시 수량 수정
 		$('.updateTr').on('click', function() {
-			
+		
 			//수정할 판매번호
 			var pno = $(this).parent().parent().children().first().attr('id');
 			var quan	=$(this).parent().siblings('[name="p_quan"]').text();
@@ -268,9 +268,10 @@
 									}); 
 				        		
 				    		});
-						});
+						});	
+				
 					});
-						
+				
 
  
 </script>

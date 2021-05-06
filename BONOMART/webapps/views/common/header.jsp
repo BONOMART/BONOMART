@@ -135,8 +135,10 @@
                     	<a href="/bono/views/member/memberJoin.jsp" >회원가입</a>
                     	<a href="/bono/views/member/memberUpdate.jsp" >내 정보 수정</a>
                     	<a href="/bono/views/member/memberDetail.jsp" >내 정보 조회</a>
+                    	<%if ( m.getAuthority().equals("Y")) { %>
                     	<a href="/bono/joinRequest.ad">회원 승인요청</a>
                     	<a href="/bono/MemberList.ad">회원권한회수</a>
+                    	<% } %>
                     </div>
                 </li>
               </ul>

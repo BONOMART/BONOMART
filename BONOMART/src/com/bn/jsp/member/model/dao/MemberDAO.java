@@ -130,6 +130,7 @@ public class MemberDAO {
 				result.setPhone(      rs.getString("m_phone")       );
 				result.setdCode(    rs.getString("dept_code")  );
 				result.setjCode(  rs.getString("job_Code"));
+				result.setAuthority(rs.getString("m_access"));
 			}
 			
 			System.out.println("議고쉶 寃곌낵 : " + result);
