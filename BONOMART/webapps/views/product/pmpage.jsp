@@ -9,10 +9,10 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-<script src="jquery.tablesort.js"></script>
 
 <link rel="stylesheet" href="../../assets/css/header.css" />
 <link rel="stylesheet" href="../../assets/css/pmpage.css" />
+
 </head>
 
 <body>
@@ -21,7 +21,7 @@
 	<div class="inner">
 		<div class="wrapper">
 			<div class="container sub-contents">
-				<h3>상품관리</h3>
+				<h3>상품 등록</h3>
 	
 				<!-- 상품등록을 위한 폼 -->
 				<div class="product_select">
@@ -273,13 +273,13 @@
 					
 				</script>
 				
-	
-				</div>
 				<!-- 실제 DB에 저장하는 등록버튼 및 등록 전 수정할 수 있는 수정버튼 -->
-			<div class="final_btn">
-				<div class="submit_btn">
-					<button type="button" class="btn btn-success">등록하기</button>
-				</div>				
+				<div class="final_btn">
+					<div class="submit_btn">
+						<button type="button" class="btn btn-success">등록하기</button>
+						<br /><br />
+					</div>
+				</div>			
 			</div>
 		</div>
 	</div>
