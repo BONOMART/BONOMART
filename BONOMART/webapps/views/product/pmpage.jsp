@@ -480,7 +480,6 @@ select {
 		}	  
 			
 		   $('#myModal').modal("hide");
-		   
 	}
 	
 
@@ -488,17 +487,14 @@ select {
 	
 	// 모달창으로 클릭 한 테이블 삭제하기
 	function modalDelBtn() {
-		
 			var a =($("#inputval tr:eq(0)").find('td:eq(2)').text()).trim()
 			var b = ($("#lpname").val()).trim()
 		
 			for (var i = 0; i <("#inputval tr").length; i++){
 				if(($("#inputval tr:eq("+ i +')').find('td:eq(2)').text()).trim() == b)
 					$("#inputval tr:eq("+i + ')' ).remove()
-			}
-			
+		}
 		$('#myModal').modal("hide");
-		
 	}
 	
 	</script>

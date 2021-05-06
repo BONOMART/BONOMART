@@ -10,8 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
-
 import com.bn.jsp.mainPage.model.vo.MainOrderV;
+import com.bn.jsp.mainPage.model.vo.MainChartMon;
+import com.bn.jsp.mainPage.model.vo.MainPageDonut;
 import com.bn.jsp.mainPage.model.vo.MainPageInfo;
 import com.bn.jsp.sale.model.dao.SaleDAO;
 
@@ -173,14 +174,62 @@ private Properties prop;
 		return list;
 	}
 
+	public ArrayList<MainPageDonut> ChartDonut(Connection con) {
+		ArrayList<MainPageDonut> list = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("ChartDonut");
+		
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				MainPageDonut m = new MainPageDonut();
+				
+				m.setS_quan(rs.getInt("s_quan"));
+				m.setC_name(rs.getString("c_name"));
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return list;
+	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public ArrayList<MainChartMon> ChartMonth(Connection con) {
+		ArrayList<MainChartMon> list = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("ChartMonth");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				MainChartMon m = new MainChartMon();
+				
+				m.setAmount(rs.getInt("m_amount"));
+				m.setMonth(rs.getString("month"));
+				
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+		
+	}
 }
