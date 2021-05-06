@@ -84,7 +84,7 @@
                 </div>  
                    
                 <!-- 여백 -->
-                <div class="pyo1-2"></div>
+                <br />
 
 
                  <div class="month-card">
@@ -100,11 +100,57 @@
         margin-left: 25%;
         margin-top: 7%;
         color: rgba(0, 0, 255, 0.15); "></i>
+        
+        <script>
+        	$(function() {
+        		$.ajax({
+					url : "/bono/earn.mp",
+					type : "post",
+					success : function(data) {
+					
+						console.log(data);
+						
+						var $date = data[i].date;
+						var $d_amount = data[i].amount;
+						for(var i in data) {
+							
+						}
+					
+					}, error : function(error) {
+						console.log("상품정보 에러발생");
+					}
+				});
+        	});
+        </script>
+        
                          </div>
                     </div>     
                 </div>
             </div>
-
+            
+		<script>
+        	$(function() {
+        		$.ajax({
+					url : "/bono/orderList.mp",
+					type : "post",
+					success : function(data) {
+						for(var i in data){
+							
+						$('#lackorder tr').eq(i).children().eq(1).text(data[i].p_name);
+						$('#lackorder tr').eq(i).children().eq(2).text(data[i].p_quan);
+						$('#lackorder tr').eq(i).children().eq(3).children().css('display','inline-block');
+						$('#lackorder tr').eq(i).children().eq(4).text(data[i].p_no);
+						$('#lackorder tr').eq(i).children().eq(5).text(data[i].c_no);
+						
+						}
+					
+					}, error : function(error) {
+						
+					}
+				});
+        	});
+        </script>
+        
             <!-- 메인페이지 발주 게시판-->
             <div class="order">
                 <table class="order-table">
@@ -116,36 +162,46 @@
                             <th>발주 신청</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="lackorder">
                          <tr>
                              <td>1</td>
-                             <td>ThinkPad X1 Carbon Gen 9</td>
-                             <td>0</td>
-                             <td><button onclick="">발주</button></td>
+                             <td>재고가 부족한 상품이 없습니다.</td>
+                             <td></td>
+                             <td><button onclick="" style="display:none">발주</button></td>
+                             <input type="hidden" class="lackpno" />
+                             <input type="hidden" class="lackcno" />
                          </tr>
                          <tr>
                              <td>2</td>
-                             <td>갤럭시 북 Flex 알파 39.6 cm Core™ i7 / 1 TB SSD</td>
-                             <td>1</td>
-                             <td><button onclick="">발주</button></td>
+                             <td>재고가 부족한 상품이 없습니다.</td>
+                             <td></td>
+                             <td><button onclick="" style="display:none">발주</button></td>
+                             <input type="hidden" class="lackpno" />
+                             <input type="hidden" class="lackcno" />
                          </tr>
                          <tr>
                              <td>3</td>
-                             <td>노트북 오디세이 39.6 cm Core™ i7 / 512 GB NVMe SSD</td>
-                             <td>4</td>
-                             <td><button onclick="">발주</button></td>
+                             <td>재고가 부족한 상품이 없습니다.</td>
+                             <td></td>
+                             <td><button onclick="" style="display:none">발주</button></td>
+                             <input type="hidden" class="lackpno" />
+                             <input type="hidden" class="lackcno" />
                          </tr>
                          <tr>
                              <td>4</td>
-                             <td>갤럭시 북 S Wi-Fi 33.7 cm + 멀티 포트 어댑터(2019)</td>
-                             <td>7</td>
-                             <td><button onclick="">발주</button></td>
+                             <td>재고가 부족한 상품이 없습니다.</td>
+                             <td></td>
+                             <td><button onclick="" style="display:none">발주</button></td>
+                             <input type="hidden" class="lackpno" />
+                             <input type="hidden" class="lackcno" />
                          </tr>
                          <tr>
                              <td>5</td>
-                             <td>갤럭시 북 S LTE 33.7 cm + 멀티 포트 어댑터(2019)</td>
-                             <td>9</td>
-                             <td><button onclick="">발주</button></td>
+                             <td>재고가 부족한 상품이 없습니다.</td>
+                             <td></td>
+                             <td><button onclick="" style="display:none">발주</button></td>
+                             <input type="hidden" class="lackpno" />
+                             <input type="hidden" class="lackcno" />
                          </tr>
                     </tbody>
                 </table>

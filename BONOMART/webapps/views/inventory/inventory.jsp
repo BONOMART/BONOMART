@@ -225,9 +225,7 @@
 		var arr = [];
 	
 	$(function() { 
-			
-		
-			
+	
 		// 연필 클릭 시 수량 수정
 		$('.updateTr').on('click', function() {
 			
@@ -240,13 +238,13 @@
 			var update = $(this).parent().siblings('td#p_quan');
     		
     		update.replaceWith('<td id="p_quan" name="p_quan">'+
-    											'<input type="number" id="up_s_quan" value=' + quan + ' style="width:70px; margin-top:7px;"/>' +
+    											'<input type="number" id="up_s_quan" style="width:70px; margin-top:7px;" value=' + quan + '>' +
                                                	'<button type="button" class="btn btn-success" id="changebtm"> 수 &nbsp; 정 </button> </td>');
     		
     		// 수정 버튼 클릭 시 input태그로 수정한 값 처리
     			$('#changebtm').on('click', function() {
     				
-
+    				var pno = $(this).parent().parent().children().first().attr('id');
 	    			// 새로 입력된 값 (수정 값)
 	    			var updated = $('#up_s_quan').val();
 	        	

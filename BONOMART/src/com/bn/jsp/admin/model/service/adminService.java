@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.bn.jsp.admin.model.dao.adminDAO;
-import com.bn.jsp.admin.model.vo.Member;
+import com.bn.jsp.admin.model.vo.Member2;
 
 
 public class adminService {
@@ -27,11 +27,11 @@ public class adminService {
 	}
 	
 	//joinRequest 리스트 가져오기
-	public ArrayList<Member> listJR(int currentPage) {
+	public ArrayList<Member2> listJR(int currentPage) {
 		
 		con= getConnection();
 		
-		ArrayList<Member> result = dao.listJR(con, currentPage );
+		ArrayList<Member2> result = dao.listJR(con, currentPage );
 		
 		close(con);
 		
@@ -65,10 +65,10 @@ public class adminService {
 	}
 
 	// searhMemberList  리스트 가져오기
-	public ArrayList<Member> listSM(int currentPage, String type, String content) {
+	public ArrayList<Member2> listSM(int currentPage, String type, String content) {
 	con= getConnection();
 		
-		ArrayList<Member> result = dao.listSM(con, currentPage,type, content );
+		ArrayList<Member2> result = dao.listSM(con, currentPage,type, content );
 		
 		close(con);
 		
@@ -87,11 +87,11 @@ public class adminService {
 	}
 	
 	// searchMemberList null값일때 리스트가져오기
-	public ArrayList<Member> searchOkMemberad(int currentPage) {
+	public ArrayList<Member2> searchOkMemberad(int currentPage) {
 		
 		con= getConnection();
 		
-		ArrayList<Member> result = dao.searchOKMemberad(con, currentPage );
+		ArrayList<Member2> result = dao.searchOKMemberad(con, currentPage );
 		
 		close(con);
 		
@@ -114,29 +114,6 @@ public class adminService {
 	}
 
 	
-	
-	
-	
-//	public List<Member> searchMember(String type, String content, int currentPage) {
-//		
-//		con = getConnection();
-//		
-//		List<Member> result = dao.searchMember(con, type, content, currentPage);
-//		
-//		close(con);
-//		
-//		return result ;
-//	}
-
-
-	
-
-
-
-
-
-
-
 	
 
 

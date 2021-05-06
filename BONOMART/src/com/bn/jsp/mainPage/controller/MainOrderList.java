@@ -1,26 +1,30 @@
-package com.bn.jsp.inventory.controller;
+package com.bn.jsp.mainPage.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bn.jsp.inventory.model.service.inventoryService;
-import com.bn.jsp.inventory.model.vo.Inventory;
+import com.bn.jsp.mainPage.model.service.MainService;
+import com.bn.jsp.mainPage.model.vo.MainOrderV;
+import com.bn.jsp.mainPage.model.vo.MainPageInfo;
+import com.google.gson.Gson;
 
 /**
- * Servlet implementation class inventroryUpdate
+ * Servlet implementation class MainOrderList
  */
-@WebServlet("/update.in")
-public class inventroryUpdate extends HttpServlet {
+@WebServlet("/orderList.mp")
+public class MainOrderList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public inventroryUpdate() {
+    public MainOrderList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,25 +34,16 @@ public class inventroryUpdate extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String s_no = request.getParameter("s_no");
-		int s_quan = Integer.parseInt(request.getParameter("up_s_quan"));
+		MainService service = new MainService();
 		
-		inventoryService service = new inventoryService();
+		ArrayList<MainOrderV> list = service.selectOrderList();
 		
-		Inventory in = new Inventory(s_no, s_quan);
+		response.setContentType("application/json; charset=UTF-8");
 		
-		int result = service.updateInventory(in);
+		new Gson().toJson(list, response.getWriter());
 		
-	 if (result > 0) {
-			response.sendRedirect("selectList.sa");
-	  } else {
-			request.setAttribute("error-msg", "재고 수정 실패");
 		
-		request.getRequestDispatcher("views/common/errorPage.jsp")
-			       .forward(request, response);
-		}
 	}
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
