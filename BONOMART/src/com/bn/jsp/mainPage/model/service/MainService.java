@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.bn.jsp.mainPage.model.dao.MainDAO;
+import com.bn.jsp.mainPage.model.vo.MainOrderV;
 import com.bn.jsp.mainPage.model.vo.MainPageInfo;
 
 public class MainService {
@@ -19,6 +20,16 @@ public class MainService {
 		con = getConnection();
 		
 		ArrayList<MainPageInfo> list = dao.selectEarning(con);
+		
+		close(con);
+		
+		return list;
+	}
+
+	public ArrayList<MainOrderV> selectOrderList() {
+		con = getConnection();
+		
+		ArrayList<MainOrderV> list = dao.selectOrderList(con);
 		
 		close(con);
 		

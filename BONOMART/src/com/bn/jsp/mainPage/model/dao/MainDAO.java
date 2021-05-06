@@ -1,6 +1,6 @@
 package com.bn.jsp.mainPage.model.dao;
 
-import static com.bn.jsp.common.JDBCTemplate.*;
+import static com.bn.jsp.common.JDBCTemplate.close;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.bn.jsp.mainPage.model.vo.MainOrderV;
 import com.bn.jsp.mainPage.model.vo.MainPageInfo;
 import com.bn.jsp.sale.model.dao.SaleDAO;
 
@@ -86,4 +87,51 @@ private Properties prop;
 		
 		return list;
 	}
+
+	public ArrayList<MainOrderV> selectOrderList(Connection con) {
+		ArrayList<MainOrderV> list = new ArrayList<MainOrderV>();
+		
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectOrderList");
+		
+		try {
+			
+			ps=con.prepareStatement(sql);
+			
+			rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				MainOrderV m = new MainOrderV();
+				m.setP_no(rs.getString(2));
+				m.setP_name(rs.getString(3));
+				m.setMin_quan(rs.getInt(4));
+				m.setP_quan(rs.getInt(5));
+				m.setC_no(rs.getString(6));
+				
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+			
+		}
+		
+		
+		return list;
+	}
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

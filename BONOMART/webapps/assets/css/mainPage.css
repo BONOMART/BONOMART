@@ -241,6 +241,7 @@
     }
     
 	@media screen and (max-width: 1360px) {
+	
 		.chart-pie {
 			display : none;
 		}
@@ -253,5 +254,15 @@
 		.order {
 			width : 93%;
 		}
+		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
