@@ -33,10 +33,12 @@ public class ProductSearch extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String name = request.getParameter("p_no");
+		String select = request.getParameter("select");
+		
 		
 		ProductService service = new ProductService();
 		
-		ArrayList<Product> list =service.search(name);
+		ArrayList<Product> list =service.search(name,select);
 	
 		
 		response.setContentType("application/json; charset=UTF-8");
