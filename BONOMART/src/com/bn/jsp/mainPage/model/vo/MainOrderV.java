@@ -10,7 +10,7 @@ public class MainOrderV {
 	public MainOrderV() {
 		
 	}
-	
+
 	public MainOrderV(String p_no, String p_name, int min_quan, String c_no, int p_quan) {
 		super();
 		this.p_no = p_no;
