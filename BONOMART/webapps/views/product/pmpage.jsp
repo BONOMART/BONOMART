@@ -71,7 +71,7 @@ select {
 	<div class="inner">
 		<div class="wrapper">
 			<div class="container sub-contents">
-				<h3>상품 등록</h3>
+				<h3>상품관리</h3>
 	
 				<!-- 상품등록을 위한 폼 -->
 				<div class="product_select">
@@ -164,8 +164,56 @@ select {
 					
 	
 						</tbody>
+						
+					</table>	
+				
+				<!-- <script>
+					$(".table tr").on("click", function() {
+						var tr = $(this);
+						
+						console.log("row data => " + tr.text()); //한 줄에 있는 데이터를 다 가져옴.
+												
+						
+						
+					});
+				</script> -->
+				
+				<!-- table th click sort -->
+				<script>
+  					$(function(){
+						$('.table').each(function(column){
+							$(this).click(function(){
+								if($(this).is('.asc')) { //table 속성이 asc라면
+									$(this).removeClass('asc'); //asc 클래스 삭제
+									$(this).addClass('desc');  //desc 클래스 추가
+									sortdir = -1;
+								} else { //table 속성이 desc라면
+									$(this).addClass('desc');
+									$(this).removeClass('asc');
+									sortdir = 1;
+								}
+								$(this).siblings().removeClass('asc'); //선택한 요소의 형제 요소들을 모두 선택해서 asc삭제
+								$(this).siblings().removeClass('desc');
+								
+								var rec = $('table').find('tbody > tr').get(); //행 요소들을 배열에 담아서 가져옴
+								rec.sort(function(a,b) { //배열로 가져온 로우들 정렬
+									var val1 = $(a).children('td').eq(column).text().toUpperCase(); //로우에 텍스트값들을 모두 대문자로 바꿔준다. 아스키코드가 달라서
+									var val2 = $(b).children('td').eq(column).text().toUpperCase(); //숫자 비교값도 있어줘야 함.
+									
+									return (val1 < val2)?-sortdir:(val1 > val2)?sortdir:0;
+								});
+								
+								$.each(rec, function(index, row) {
+									$('tbody').append(row);
+								});
+							});
+						});
+					});		
+					
+				</script>
+				
 	
-					</table>				
+
 				</div>
 				<!-- 실제 DB에 저장하는 등록버튼 및 등록 전 수정할 수 있는 수정버튼 -->
 			<div class="final_btn">

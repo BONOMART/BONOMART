@@ -89,7 +89,7 @@
                     </a>
                     <div class="accmenu">
                     	<a href="/bono/views/order/orderRegister.jsp" >발주등록</a>
-                    	<a href="/bono/views/order/orderList.jsp" >발주조회</a>
+                    	<a href="/bono/order/orderlist.do" >발주조회</a>
                     </div>
                 </li>
                 <li>
