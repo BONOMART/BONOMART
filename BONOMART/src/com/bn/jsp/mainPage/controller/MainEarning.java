@@ -1,4 +1,4 @@
-package com.bn.jsp.product.controller;
+package com.bn.jsp.mainPage.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,21 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bn.jsp.product.model.service.ProductService;
-import com.bn.jsp.product.model.vo.Product;
+import com.bn.jsp.mainPage.model.service.MainService;
+import com.bn.jsp.mainPage.model.vo.MainPageInfo;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class ProductSearch
+ * Servlet implementation class MainEarning
  */
-@WebServlet("/product.se")
-public class ProductSearch extends HttpServlet {
+@WebServlet("/earn.mp")
+public class MainEarning extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductSearch() {
+    public MainEarning() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,14 +32,10 @@ public class ProductSearch extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter("p_no");
-		String select = request.getParameter("select");
 		
+		MainService service = new MainService();
 		
-		ProductService service = new ProductService();
-		
-		ArrayList<Product> list =service.search(name,select);
-	
+		ArrayList<MainPageInfo> list = service.selectEarning();
 		
 		response.setContentType("application/json; charset=UTF-8");
 		

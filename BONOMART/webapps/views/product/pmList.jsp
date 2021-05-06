@@ -56,6 +56,13 @@ select {
     justify-content: center;
 
 }
+#searchbox {
+	display: inline-block;
+	width : 25%;
+}
+#keyword {
+	height: 41px;
+}
  </style>   
 </head>
 <body>
@@ -69,6 +76,13 @@ select {
 				
 				<!-- 상품 검색 -->
 				<div class="input-group" id="search_pd">
+				<select name="" id="searchbox">
+						
+						<option value="P_NO">상품코드</option>
+						<option value="C_NO">거래처</option>
+						<option value="P_NAME">상품명</option>
+						<option value="G_NAME">그룹명</option>
+				</select>
 					<input type="text" class="form-control" id="keyword">
 					<div class="input-group-append">
 						<button type="button" class="btn btn-primary"  onclick="searchBt()"">검색하기</button>
@@ -346,9 +360,10 @@ select {
 	    			url : '/bono/product.se',
 	    			type : 'get',
 	    			data : {
-	    						p_no : $('#keyword').val()
+	    						p_no : $('#keyword').val(),
+	    						select : $('#searchbox').find("option:selected").val()
 	    			}, success : function(data){
-	    			
+	    			console.log(data)
 	    						for (var i in data) {
 						
 								var innerHtml = ""

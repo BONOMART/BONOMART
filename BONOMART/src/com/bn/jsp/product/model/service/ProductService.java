@@ -128,10 +128,10 @@ public class ProductService {
 		return result;
 	}
 
-	public ArrayList<Product> search(String name) {
+	public ArrayList<Product> search(String name, String select) {
 		con = getConnection();
 		
-		ArrayList<Product> list= dao.search(con, name);
+		ArrayList<Product> list= dao.search(con, name, select);
 		
 		close(con);
 		
