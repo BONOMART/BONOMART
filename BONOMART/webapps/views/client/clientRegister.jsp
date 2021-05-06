@@ -231,7 +231,6 @@
                         <div class="product_select">
                             <!-- <form action="/bono/insertCheck.cl" type="get"> -->
                                 <div class="select">
-                                
                                     <div class="item">
                                     	<input type="hidden" id="insertCheckInput" value="0"/>
                                         <div>
