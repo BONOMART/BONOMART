@@ -238,7 +238,11 @@
 		$("[name=Out]").on('click',function(){
 		
 		var mno = $(this).parent().parent().children().first().attr('id');
-				
+		
+		var com = confirm("탈퇴하시겠습니까?");
+		
+		if(com == true){
+		
 		$.ajax({
 			url : "/bono/adminMemberOut.ad",
 			type : "post",
@@ -250,6 +254,12 @@
 		  });
 		  // 화면에서도 지우기
 		  $(this).parent().parent().remove();
+		   alert("회원탈퇴가 성공하였습니다.")
+
+		  }else if(com== false) {
+			  alert("탈퇴가 취소되었습니다.")
+			  
+		  }
 		});
 
 

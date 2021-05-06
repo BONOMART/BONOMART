@@ -30,7 +30,7 @@ public class inventroryUpdate extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String s_no = request.getParameter("s_no");
+		String s_no = request.getParameter("p_no");
 		int s_quan = Integer.parseInt(request.getParameter("up_s_quan"));
 		
 		inventoryService service = new inventoryService();

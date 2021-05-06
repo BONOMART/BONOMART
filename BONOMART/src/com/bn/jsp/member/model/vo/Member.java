@@ -23,7 +23,7 @@ public class Member implements Serializable{
 	private String phone;
 	private String dCode;				// 부서 코드
 	private String jCode;				// 직급 코드
-	private char authority;			// 권한
+	private String authority;			// 권한
 	private char joinAccess;			// 가입 승인 여부
 	private String mdate;
 	
@@ -31,7 +31,7 @@ public class Member implements Serializable{
 	public Member() {}
 	
 	public Member(int userNo, String userName, String userId, String userPwd, String email, String phone,
-			String dCode, String jCode, char authority, char joinAccess, String mdate) {
+			String dCode, String jCode, String authority, char joinAccess, String mdate) {
 		super();
 		this.userNo = userNo;
 		this.userName = userName;
@@ -47,7 +47,7 @@ public class Member implements Serializable{
 	}
 	
 	public Member(String userName, String userId, String userPwd, String email, String phone,
-			String dCode, String jCode, char authority, char joinAccess) {
+			String dCode, String jCode, String authority, char joinAccess) {
 		super();
 		this.userName = userName;
 		this.userId = userId;
@@ -142,11 +142,11 @@ public class Member implements Serializable{
 		this.jCode = jCode;
 	}
 
-	public char getAuthority() {
+	public String getAuthority() {
 		return authority;
 	}
 
-	public void setAuthority(char authority) {
+	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
 
@@ -165,6 +165,8 @@ public class Member implements Serializable{
 	public void setMdate(String mdate) {
 		this.mdate = mdate;
 	}
+
+
 	
 }
 
