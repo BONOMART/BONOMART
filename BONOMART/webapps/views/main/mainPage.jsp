@@ -250,82 +250,104 @@
     });
     
     
-    // 월 별 매출액
-	var ctx = document.getElementById('myChart2').getContext('2d');
-    var chart = new Chart(ctx, {
+    // 월별 차트
+    $(function(){
+		$.ajax({
+			url : '/bono/chart.mo',
+			type : 'get',
+			success : function(result) {
+				var ctx = document.getElementById('myChart2').getContext('2d');
+			    var chart = new Chart(ctx, {
 
-        type: 'line',
+			        type: 'line',
 
-        data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-            datasets: [{
-                label: '월 별 매출액',
-                borderColor: 'rgba(0, 205, 226, 0.70)',
-              	fill : false,
-                data: [6100000, 9327000, 7150000, 9120000, 4795000, 8000000, 11000000]
-            }]
-        },
-  		 options: {
-       		maintainAspectRatio : false ,
-            legend : {
-                display : false
-            },
-            title : {
-                display : true,
-                text: '월 별 매출액',
-                fontSize : 13
-                
-            },
-            tooltips : {
-                backgroundColor: "rgb(255,255,255)",
-      bodyFontColor: "#858796",
-      titleMarginBottom: 10,
-      titleFontColor: '#6e707e',
-      titleFontSize: 14,
-      borderColor: '#dddfeb',
-      borderWidth: 1,
-      xPadding: 15,
-      yPadding: 15,
-      displayColors: false,
-      intersect: false,
-      mode: 'index',
-      caretPadding: 10,
-      callbacks: {
-        label: function(tooltipItem, chart) {
-          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
-        }
-      }
-            }
-        }
-    });
+			        data: {
+			            labels: [result[0].month, result[1].month,
+			            			result[2].month, result[3].month, 
+			            			result[4].month],
+			            datasets: [{
+			                label: '월 별 매출액',
+			                borderColor: 'rgba(0, 205, 226, 0.70)',
+			              	fill : false,
+			                data: [result[0].amount, result[1].amount,
+			                			result[2].amount, result[3].amount,
+			                			result[4].amount]
+			            }]
+			        },
+			  		 options: {
+			       		maintainAspectRatio : false ,
+			            legend : {
+			                display : false
+			            },
+			            title : {
+			                display : true,
+			                text: '월 별 매출액',
+			                fontSize : 13
+			                
+			            },
+			            tooltips : {
+			                backgroundColor: "rgb(255,255,255)",
+			      bodyFontColor: "#858796",
+			      titleMarginBottom: 10,
+			      titleFontColor: '#6e707e',
+			      titleFontSize: 14,
+			      borderColor: '#dddfeb',
+			      borderWidth: 1,
+			      xPadding: 15,
+			      yPadding: 15,
+			      displayColors: false,
+			      intersect: false,
+			      mode: 'index',
+			      caretPadding: 10,
+			      callbacks: {
+			        label: function(tooltipItem, chart) {
+			          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+			          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+			        }
+			      }
+			            }
+			        }
+			    });
+
+			}
+		});
+	});
+    
+   
 
     // 도넛차트
-    var ctx = document.getElementById('myChart3').getContext('2d');
-    var chart = new Chart(ctx, {
+    $(function(){ 
+ 	  	 $.ajax({
+    		url : '/bono/chart.do',
+    		type : 'get',
+    		success : function(result) {
+    			var ctx = document.getElementById('myChart3').getContext('2d');
+    			 var chart = new Chart(ctx, {
 
-        type: 'pie',
+    			        type: 'pie',
 
-        data: {
-            labels: ['아수스', '애플', '삼성'],
-            datasets: [{
-                backgroundColor: ['yellow','rgba(200, 145, 255, 1)','blue',],
-                data: [72, 143, 100,],
-                borderWidth: 0
-            }]
-        },
-  		 options: {
-       		maintainAspectRatio : false,
-            legend: {position:'bottom', padding:5, labels: {pointStyle:'circle', usePointStyle:true}},
-            cutoutPercentage: 85,
-            title : {
-                display : false
-            }
-           
-            
-        }
-    });
+    			        data: {
+    			            labels: [result[0].c_name, result[1].c_name, result[2].c_name],
+    			            datasets: [{
+    			                backgroundColor: ['yellow','rgba(200, 145, 255, 1)','blue',],
+    			                data: [result[0].s_quan, result[1].s_quan, result[2].s_quan],
+    			                borderWidth: 0
+    			            }]
+    			        },
+    			  		 options: {
+    			       		maintainAspectRatio : false,
+    			            legend: {position:'bottom', padding:5, labels: {pointStyle:'circle', usePointStyle:true}},
+    			            cutoutPercentage: 85,
+    			            title : {
+    			                display : false
+    			            }
+    			        }
+    			    });
+    		}
+ 	   })
+    })
     
+ 
     Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
     Chart.defaults.global.defaultFontColor = '#858796';
 
