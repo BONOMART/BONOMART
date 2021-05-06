@@ -103,24 +103,14 @@ public class OrderService {
 		return listCount;
 	}
 	
-	public ArrayList<OrderList> searchList( int currentPage ) {
-		con = getConnection();
-		
-		ArrayList<OrderList> list = dao.searchList(con, currentPage);
-		
-		close(con);
-		
-		return list;
-	}
-	
-	public ArrayList<OrderList> searchList( int currentPage, String searchKey, String searchValue) {
+	public ArrayList<OrderList> searchList(String searchKey, String searchValue) {
 		con = getConnection();
 		ArrayList<OrderList> list;
 		
 		if(searchKey == null || searchKey.equals("all") || searchValue == null) {
-			list = dao.searchList(con, currentPage);
+			list = dao.searchList(con);
 		} else {
-			list = dao.searchList(con, currentPage, searchKey, searchValue);
+			list = dao.searchList(con, searchKey, searchValue);
 		}
 		
 		close(con);
@@ -144,5 +134,35 @@ public class OrderService {
 		
 		return 0;
 	}
+
+	public ArrayList selectOrderInfo(String pno) {
+		
+		con = getConnection();
+		
+		ArrayList list = dao.selectOrderInfo(con, pno);
+		
+		close(con);
+		
+		return list;
+	}
+
+	public int updateOrder(Order o) {
+		
+		con = getConnection();
+		
+		int result = dao.updateOrder(con, o);
+		
+		if(result > 0) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return result;
+	}
+
+	
 
 }
