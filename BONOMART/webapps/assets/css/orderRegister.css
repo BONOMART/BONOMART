@@ -30,7 +30,11 @@
             justify-content: center;
             align-items: center;
         }
-
+		
+		 .table th{
+           border-top: 0px solid black;
+        }
+		
         .item {
             width: 30%;
             padding: 5px;
@@ -102,4 +106,12 @@
         .scrollable{
         	height : 500px;
         	overflow-y : scroll;
+        }
+        
+        .DeleteRow {
+        	display: none;
+        }
+        
+        svg:hover {
+        	cursor: pointer;
         }

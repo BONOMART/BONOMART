@@ -24,11 +24,17 @@ public class Sale implements Serializable {
 		this.s_date = s_date;
 	}
 
-	public Sale(int s_no, int s_quan, Date s_date) {
+	public Sale(String p_no, int s_quan, Date s_date) {
+		super();
+		this.p_no = p_no;
+		this.s_quan = s_quan;
+		this.s_date = s_date;
+	}
+	
+	public Sale(int s_no, int s_quan) {
 		super();
 		this.s_no = s_no;
 		this.s_quan = s_quan;
-		this.s_date = s_date;
 	}
 
 	@Override

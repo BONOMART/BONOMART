@@ -67,13 +67,7 @@ footer {
 	align-items: center;
 }
 
-.plus_btn > .search {
-	padding-right: 40px;
-	padding-bottom: 30px;
-}
-
 .plus_btn > .plus {
-	padding-left: 40px;
 	padding-bottom: 30px;
 }
 /* 검색하기 버튼 끝 */
@@ -92,22 +86,6 @@ footer {
 	border-radius: 30px;
 	box-shadow: 1px 1px 1px 1px lightgray;
 }
-
-.table > td > textarea {
-	justify-content: center;
-	align-items: center;
-	
-}
-
-textarea {
-	resize: none;
-	border: 0;
-}
-
-textarea:focus {
-	outline: none;
-	
-}
 /* 테이블 관련 CSS 끝 */
 
 /* 수정하기 등록하기 버튼 */
@@ -117,4 +95,11 @@ textarea:focus {
 	justify-content: center;
 	align-items: center;
 	
+}
+
+select {
+	width: 175px;
+	padding: 5px;
+	justify-content: center;
+	align-items: center;
 }

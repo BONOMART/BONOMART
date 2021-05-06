@@ -26,32 +26,35 @@
 
                         <!-- 발주 등록을 위한 폼 -->
                         <div class="product_select">
-                            <form action="" type="POST">
+                            <form action="/bono/insertInsert.do" type="POST">
                                 <div class="select">
                                     <div class="item">
                                         <div>
-                                            발주 번호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="col-sm-8"><input type="text" class="form-control"></div>
+                                            발주상품코드
+                                            <div class="col-sm-8">
+                                            	<input type="text" class="form-control" id="pno">
+                                            </div>
                                         </div>
                                         <div>
-                                            발주상품코드<div class="col-sm-8"><input type="text" class="form-control"></div>
+                                            거래처 코드&nbsp;&nbsp;
+                                            <div class="col-sm-8">
+                                            	<input type="text" class="form-control" id="cno">
+                                            </div>
                                         </div>
                                         <div>
-                                            거래처 코드&nbsp;&nbsp;<div class="col-sm-8"><input type="text" class="form-control"></div>
-                                        </div>
-                                        <div>
-                                            담당자명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="col-sm-8"><input type="text" class="form-control"></div>
+                                            담당자명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="col-sm-8"><input type="text" class="form-control" id="cname"></div>
                                         </div>
                                     </div>
 
                                     <div class="item" id="ss">
                                         <div>
-                                            발주 수량 <div class="col-sm-8"><input type="number" class="form-control"></div>
+                                            발주 수량 <div class="col-sm-8"><input type="number" class="form-control" id="oquan"></div>
                                         </div>
                                         <div>
-                                            발주 일자 <div class="col-sm-8"><input type="date" class="form-control"></div>
+                                            발주 일자 <div class="col-sm-8"><input type="date" class="form-control" id="odate"></div>
                                         </div>
                                         <div>
-                                            총 금액&nbsp;&nbsp;&nbsp;<div class="col-sm-8"><input type="number" class="form-control"></div>
+                                            총 금액&nbsp;&nbsp;&nbsp;<div class="col-sm-8"><input type="number" class="form-control" id="sprice"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -61,7 +64,7 @@
                             <div class="submit_btn">
                                 <!-- 등록버튼 -->
                                 <div class="plus">
-                                    <button type="button" class="btn btn-primary">추가하기</button>
+                                    <button type="button" class="btn btn-primary" onclick="addrow();">추가하기</button>
                                 </div>
                             </div>
                         </div>
@@ -69,213 +72,117 @@
 
                         <!-- 추가한 상품들을 나열하여 보여주는 테이블 -->
                         <div class="scrollable">
-                            <table class="table table-hover text-center">
+                        <form action="regtable" action="/bono/insertOrder.do" method="POST"></form>
+                            <table class="table table-hover text-center" id="table1">
 
-                                <thead>
+                                <thead id="checklist">
                                     <tr>
-                                        <th>#</th>
-                                        <th>발주번호</th>
                                         <th>발주상품 코드</th>
                                         <th>거래처 코드</th>
                                         <th>발주 수량</th>
                                         <th>발주 일자</th>
                                         <th>총 금액</th>
-                                        <th>담당자</th>
+                                        <th>담당자명</th>
+                                        <th>삭제</th>
                                     </tr>
                                 </thead>
 
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>No.12321</td>
-                                        <td>A203</td>
-                                        <td>B203</td>
-                                        <td>1,000</td>
-                                        <td>2021-04-26</td>
-                                        <td>400,000,000</td>
-                                        <td>마진석</td>
-                                    </tr>
+                                <tbody class="dataBody">
+                                   
                                 </tbody>
 
                             </table>
+                            </form>
+                        </div>
+                        
+                        <div class="DeleteRow">
+                        	<svg class="deleteTr" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  								<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+  								<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+							</svg>	
                         </div>
 
-                        <!-- 실제 DB에 저장하는 등록버튼 및 등록 전 수정할 수 있는 수정버튼 -->
+                        <!-- 실제 DB에 저장하는 등록버튼 -->
                         <div class="final_btn">
                             <div class="submit_btn">
-                                <button type="button" class="btn btn-success" data-target=".modal"
-                                    data-toggle="modal">등록하기</button>
-                            </div>
-
-                            <!-- 모달창을 화면에 띄움 -->
-                            
-                                <!-- 삭제 버튼 클릭 시, 팝업될 모달창 -->
-                                <div class="modal" tabindex="-1">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">발주 데이터 등록</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>정말 등록하시겠습니까??</p>
-                                                <p>등록 후, 조회 페이지로 이동합니다.</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary"
-                                                    onclick="location.href='http://127.0.0.1:5500/views/orderList.html'">등록</button>
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">취소</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- 모달 끝 -->
+                                <button type="button" class="btn btn-success" id="submitbtn">등록하기</button>
                             </div>
                         </div>
                     </div>
-
+                    
                     <script>
-                        $('#modal_btn').on('click', function () {
-                            $('##modify_product').modal();
-                        });
+                    	function addrow() {
+                    		var innerHtml = ""
+                    		
+                    		var pno = $('#pno').val()
+                    		var cno = $('#cno').val()
+                    		var cname = $('#cname').val()
+                    		var oquan = $('#oquan').val()
+                    		var odate = $('#odate').val()
+                    		var sprice = $('#sprice').val()
+                    		
+                    		if(pno == "" || cno == "" || cname == "" || oquan == "" || odate == "" || sprice == "") {
+                    			alert("정보를 모두 입력해주세요.")
+                    		} else {
+                    	        innerHtml = "<tr class='dataRow'> <td> " + pno + " </td> " 
+                    	        innerHtml += " <td>" + cno + "</td> " 
+                    	        innerHtml += " <td>" + oquan + "</td> "
+                    	        innerHtml += " <td>" + odate + "</td> "
+                    	        innerHtml += " <td>" + sprice + "</td> "
+                    	        innerHtml += " <td>" + cname + "</td>"
+                    	        innerHtml += " <td class='deleteRow'>" + $('.DeleteRow').html() + "</td> </tr>"
+
+                    	        $("tbody").append(innerHtml);
+                    		}
+                    	}
+                    	
+                    	$('#submitbtn').on('click', function() {
+                    		var insertlist = [];
+                    		var a = {};
+                    		
+                    		$('.dataRow').each(function() {
+                    			a = {
+                    				"p_no" : $(this).find('td:eq(0)').text().trim(),
+                    				"c_no" : $(this).find('td:eq(1)').text().trim(),
+                    				"o_quan" : $(this).find('td:eq(2)').text().trim(),
+                    				"o_date" : $(this).find('td:eq(3)').text().trim(),
+                    				"s_price" : $(this).find('td:eq(4)').text().trim(),
+                    				"m_name" : $(this).find('td:eq(5)').text().trim()
+                    			}
+                    			
+                    			insertlist.push(a);
+                    			
+                    		});
+                    		
+                    		for(var i = 0; i <= insertlist.length; i++) {
+                    			console.log(insertlist[i]);
+                    		}
+                    		
+                    		$.ajax({
+                    			url: '/bono/orderInsert.do',
+                    			type: 'POST',
+                    			dataType: "json",
+                    			data: {
+                    				insertlist : JSON.stringify(insertlist),
+                    				test: "test"
+                    			},
+                    			success: function(data) {
+                    				
+                    				console.log(data);
+                    			}, error: function(data) {
+                    				console.log(data);
+                    			}
+                    			
+                    		});
+                    	});
+                    	
+                    	$('#table1').on('click', '.deleteTr', function(){
+                    		$(this).parent().parent().remove();
+                    	});
                     </script>
                     <!-- 게시판 끝 -->
                     <!-- 푸터 영역 추가 -->
-               <%@ include file="../common/footer.jsp" %>
+               		<%@ include file="../common/footer.jsp" %>
                 </div>
             </div>
         </div>

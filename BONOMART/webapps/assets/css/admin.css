@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 
-   #serach {
+   #search {
         margin-top: 15px;
         margin-left:30px;
        	padding-top:10px;
@@ -13,6 +13,17 @@
 		 box-shadow: 1px 1px 1px 1px lightgray;
         text-align: center;
     }
+    
+    #table2 {
+        background: white;
+        margin-left: 30px ;
+        margin-right: 30px;
+        margin-top:20px ;
+        border: 1px solid whitesmoke;
+        border-radius: 10px;
+        box-shadow: 1px 1px 1px 1px lightgray;
+    }
+    
 
     #field2{
         font-size: larger;
@@ -30,16 +41,6 @@
         box-shadow: 1px 1px 1px 1px lightgray;
     }
 
-    #table2 {
-        background: white;
-        margin-left: 30px ;
-        margin-right: 30px;
-        margin-top:20px ;
-        border: 1px solid whitesmoke;
-        border-radius: 10px;
-        box-shadow: 1px 1px 1px 1px lightgray;
-    }
-    
 div#select_box {
     position: relative;
     width: 150px;

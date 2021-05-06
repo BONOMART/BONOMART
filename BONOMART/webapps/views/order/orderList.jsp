@@ -1,5 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import="com.bn.jsp.order.model.vo.*, java.util.*" %>
+
+<%
+	ArrayList<OrderList> list = (ArrayList<OrderList>) request.getAttribute("list");
+	
+	String SearchValue = (String) request.getAttribute("SearchValue");
+	String SearchKey = (String) request.getAttribute("SearchKey");
+
+	PageInfo pi = (PageInfo) request.getAttribute("pi");
+	
+	System.out.println(pi);
+	
+	int listCount = pi.getListCount();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,111 +50,89 @@
                 <h3 style="text-align: center;">발주 조회</h3>
                 
                 <!-- 조회 페이지의 서치 바 -->
-                <div class="input-group mb-3" style="margin-left : auto;
-                  margin-right : auto; width: 600px;">
-                    <input type="text" class="form-control" placeholder="검색할 데이터를 입력하세요.." aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <!-- 검색 버튼 -->
-                    <div class="btn-group">
-                       <button type="button" class="btn btn-primary">검색</button>
-                       <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                         <span class="sr-only">Toggle Dropdown</span>
-                       </button>
-                       <div class="dropdown-menu">
-                               <a class="dropdown-item" href="#">발주 번호 기준 정렬</a>
-                               <div class="dropdown-divider"></div>
-                               <a class="dropdown-item" href="#">발주 상품코드 기준 정렬</a>
-                               <div class="dropdown-divider"></div>
-                               <a class="dropdown-item" href="#">거래처 코드 기준 정렬</a>
-                               <div class="dropdown-divider"></div>
-                               <a class="dropdown-item" href="#">발주 일자 기준 정렬</a>
-                               <div class="dropdown-divider"></div>
-                               <a class="dropdown-item" href="#">담당자 기준 정렬</a>
-                        </div>
-                  </div>
-                  <!-- 검색 버튼 끝 -->
-            </div>
+                <form action="<%=request.getContextPath() %>/order/orderlist.do" id="searchForm" method="">
+                
+	                <div class="input-group mb-3" style="margin-left : auto; margin-right : auto; width: 600px;">
+					
+	                    <input type="text" class="form-control" placeholder="검색할 데이터를 입력하세요.." aria-label="Recipient's username" aria-describedby="button-addon2"
+	                    		id="searchValue" name="searchValue">
+	                    <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon" style="width:40px" name="searchKey">
+							<option selected value="all">검색조건</option>
+							<option value="o_no">발주번호</option>
+							<option value="p_no">상품코드</option>
+							<option value="c_name">거래처명</option>
+							<option value="o_quan">발주수량</option>
+							<option value="o_quan">발주일자</option>
+							<option value="o_quan">담당자명</option>
+						</select>
+						<!-- 검색 버튼 -->	
+						<div class="input-group-append">
+							<button id="searchBtn" class="btn btn-outline-secondary" type="submit">검색</button>
+						</div>
+	                   <!-- 검색 버튼 -->
+	                   <!--  <div class="btn-group">
+	                       <button type="button" class="btn btn-primary" id="searchbtn">검색</button>
+	                       <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                         <span class="sr-only">Toggle Dropdown</span>
+	                       </button>
+	                       <div class="dropdown-menu">
+	                               <a class="dropdown-item" href="#">발주 번호 기준 정렬</a>
+	                               <div class="dropdown-divider"></div>
+	                               <a class="dropdown-item" href="#">발주 상품코드 기준 정렬</a>
+	                               <div class="dropdown-divider"></div>
+	                               <a class="dropdown-item" href="#">거래처 코드 기준 정렬</a>
+	                               <div class="dropdown-divider"></div>
+	                               <a class="dropdown-item" href="#">발주 일자 기준 정렬</a>
+	                               <div class="dropdown-divider"></div>
+	                               <a class="dropdown-item" href="#">담당자 기준 정렬</a>
+	                        </div>
+	                  	</div> -->
+	               	</div>
+                </form>
+                <!-- 검색 버튼 끝 -->
                 
                 <!-- 추가한 상품들을 나열하여 보여주는 테이블 -->
-                <table class="table table-hover text-center">
+                <table class="table table-hover text-center" id="table1">
                     <thead>
                         <tr data-target=".modal" data-toggle="modal">
-                            <th>#</th>
                             <th>발주번호</th>
-                            <th>발주상품 코드</th>
-                            <th>거래처 코드</th>
-                            <th>발주 수량</th>
-                            <th>발주 일자</th>
+                            <th>발주상품코드</th>
+                            <th>거래처명</th>
+                            <th>발주수량</th>
+                            <th>발주일자</th>
                             <th>총 금액</th>
                             <th>담당자</th>
+                            <th>수정&nbsp;&nbsp;&nbsp;&nbsp;삭제</th>
                         </tr>
                     </thead>
 
-                    <tbody>
-                        <tr data-target=".modal" data-toggle="modal">
-                            <td>1</td>
-                            <td>No.12321</td>
-                            <td>A203</td>
-                            <td>B203</td>
-                            <td>1,000</td>
-                            <td>2021-04-26</td>
-                            <td>400,000,000</td>
-                            <td>마진석</td>
-                        </tr>
-                        <tr data-target=".modal" data-toggle="modal">
-                            <td>2</td>
-                            <td>No.12321</td>
-                            <td>A203</td>
-                            <td>B203</td>
-                            <td>1,000</td>
-                            <td>2021-04-26</td>
-                            <td>400,000,000</td>
-                            <td>마진석</td>
-                        </tr>
-                        <tr data-target=".modal" data-toggle="modal">
-                            <td>3</td>
-                            <td>No.12321</td>
-                            <td>A203</td>
-                            <td>B203</td>
-                            <td>1,000</td>
-                            <td>2021-04-26</td>
-                            <td>400,000,000</td>
-                            <td>마진석</td>
-                        </tr>
-                        <tr data-target=".modal" data-toggle="modal">
-                            <td>4</td>
-                            <td>No.12321</td>
-                            <td>A203</td>
-                            <td>B203</td>
-                            <td>1,000</td>
-                            <td>2021-04-26</td>
-                            <td>400,000,000</td>
-                            <td>마진석</td>
-                        </tr>
-                        <tr data-target=".modal" data-toggle="modal">
-                            <td>5</td>
-                            <td>No.12321</td>
-                            <td>A203</td>
-                            <td>B203</td>
-                            <td>1,000</td>
-                            <td>2021-04-26</td>
-                            <td>400,000,000</td>
-                            <td>마진석</td>
-                        </tr>
-                        <tr data-target=".modal" data-toggle="modal">
-                            <td>1</td>
-                            <td>No.12321</td>
-                            <td>A203</td>
-                            <td>B203</td>
-                            <td>1,000</td>
-                            <td>2021-04-26</td>
-                            <td>400,000,000</td>
-                            <td>마진석</td>
-                        </tr>
-                    </tbody>
-
+                    <tbody class="LookUpList">
+                    	<% for(OrderList o : list) { %>
+                    		<tr>
+                    			<td id="order_No"><%=o.getO_no() %></td>
+                    			<td id="order_Pno"><%=o.getP_no() %></td>
+                    			<td id="order_Cname"><%= o.getC_name() %></td>
+                    			<td id="order_Oquan"><%= o.getO_quan() %></td>
+                    			<td id="order_Odate"><%= o.getO_date() %></td>
+                    			<td id="order_Aprice"><%= o.getA_price() %></td>
+                    			<td id="order_Mname"><%= o.getM_name() %></td>
+                    			<td>
+									<svg class="updateRow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+  										<path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+									</svg>
+									&nbsp;&nbsp;&nbsp;&nbsp;
+									<svg class="deleteRow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  										<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+  										<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+									</svg>
+								</td>
+                    		</tr>
+                    	<% } %>
+ 					</tbody>
                 </table>
-                <!-- 삭제 버튼 클릭 시, 팝업될 모달창 -->
-                <div class="modal" tabindex="-1">
+
+				<!-- 삭제 버튼 클릭 시, 팝업될 모달창 -->
+                <!-- <div class="modal" tabindex="-1">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -153,10 +151,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- 모달 끝 -->
-
-                </tbody>
+                 </tbody>
                 </table>
                 <!-- 게시판 끝 -->
 
@@ -164,36 +161,91 @@
                 <div style="padding-top: 30px; padding-bottom: 30px;"></div>
 
                 <!-- 페이지 네이션 시작 -->
-                <nav aria-label="Page navigation example">
+	           <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
+                    <% if(currentPage > 1) { %>
                         <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
+                            <a class="page-link" href="<%= request.getContextPath() %>/views/order/orderlist?currentPage=<%=currentPage - 1 %>" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                     <% } %>
+                     <% for(int p=startPage; p<=endPage; p++) { %>
                         <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
+                        	<a class="page-link" href="<%= request.getContextPath() %>/views/order/orderlist?currentPage=<%=p %>"><%=p %></a>
+                        </li>
+                     <% } %>
+                     <% if(endPage < maxPage) { %>
+                        <li class="page-item">
+                            <a class="page-link" href="<%= request.getContextPath() %>/views/order/orderlist?currentPage=<%=currentPage + 1 %>" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
+                     <% } %>
                     </ul>
                 </nav>
                 <!-- 페이지 네이션 끝 -->
+                
+                
             <!-- 푸터 영역 추가 -->
             <%@ include file="../common/footer.jsp" %>
                 </div>
             </div>
         </div>
 
-      
-
         <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
             crossorigin="anonymous"></script>
+            
+		<script>
+			var currentPage = "<%=currentPage %>";
+			<%-- var searchKey = "<%=searchKey %>";
+			var searchValue = "<%=searchValue %>"; --%>
+		
+            /* 삭제 버튼 클릭 시 해당 로우 삭제 및 DB에서 값 삭제 */
+            /* $(document).ready(function() {
+	        	$('.updateTr').on('click', function() {
+	            	alert("수정버튼 클릭");
+	            });
+            }); */
+	       	
+	        $(function() {
+	        	$('.deleteRow').on('click',function() {
+	        		
+	        		var o_no = $(this).parent().siblings('td#order_No').text();
+	        		
+	        		/* alert(o_no); */
+	        		
+	        		$.ajax({
+	        			url: "/bono/OrderListDelete.do",
+	        			type: "POST",
+	        			data: {o_no : o_no},
+	        			success: function() {
+	        				console.log("삭제 성공");
+	        			}, error: function() {
+	        				alert("전송실패");
+	        			}
+	        		});
+	        		
+	        		$(this).parent().parent().remove();
+	        	});
+	        });
+			
+	      /*   $(document).ready(function() {
+	        	$('.updateRow').on('click', function() {
+	        		
+	        		alert("");
+	        		
+	        		var update = $(this).parnet().siblings('td#o_quan');
+	        		
+	        		update.replaceWith('<td id="o_quan">' +
+	        								'<input type="number" id="change_o_quan" style="width: 70px; margin-top: 7px;">' +
+	        								'<button id="updateBtn">수정</button> </td>')
+	        	});
+	        }); */
+           
+    	</script>
 
 </body>
 </html>

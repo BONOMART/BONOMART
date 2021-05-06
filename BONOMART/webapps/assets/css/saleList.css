@@ -17,10 +17,9 @@ h3 {
 }
 
 .sale_search_list {
-	height: 600px;
-	background-color: white;
+	height: 500px;
+	background: rgba(218, 217, 217, 0.5);
 	border-radius: 30px;
-	overflow-y: scroll;
 }
 
 .container > h3 {
@@ -33,3 +32,19 @@ h3 {
 	border-radius: 30px;
 	box-shadow: 1px 1px 1px 1px lightgray;
 }
+
+.pagingArea {
+	margin-top: 50px;
+	margin-bottom: 100px;
+}
+
+#updateBtn {
+	color: white;
+	background: #4e73df;
+	border: 1px solid #4e73df;
+	border-radius: 3px;
+}
+
+.table th{
+           border-top: 0px solid black;
+        }

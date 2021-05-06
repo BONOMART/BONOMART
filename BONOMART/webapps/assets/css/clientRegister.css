@@ -106,3 +106,48 @@
             padding-left: 40px;
             padding-bottom: 30px;
         }
+        .foamSpan{
+        	display:inline-block;
+        	width:100px;
+        }
+        
+        .select2{
+        	margin: 0 auto;
+        	margin-top: -20px;
+        	width:605px;
+        }
+        .foamaddSpan{
+        	width:100px;
+        	display:inline-block;
+        }
+        .foamaddDiv{
+        	width:470px;
+        	display:inline-block;
+        }
+
+        thead tr{
+        	border-top:0px solid black;
+        }
+        
+        .table th{
+        	border-top: 0px solid black;
+        }
+        input:invalid{
+			border : 2px solid red;
+		}
+		
+		#bankInput:hover{
+        	cursor : pointer;
+        }
+        #inputval tr:hover{
+        	cursor : pointer;
+        }
+        #modal_bank tbody tr:hover{
+        	cursor : pointer;
+        }
+        #bankInputMod:hover{
+        	cursor : pointer;
+        }
+        
+        
+        

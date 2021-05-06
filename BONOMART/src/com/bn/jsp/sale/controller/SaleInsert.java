@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,33 +31,59 @@ public class SaleInsert extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+    
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// int s_no = Integer.parseInt(request.getParameter("p_no"));
-		// int s_quan = Integer.parseInt(request.getParameter("s_quan"));
+		ArrayList<Sale> list = new ArrayList<>();
 		
-		String s_date = request.getParameter("s_date");
-		System.out.println(s_date);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-DD");
+		int length = 0;
 		
 		try {
-			System.out.println(new java.sql.Date(sdf.parse(s_date).getTime()));
+			length = Integer.parseInt(request.getParameter("len"));
 			
-		} catch (ParseException e) {
-			e.printStackTrace();
+		} catch(NumberFormatException e) {
+			System.out.println("SalesInsert[length]:"+e.getMessage());
+			
 		}
-		/*
-		 * Sale s = new Sale(s_no, s_quan, s_date);
-		 * 
-		 * SaleService service = new SaleService();
-		 * 
-		 * int result = service.insertSale(s);
-		 */
+		
+		for ( int i = 0 ; i < (length/3) ; i++ ) {
+			
+			String s_date = request.getParameter("s_date" + (i+1));
+			String p_no = request.getParameter("p_no" + (i+1));
+			int s_quan = Integer.parseInt(request.getParameter("s_quan" + (i+1)));
+			
+			Sale s = new Sale(p_no, s_quan, Date.valueOf(s_date));
+			list.add(s);
+				
+		}
+				
+		SaleService service = new SaleService();
+		
+		int result = service.insertSale(list);
+		
+		if ( result == list.size() ) {
+			request.getRequestDispatcher("selectList.sa")
+			       .forward(request, response);
+		} else {
+			request.setAttribute("error-msg", "판매정보 등록 실패");
+			
+			request.getRequestDispatcher("views/common/errorPage.jsp")
+			       .forward(request, response);
+		}
+		
+		
+		
 		
 	}
+		
+		
+		
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

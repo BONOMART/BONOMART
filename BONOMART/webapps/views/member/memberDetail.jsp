@@ -14,7 +14,6 @@
 <body>
 
 	<%@include file="/views/common/header.jsp" %>
-	<% if ( m != null ) { %>
    <!-- 여기 부터 회원정보 수정내용-->
    <section class="container">
 		<div class="update-contents">
@@ -56,7 +55,6 @@
             </div>
         </div>
     </section>
-    <% } %>
     <!-- 여기 까지-->
 <%@include file="/views/common/footer.jsp" %>\
 
