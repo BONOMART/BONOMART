@@ -63,14 +63,11 @@
 			            
 			            numb = Number(numb)+1;
 			            
-			            // 등록 후 인풋값 empty 만들기
-						$('#c_code').val("");
-						$('#c_title').val("");
-						$('#bankInput').val("은행명을 고르세요");
-						$('#c_who').val("");
-						$('#c_phone').val("");
-						$('#c_account').val("");
-						$('#c_addr').val("");
+						
+						
+						if(numb==""||c_code==""||c_title==""||b_code==""||c_who==""||c_phone==""||c_account==""||c_addr==""){
+							alert("값을 모두 입력해 주세요");
+						} else {
 			          	
 			            innerHtml = "<tr id='input"+numb+"'> <td>" + numb + "</td> "
 			            innerHtml += "<td>" + c_code + "</td> "
@@ -82,8 +79,17 @@
 			            innerHtml += " <td>" + c_addr + "</td>"
 			            innerHtml += "<input type='hidden' name='b_code' value='"+b_code+"'/> </tr>"
 			
-			            	
+			            // 등록 후 인풋값 empty 만들기
+						$('#c_code').val("");
+						$('#c_title').val("");
+						$('#bankInput').val("은행명을 고르세요");
+						$('#c_who').val("");
+						$('#c_phone').val("");
+						$('#c_account').val("");
+						$('#c_addr').val("");
+			            
 			            $('#inputval').append(innerHtml);
+						}
 			            
 			            $('#inputval tr').on('click',function(){
 			            	var listNum = $(this).children().eq(0).text();
@@ -223,7 +229,7 @@
                         <h3>거래처 등록</h3>
                         <!-- 거래처 등록을 위한 폼 -->
                         <div class="product_select">
-                            <form action="/bono/insertCheck.cl" type="get">
+                            <!-- <form action="/bono/insertCheck.cl" type="get"> -->
                                 <div class="select">
                                 
                                     <div class="item">
@@ -265,7 +271,7 @@
                             <div class="submit_btn">
                                 <!-- 등록버튼 -->
                                 <div class="plus">
-                                    <button type="button" class="btn btn-primary" onclick="addTable();">추가하기</button>
+                                    <button type="submit" class="btn btn-primary" onclick="addTable();">추가하기</button>
                                 </div>
                             </div>
                         </div>
