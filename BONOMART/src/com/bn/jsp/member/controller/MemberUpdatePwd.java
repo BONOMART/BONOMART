@@ -53,9 +53,7 @@ public class MemberUpdatePwd extends HttpServlet {
 		MemberService service = new MemberService();
 		
 		int result = service.updateMemberPwd(m);
-		
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

@@ -129,9 +129,20 @@
 				    					
 				    					if(data == 0) {
 				    						alert("사용 가능한 아이디입니다.");
+				    						var check = confirm("현재 아이디로 사용하시겠습니까?");
+				    						
+				    						// 확인버튼 클릭 시, input창 잠김
+				    						if(check == true)
+				    							document.getElementById('userId').readOnly = true;
+				    						else {
+				    							// 취소버튼 클릭 시, input창 잠기고 해당 input태그에 입력한 데이터 삭제
+				    							document.getElementById('userId').readOnly = false;
+				    							$("#joinForm")[0].reset();
+				    						}
 				    			
 				    					} else {
 				    						alert("이미 사용 중인 아이디입니다.");
+				    						$("#joinForm")[0].reset();		// 중복 확인 시, 아이디 중복이면 입력한 값을 지움.
 				    					}
 				    				}, 
 				    				error : function() {
