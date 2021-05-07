@@ -26,6 +26,7 @@ public class MainChartMonth extends HttpServlet {
     public MainChartMonth() {
         super();
         // TODO Auto-generated constructor stub
+        
     }
 
 	/**

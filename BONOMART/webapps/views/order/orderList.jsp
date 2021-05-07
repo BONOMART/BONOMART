@@ -8,7 +8,7 @@
 	
 	String SearchValue = (String) request.getAttribute("SearchValue");
 	String SearchKey = (String) request.getAttribute("SearchKey");
-
+/* 
 	PageInfo pi = (PageInfo) request.getAttribute("pi");
 	
 	System.out.println(pi);
@@ -17,7 +17,7 @@
 	int currentPage = pi.getCurrentPage();
 	int maxPage = pi.getMaxPage();
 	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
+	int endPage = pi.getEndPage(); */
 %>
 
 <!DOCTYPE html>
@@ -62,8 +62,6 @@
 							<option value="p_no">상품코드</option>
 							<option value="c_name">거래처명</option>
 							<option value="o_quan">발주수량</option>
-							<option value="o_quan">발주일자</option>
-							<option value="o_quan">담당자명</option>
 						</select>
 						<!-- 검색 버튼 -->	
 						<div class="input-group-append">
@@ -92,6 +90,7 @@
                 <!-- 검색 버튼 끝 -->
                 
                 <!-- 추가한 상품들을 나열하여 보여주는 테이블 -->
+               	<div class="scrollable">
                 <table class="table table-hover text-center" id="table1">
                     <thead>
                         <tr data-target=".modal" data-toggle="modal">
@@ -130,6 +129,7 @@
                     	<% } %>
  					</tbody>
                 </table>
+                </div>
 
 				<!-- 삭제 버튼 클릭 시, 팝업될 모달창 -->
                 <!-- <div class="modal" tabindex="-1">
@@ -160,33 +160,6 @@
                 <!-- 게시판 영역과 page nation 영역 사이 공간 -->
                 <div style="padding-top: 30px; padding-bottom: 30px;"></div>
 
-                <!-- 페이지 네이션 시작 -->
-	           <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                    <% if(currentPage > 1) { %>
-                        <li class="page-item">
-                            <a class="page-link" href="<%= request.getContextPath() %>/views/order/orderlist?currentPage=<%=currentPage - 1 %>" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                     <% } %>
-                     <% for(int p=startPage; p<=endPage; p++) { %>
-                        <li class="page-item">
-                        	<a class="page-link" href="<%= request.getContextPath() %>/views/order/orderlist?currentPage=<%=p %>"><%=p %></a>
-                        </li>
-                     <% } %>
-                     <% if(endPage < maxPage) { %>
-                        <li class="page-item">
-                            <a class="page-link" href="<%= request.getContextPath() %>/views/order/orderlist?currentPage=<%=currentPage + 1 %>" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                     <% } %>
-                    </ul>
-                </nav>
-                <!-- 페이지 네이션 끝 -->
-                
-                
             <!-- 푸터 영역 추가 -->
             <%@ include file="../common/footer.jsp" %>
                 </div>
@@ -199,51 +172,85 @@
             crossorigin="anonymous"></script>
             
 		<script>
-			var currentPage = "<%=currentPage %>";
-			<%-- var searchKey = "<%=searchKey %>";
-			var searchValue = "<%=searchValue %>"; --%>
-		
-            /* 삭제 버튼 클릭 시 해당 로우 삭제 및 DB에서 값 삭제 */
-            /* $(document).ready(function() {
-	        	$('.updateTr').on('click', function() {
-	            	alert("수정버튼 클릭");
-	            });
-            }); */
 	       	
+			var arr =[];
+		
 	        $(function() {
 	        	$('.deleteRow').on('click',function() {
-	        		
-	        		var o_no = $(this).parent().siblings('td#order_No').text();
+	        		var self = this;
+	        		var o_no = $(self).parent().siblings('td#order_No').text();
 	        		
 	        		/* alert(o_no); */
 	        		
-	        		$.ajax({
-	        			url: "/bono/OrderListDelete.do",
-	        			type: "POST",
-	        			data: {o_no : o_no},
-	        			success: function() {
-	        				console.log("삭제 성공");
-	        			}, error: function() {
-	        				alert("전송실패");
-	        			}
-	        		});
+	        		if(confirm("정말 삭제학시겠습니까?")) {
+		        		$.ajax({
+		        			url: "/bono/OrderListDelete.do",
+		        			type: "POST",
+		        			data: {o_no : o_no},
+		        			success: function() {
+		        				console.log("삭제 성공");
+					       		$(self).parent().parent().remove();
+					       		//alert("삭제");
+		        			}, error: function() {
+		        				alert("삭제 실패");
+		        			}
+		        		});
+		        	
+	        		}
 	        		
-	        		$(this).parent().parent().remove();
+	        	});
+
+	        	$('.updateRow').on('click', function() {
+
+	        		var update = $(this).parent().siblings('td#order_Oquan');
+	        		
+	        		update.replaceWith('<td id="order_Oquan">' +
+	        								'<input type="number" id="up_o_quan" style="width: 70px; margin-top: 7px;">' +
+	        								'<button id="updateBtn">수정</button> </td>');
+	        		
+	        		$('#updateBtn').on('click', function() {
+	        			var o_no = $(this).parent().siblings('td#order_No').text();
+	        			var p_no = $(this).parent().siblings('td#order_Pno').text();
+	        			var a_price = $(this).parent().siblings('td#order_Aprice');
+	        			
+	        			var success_Update = $('input[id=up_o_quan]').val();
+	        			
+	        			var success_Updated = $(this).parent('td#order_Oquan');
+	        			success_Updated.replaceWith('<td id="order_Oquan">' + success_Update + '</td>');
+	        			
+	        			$.ajax({
+	        				url: "/bono/OrderSpace.or",
+	        				type: "post",
+	        				async: false,
+	        				data : {order_Pno : p_no},
+	        				success : function(data) {
+	        					for (var i in data) {
+	        						arr[i] = data[i];
+	        						console.log(arr[i]);
+	        					}
+	        				},
+	        				error : function(error) {
+	        					console.log("발주정보 에러발생");
+	        				}
+	        			});
+	        			
+	        			var price = success_Update*arr[1];
+	        			a_price.text(price);
+	        			
+	        			$.ajax({
+	        				url: "/bono/OrderUpdate.or",
+	        				type: "post",
+	        				data : {
+	        					order_No : o_no,
+	        					up_o_quan : success_Update },
+	        				success : function() {},
+	        				error : function(error) {
+	        					console.log("발주 수정 전송 실패");
+	        				}
+	        			});
+	        		});
 	        	});
 	        });
-			
-	      /*   $(document).ready(function() {
-	        	$('.updateRow').on('click', function() {
-	        		
-	        		alert("");
-	        		
-	        		var update = $(this).parnet().siblings('td#o_quan');
-	        		
-	        		update.replaceWith('<td id="o_quan">' +
-	        								'<input type="number" id="change_o_quan" style="width: 70px; margin-top: 7px;">' +
-	        								'<button id="updateBtn">수정</button> </td>')
-	        	});
-	        }); */
            
     	</script>
 

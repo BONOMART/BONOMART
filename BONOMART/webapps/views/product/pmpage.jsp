@@ -328,23 +328,31 @@ select {
 		     // 빈 값이 없다면  	    
 		     } else if  (cname != "" || scode != "" || gcode != "" || pname != "" || minnum != "" || ingo !="" || outgo != ""){
 			
-		    	 innerHtml = "<tr><td>" + scode + "</td>" 
-		      	 innerHtml += "<td>" + gname + "</td>" 
-		     	 innerHtml += "<td>" + pname + "</td>" 
-		         innerHtml += "<td>" + minnum + "</td>" 
-		    	 innerHtml += "<td>" + ingo + "</td>"
-		   	     innerHtml += "<td>" + outgo + "</td>"
-		   	     innerHtml += "<td>" + cname + "</td></tr> "
+		    	 
+		    	 
+		    	 if(scode==$('#inputval tr').find('td:eq(0)').text()) {
+		    		 alert("상품코드 : " + scode + " 이(가) 이미 추가 돼 있습니다")
+		    	 } else if (scode!=$('#inputval tr').find('td:eq(0)').text()){
+			    			 innerHtml = "<tr><td>" + scode + "</td>" 
+			      			 innerHtml += "<td>" + gname + "</td>" 
+		     				 innerHtml += "<td>" + pname + "</td>" 
+			       	 		 innerHtml += "<td>" + minnum + "</td>" 
+			    			 innerHtml += "<td>" + ingo + "</td>"
+		   		  	 		 innerHtml += "<td>" + outgo + "</td>"
+		   	  	  		 	 innerHtml += "<td>" + cname + "</td></tr> "
 		   
 		        
-		    	$('#inputval').append(innerHtml);
-		        
+		    					$('#inputval').append(innerHtml);
+		   	  	  		 
+		   	  				  	//  추가버튼 누르고 입력 창에 값 초기화
+			    				$('input').val("")
+			    	        	$('select').find('option:first').attr('selected', 'selected');
+		    	 }
+		    	 
 		        }
 			
 			
-			//  추가버튼 누르고 입력 창에 값 초기화
-			$('input').val("")
-	        $('select').find('option:first').attr('selected', 'selected');
+		
 			
 			
 			
@@ -474,11 +482,10 @@ select {
 					  $('#inputval tr:eq('+i+')').find("td:eq(4)").text($("#lingo").val())
 					  $('#inputval tr:eq('+i+')').find("td:eq(5)").text($("#loutgo").val())
 					  $('#inputval tr:eq('+i+')').find("td:eq(6)").text($('#lcname').find('option:selected').text())
-				  
-				}
+			  
+			}
 				
 		}	  
-			
 		   $('#myModal').modal("hide");
 	}
 	

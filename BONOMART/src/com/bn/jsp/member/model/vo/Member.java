@@ -45,7 +45,7 @@ public class Member implements Serializable{
 		this.joinAccess = joinAccess;
 		this.mdate = mdate;
 	}
-	
+
 	public Member(String userName, String userId, String userPwd, String email, String phone,
 			String dCode, String jCode, String authority, char joinAccess) {
 		super();
@@ -167,6 +167,6 @@ public class Member implements Serializable{
 	}
 
 
-	
+
 }
 
