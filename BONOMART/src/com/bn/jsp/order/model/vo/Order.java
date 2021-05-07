@@ -15,11 +15,11 @@ public class Order implements Serializable {
 	private String c_no; // 거래처코드
 	private int m_no; // 회원번호
 	private String m_name; // member name
-
+	
 	public Order() {
 
 	}
-
+	
 	public Order(String o_quan, Date o_date, String o_status, String p_no, int m_no, String c_no) {
 		super();
 		this.o_quan = o_quan;
@@ -38,6 +38,11 @@ public class Order implements Serializable {
 		this.o_status = o_status;
 		this.p_no = p_no;
 		this.m_no = m_no;
+	}
+
+	public Order(int o_no, String o_quan) {
+		this.o_no = o_no;
+		this.o_quan = o_quan;
 	}
 
 	@Override

@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bn.jsp.mainPage.model.service.MainService;
-import com.bn.jsp.mainPage.model.vo.MainPageInfo;
+import com.bn.jsp.mainPage.model.vo.MainPageDonut;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class MainEarning
+ * Servlet implementation class donutChart
  */
-@WebServlet("/earn.mp")
-public class MainEarning extends HttpServlet {
+@WebServlet("/chart.do")
+public class donutChart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MainEarning() {
+    public donutChart() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,13 +35,12 @@ public class MainEarning extends HttpServlet {
 		
 		MainService service = new MainService();
 		
-		ArrayList<MainPageInfo> list = service.selectEarning();
+		ArrayList<MainPageDonut> list = service.ChartDonut();
 		
 		response.setContentType("application/json; charset=UTF-8");
 		
 		new Gson().toJson(list, response.getWriter());
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

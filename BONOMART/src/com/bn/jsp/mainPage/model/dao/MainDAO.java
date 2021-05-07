@@ -10,8 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
-
 import com.bn.jsp.mainPage.model.vo.MainOrderV;
+import com.bn.jsp.mainPage.model.vo.MainChartMon;
+import com.bn.jsp.mainPage.model.vo.MainPageDonut;
 import com.bn.jsp.mainPage.model.vo.MainPageInfo;
 import com.bn.jsp.sale.model.dao.SaleDAO;
 
@@ -37,40 +38,91 @@ private Properties prop;
 		}
 	}
 
-	public ArrayList<MainPageInfo> selectEarning(Connection con) {
+	public MainPageInfo selectEarningDate(Connection con) {
 
-		ArrayList<MainPageInfo> list = new ArrayList<>();
-		PreparedStatement ps1 = null, ps2 = null;
-		ResultSet rs1 = null, rs2 = null;
+		MainPageInfo mp = new MainPageInfo();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
 		
-		String sql1 = prop.getProperty("D_selectEarning");
-		String sql2 = prop.getProperty("M_selectEarning");
+		String sql = prop.getProperty("D_selectEarning");
 		
 		try {
-			ps1 = con.prepareStatement(sql1);
-			ps2 = con.prepareStatement(sql2);
+			ps = con.prepareStatement(sql);
 			
-			rs1 = ps1.executeQuery();
-			rs2 = ps2.executeQuery();
+			rs = ps.executeQuery();
 			
-			if ( rs1.next() ) {
+			if ( rs.next() ) {
 				
-				MainPageInfo mp1 = new MainPageInfo();
-				
-				mp1.setDate(rs1.getString("d_date"));
-				mp1.setAmount(rs1.getString("d_amount"));
-				
-				list.add(mp1);
+				mp.setDate(rs.getString("d_date"));
+				mp.setAmount(rs.getString("d_amount"));
 			}
 			
-			if ( rs2.next() ) {
+			System.out.println(mp.getDate() + ", " + mp.getAmount());
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return mp;
+	}
+
+	public MainPageInfo selectEarningMonth(Connection con) {
+		
+		MainPageInfo mp = new MainPageInfo();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("M_selectEarning");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			if ( rs.next() ) {
 				
-				MainPageInfo mp2 = new MainPageInfo();
+				mp.setDate(rs.getString("month"));
+				mp.setAmount(rs.getString("m_amount"));
+			}
+			
+			System.out.println(mp.getDate() + ", " + mp.getAmount());
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return mp;
+	}
+
+	public ArrayList<MainPageInfo> selectLatest5days(Connection con) {
+		
+		ArrayList<MainPageInfo> list = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("D_latestSale");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			while ( rs.next() ) {
 				
-				mp2.setDate(rs2.getString("month"));
-				mp2.setAmount(rs2.getString("m_amount"));
+				MainPageInfo mp = new MainPageInfo();
 				
-				list.add(mp2);
+				mp.setDate(rs.getString("d_date"));
+				mp.setAmount(rs.getString("d_amount"));
+				
+				list.add(mp);
 			}
 			
 			System.out.println(list);
@@ -79,10 +131,8 @@ private Properties prop;
 			e.printStackTrace();
 			
 		} finally {
-			close(rs1);
-			close(rs2);
-			close(ps1);
-			close(rs2);
+			close(rs);
+			close(ps);
 		}
 		
 		return list;
@@ -124,14 +174,62 @@ private Properties prop;
 		return list;
 	}
 
+	public ArrayList<MainPageDonut> ChartDonut(Connection con) {
+		ArrayList<MainPageDonut> list = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("ChartDonut");
+		
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				MainPageDonut m = new MainPageDonut();
+				
+				m.setS_quan(rs.getInt("s_quan"));
+				m.setC_name(rs.getString("c_name"));
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return list;
+	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public ArrayList<MainChartMon> ChartMonth(Connection con) {
+		ArrayList<MainChartMon> list = new ArrayList<>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("ChartMonth");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				MainChartMon m = new MainChartMon();
+				
+				m.setAmount(rs.getInt("m_amount"));
+				m.setMonth(rs.getString("month"));
+				
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+		
+	}
 }

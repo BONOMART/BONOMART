@@ -71,8 +71,9 @@
                     </div>
                 </form>
 
-
                 <script>
+                	var finalCheck = 0;	
+                
                     $(function() {
                         $('.comment').hide();
                         $('input').keyup(function() {
@@ -92,18 +93,21 @@
                     
                     // 가입하기 버튼 기능.
                     function login() {
-                    	
                     	if(!document.joinForm.userPwd.value) {
                     		alert("비밀번호를 입력하지 않으셨습니다.");
-                    		return false;
                     	}
-                    	
+                    	else if(!document.joinForm.userId.value) {
+                    		alert("아이디를 입력하지 않으셨습니다.");
+                    	}
+                    	else if(finalCheck == 0) {
+                    		alert("아이디 중복 체크를 먼저 진행하셔야 합니다.");
+                    	}
                     	else {
                     		var check = confirm('회원 가입이 완료되었습니다.');
                     		$('#joinForm').submit();
+                    		finalCheck = 0;
                     	}
 					}
-                    
                     
                     /*
                     // 날짜 생성
@@ -132,16 +136,19 @@
 				    						var check = confirm("현재 아이디로 사용하시겠습니까?");
 				    						
 				    						// 확인버튼 클릭 시, input창 잠김
-				    						if(check == true)
+				    						if(check == true) {
 				    							document.getElementById('userId').readOnly = true;
-				    						else {
+				    							finalCheck = 1;
+				    						} else {
 				    							// 취소버튼 클릭 시, input창 잠기고 해당 input태그에 입력한 데이터 삭제
 				    							document.getElementById('userId').readOnly = false;
+				    							finalCheck = 0;
 				    							$("#joinForm")[0].reset();
 				    						}
 				    			
 				    					} else {
 				    						alert("이미 사용 중인 아이디입니다.");
+				    						finalCheck = 0;
 				    						$("#joinForm")[0].reset();		// 중복 확인 시, 아이디 중복이면 입력한 값을 지움.
 				    					}
 				    				}, 

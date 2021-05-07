@@ -38,7 +38,6 @@ public class OrderInsert extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		OrderService orderService = new OrderService();
 		response.setContentType("application/json; charset=UTF-8");
@@ -72,11 +71,13 @@ public class OrderInsert extends HttpServlet {
 		}
 		
 		System.out.println("json to parse orderList : " + orderList);
+		Map<String, String> resultMap = new HashMap<String, String>();
 		if(result > 0) {
-			response.getWriter().append("SUCCESS");			
+			resultMap.put("result", "success");
 		} else {
-			response.getWriter().append("ERROR");	
+			resultMap.put("result", "fail");
 		}
+		response.getWriter().write(new Gson().toJson(resultMap));
 		
 	}
 

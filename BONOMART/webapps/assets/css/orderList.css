@@ -83,7 +83,7 @@
         }
 
         .scrollable {
-            height: 620px;
+            height: 600px;
             overflow-y: scroll;
         }
 
@@ -112,4 +112,11 @@
         svg:hover {
         	cursor: pointer;
         }
+        
+        #updateBtn {
+			color: white;
+			background: #4e73df;
+			border: 1px solid #4e73df;
+			border-radius: 3px;
+		}
         

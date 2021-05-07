@@ -13,6 +13,7 @@
 		int listCount = pi.getListCount();
 		int cur = pi.getCurrentPage();
     %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +28,6 @@
 <body style= "background: whitesmoke;">
 
 <%@ include file ="../common/header.jsp" %>
-
 
     <div id="graph">
                             <div id="search">
@@ -132,6 +132,9 @@
 
 	 /* 거절 버튼 클릭  */
 	$("[name=No]").on('click',function(){
+		var com = confirm("회원요청을 거절하시겠습니까?");
+		
+		if(com == true){
 		
 		var mno = $(this).parent().parent().children().first().attr('id');
 				
@@ -145,12 +148,15 @@
 				
 				
 				location.href="/bono/joinRequest.ad"
-				alert("승인 거절");
 			}, error : function(error){
 				alert("승인 거절오류!");
 			}
 			
 		});
+		alert("회원요청을 거절하였습다.")
+		}else if(com == false) {
+		alert("취소하였습니다.");
+		}
 	});
 	
  	
@@ -160,7 +166,9 @@
  		var mno = $(this).parent().parent().children().first().attr('id');
  				
  		
- 		
+		var com = confirm("회원요청을 승인하시겠습니까?");
+		
+		if(com == true){
  		$.ajax({
  			url : "/bono/adminOk.ad?mno=" + mno,
  			type : "get",
@@ -171,12 +179,15 @@
  				
  				
  				location.href="/bono/joinRequest.ad"
- 				alert("승인 성공!");
  			}, error : function(error){
  				alert("승인 실패!");
  			}
  			
  		});
+ 		alert("회원요청을 승인하였습다.")
+		}else if(com == false) {
+		alert("취소하였습니다.");
+		}
  	});
 	
  
