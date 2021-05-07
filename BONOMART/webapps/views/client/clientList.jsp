@@ -16,6 +16,7 @@
 	int cur = pi.getCurrentPage();
 	
 	
+	
 %>
 <!DOCTYPE html>
 <html>
