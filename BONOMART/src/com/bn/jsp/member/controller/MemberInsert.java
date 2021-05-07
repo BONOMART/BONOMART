@@ -41,7 +41,7 @@ public class MemberInsert extends HttpServlet {
 		String jCode = request.getParameter("jCode");
 		//String mdate = request.getParameter("mdate");
 		
-		Member m = new Member(userName, userId, userPwd, email, phone, dCode, jCode, 'N', 'N');
+		Member m = new Member(userName, userId, userPwd, email, phone, dCode, jCode, "N", 'N');
 		
 		MemberService service = new MemberService();
 		
