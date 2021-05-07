@@ -83,7 +83,7 @@
                     </div>    
                 </div>  
                    
-                <div class="pyo1-2" ></div>
+                <div class="pyo1-2"></div>
 
 
                  <div class="month-card">
