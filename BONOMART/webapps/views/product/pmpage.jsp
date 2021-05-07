@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>상품 등록</title>
 <link rel="stylesheet" href="../../assets/css/header.css" />
 <link rel="stylesheet" href="../../assets/css/pmpage.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"

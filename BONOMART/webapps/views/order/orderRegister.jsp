@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% String p_no = request.getParameter("p_no");
+   String c_no = request.getParameter("c_no");%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,23 +28,24 @@
 
                         <!-- 발주 등록을 위한 폼 -->
                         <div class="product_select">
+							<% if(p_no!=null&&c_no!=null) { %>
                             <form action="/bono/insertInsert.do" type="POST">
                                 <div class="select">
                                     <div class="item">
                                         <div>
                                             발주상품코드
                                             <div class="col-sm-8">
-                                            	<input type="text" class="form-control" id="pno">
+                                            	<input type="text" class="form-control" id="pno" value="<%=p_no%>">
                                             </div>
                                         </div>
                                         <div>
                                             거래처 코드&nbsp;&nbsp;
                                             <div class="col-sm-8">
-                                            	<input type="text" class="form-control" id="cno">
+                                            	<input type="text" class="form-control" id="cno" value="<%=c_no%>">
                                             </div>
                                         </div>
                                         <div>
-                                            담당자명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="col-sm-8"><input type="text" class="form-control" id="cname"></div>
+                                            담당자명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="col-sm-8"><input type="text" class="form-control" id="cname" value="<%=m.getUserName()%>"></div>
                                         </div>
                                     </div>
 
@@ -59,6 +62,41 @@
                                     </div>
                                 </div>
                             </form>
+                       		<%} else {%>
+                       		<form action="/bono/insertInsert.do" type="POST">
+                                <div class="select">
+                                    <div class="item">
+                                        <div>
+                                            발주상품코드
+                                            <div class="col-sm-8">
+                                            	<input type="text" class="form-control" id="pno">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            거래처 코드&nbsp;&nbsp;
+                                            <div class="col-sm-8">
+                                            	<input type="text" class="form-control" id="cno">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            담당자명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="col-sm-8"><input type="text" class="form-control" id="cname" value="<%=m.getUserName()%>"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="item" id="ss">
+                                        <div>
+                                            발주 수량 <div class="col-sm-8"><input type="number" class="form-control" id="oquan"></div>
+                                        </div>
+                                        <div>
+                                            발주 일자 <div class="col-sm-8"><input type="date" class="form-control" id="odate"></div>
+                                        </div>
+                                        <div>
+                                            총 금액&nbsp;&nbsp;&nbsp;<div class="col-sm-8"><input type="number" class="form-control" id="sprice"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>    
+                            <%} %>                     
 
                             <!-- 상품 하단 리스트 등록 버튼 및 하단 리스트에 원하는 상품 검색할 수 있는 검색버튼 -->
                             <div class="submit_btn">
