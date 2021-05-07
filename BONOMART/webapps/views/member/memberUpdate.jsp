@@ -219,8 +219,15 @@
 
      	// 회원 탈퇴
 		function deleteMember() { 
-			// 쿼리 스트링
-			location.href = "/bono/delete.me?mid=<%=m.getUserId()%>"; 
+     		var deleteCheck = confirm("정말 탈퇴하시겠습니까?");
+     		
+     		if(deleteCheck == true) {
+     			// 쿼리 스트링
+    			location.href = "/bono/delete.me?mid=<%=m.getUserId()%>"; 
+     		}
+     		else {
+     			return;
+     		}
 		}
 		
       
