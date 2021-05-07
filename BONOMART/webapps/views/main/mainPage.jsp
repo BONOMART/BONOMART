@@ -69,8 +69,8 @@
                 <div class="day-card">
                     <div class="day-card-inner">
                         <div class="day-money">
-                          <div class="day-earnings-text" >Earnings(Day)</div>
-                          <div class="day-money-text">\1,300,000</div>
+                          <div class="day-earnings-text" ></div>
+                          <div class="day-money-text"></div>
                         </div>
                         <div class="icon">
                           <i class="fa fa-krw" aria-hidden="true"    style=  "
@@ -90,8 +90,8 @@
                  <div class="month-card">
                     <div class="month-card-inner">
                          <div class="month-money">
-                             <div class="month-earnings-text">Earnings(Month)</div>
-                             <div class="month-money-text">\90,000,000</div>
+                             <div class="month-earnings-text"></div>
+                             <div class="month-money-text"></div>
                          </div>
                          <div class="icon">
                              <i class="fa fa-krw" aria-hidden="true"   style=  "
@@ -101,55 +101,10 @@
         margin-top: 7%;
         color: rgba(0, 0, 255, 0.15); "></i>
         
-        <script>
-        	$(function() {
-        		$.ajax({
-					url : "/bono/earn.mp",
-					type : "post",
-					success : function(data) {
-					
-						console.log(data);
-						
-						var $date = data[i].date;
-						var $d_amount = data[i].amount;
-						for(var i in data) {
-							
-						}
-					
-					}, error : function(error) {
-						console.log("상품정보 에러발생");
-					}
-				});
-        	});
-        </script>
-        
                          </div>
                     </div>     
                 </div>
             </div>
-            
-		<script>
-        	$(function() {
-        		$.ajax({
-					url : "/bono/orderList.mp",
-					type : "post",
-					success : function(data) {
-						for(var i in data){
-							
-						$('#lackorder tr').eq(i).children().eq(1).text(data[i].p_name);
-						$('#lackorder tr').eq(i).children().eq(2).text(data[i].p_quan);
-						$('#lackorder tr').eq(i).children().eq(3).children().css('display','inline-block');
-						$('#lackorder tr').eq(i).children().eq(4).text(data[i].p_no);
-						$('#lackorder tr').eq(i).children().eq(5).text(data[i].c_no);
-						
-						}
-					
-					}, error : function(error) {
-						
-					}
-				});
-        	});
-        </script>
         
             <!-- 메인페이지 발주 게시판-->
             <div class="order">
@@ -229,67 +184,97 @@
             
         });
     });
-
-
    
 	// 일 별 매출액
-	var ctx = document.getElementById('myChart').getContext('2d');
-    var chart = new Chart(ctx, {
-
-        type: 'line',
-
-        data: {
-            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            datasets: [{
-                label: '일 별 매출액',
-            	borderColor: 'rgba(0, 0, 237, 0.70)',
-              	fill : false,
-                data: [710000, 420000, 700000, 470000, 360000, 600000, 450000]
-            }]
-        },
-		options: {
-       		maintainAspectRatio : false,
-            legend : {
-                display : false
-            },
-            title : {
-                display : true,
-                text: '일 별 매출액',
-                fontSize : 13
+	var dates = [];
+	var amounts = [];
+        
+        $.ajax({
+			url : "/bono/dateGraph.mp",
+			type : "post",
+			async : "false",
+			success : function(data) {
+				
+				console.log(data);
+				
+				var no = 0;
+				
+				for ( var i in data ) {
+					 
+					eval("dates[" + no + "] = data[i].date");
+					eval("amounts[" + no + "] = data[i].amount");
+					
+					no++;
+				}
+				
+				console.log(dates);
+				console.log(amounts);
+				
+				var ctx = document.getElementById('myChart').getContext('2d');
+			    var chart = new Chart(ctx, {
+			    	
+			        type: 'line',
+				
+				data: {
+            	labels: [dates[0], dates[1], dates[2], dates[3], dates[4]],
+            	datasets: [{
+                	label: '일 별 매출액',
+            		borderColor: 'rgba(0, 0, 237, 0.70)',
+              		fill : false,
+                	data: [amounts[0], amounts[1], amounts[2], amounts[3], amounts[4]]
+            	}]
+        	},
+			options: {
+       			maintainAspectRatio : false,
+            	legend : {
+                	display : false
+            	},
+            	title : {
+                	display : true,
+                	text: '일 별 매출액',
+                	fontSize : 13
                 
-            },
-            tooltips : {
-                backgroundColor: "rgb(255,255,255)",
-      bodyFontColor: "#858796",
-      titleMarginBottom: 10,
-      titleFontColor: '#6e707e',
-      titleFontSize: 14,
-      borderColor: '#dddfeb',
-      borderWidth: 1,
-      xPadding: 15,
-      yPadding: 15,
-      displayColors: false,
-      intersect: false,
-      mode: 'index',
-      caretPadding: 10,
-      callbacks: {
-        label: function(tooltipItem, chart) {
-          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
-        }
-      }
-            }
+            	},
+            	tooltips : {
+                	backgroundColor: "rgb(255,255,255)",
+      	bodyFontColor: "#858796",
+      	titleMarginBottom: 10,
+      	titleFontColor: '#6e707e',
+      	titleFontSize: 14,
+      	borderColor: '#dddfeb',
+      	borderWidth: 1,
+      	xPadding: 15,
+      	yPadding: 15,
+      	displayColors: false,
+      	intersect: false,
+      	mode: 'index',
+      	caretPadding: 10,
+      	callbacks: {
+        	label: function(tooltipItem, chart) {
+          	var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          	return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+        	}
+      	}
+            	}
             
-         }
-    });
+         	}
+			    });
+				
+			
+			}, error : function(error) {
+				console.log("상품정보 에러발생");
+			}
+		});
+        
+    
     
     
     // 월 별 매출액
 	var ctx = document.getElementById('myChart2').getContext('2d');
     var chart = new Chart(ctx, {
-
         type: 'line',
-
+        
+        
         data: {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
             datasets: [{
@@ -333,13 +318,10 @@
             }
         }
     });
-
     // 도넛차트
     var ctx = document.getElementById('myChart3').getContext('2d');
     var chart = new Chart(ctx, {
-
         type: 'pie',
-
         data: {
             labels: ['아수스', '애플', '삼성'],
             datasets: [{
@@ -362,7 +344,6 @@
     
     Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
     Chart.defaults.global.defaultFontColor = '#858796';
-
     function number_format(number, decimals, dec_point, thousands_sep) {
       
       number = (number + '').replace(',', '').replace(' ', '');
@@ -386,6 +367,59 @@
       }
       return s.join(dec);
     }
+    
+    // 오늘, 이번달 매출
+    $(function() {
+		$.ajax({
+			url : "/bono/earnDate.mp",
+			type : "post",
+			success : function(data) {
+				
+				$('.day-earnings-text').text(data.date);
+				$('.day-money-text').text(data.amount);
+			
+			}, error : function(error) {
+				console.log("상품정보 에러발생");
+			}
+		});
+		
+		$.ajax({
+			url : "/bono/earnMonth.mp",
+			type : "post",
+			success : function(data) {
+				
+				$('.month-earnings-text').text(data.date);
+				$('.month-money-text').text(data.amount);
+			
+			}, error : function(error) {
+				console.log("상품정보 에러발생");
+			}
+		});
+		
+	});
+</script>
+
+<script>
+	$(function() {
+		$.ajax({
+			url : "/bono/orderList.mp",
+			type : "post",
+			success : function(data) {
+				for(var i in data){
+					
+				$('#lackorder tr').eq(i).children().eq(1).text(data[i].p_name);
+				$('#lackorder tr').eq(i).children().eq(2).text(data[i].p_quan);
+				$('#lackorder tr').eq(i).children().eq(3).children().css('display','inline-block');
+				$('#lackorder tr').eq(i).children().eq(4).text(data[i].p_no);
+				$('#lackorder tr').eq(i).children().eq(5).text(data[i].c_no);
+				
+				}
+			
+			}, error : function(error) {
+				
+			}
+		});
+	});
 </script>
 
  
