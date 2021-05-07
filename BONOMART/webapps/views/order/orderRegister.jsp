@@ -167,9 +167,14 @@
                     				test: "test"
                     			},
                     			success: function(data) {
-                    				
                     				console.log(data);
-                    			}, error: function(data) {
+                    				location.href="/bono/order/orderlist.do";
+                    			},
+                    			error: function(data) {
+                    				
+                    				if(data < 0 || data == 0) {
+                    					alert("정보를 모두 입력해주세요.");
+                    				}
                     				console.log(data);
                     			}
                     			

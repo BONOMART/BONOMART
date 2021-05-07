@@ -206,7 +206,7 @@ public class OrderDAO {
 		return result;
 	}
 
-	public ArrayList<OrderList> searchList(Connection con, int currentPage) {
+	public ArrayList<OrderList> searchList(Connection con) {
 		
 		ArrayList<OrderList> list = new ArrayList<>();
 		
@@ -215,15 +215,12 @@ public class OrderDAO {
 		ResultSet rs = null;
 		
 		String sql = prop.getProperty("searchList");
-		
-		int start = startNum(currentPage);
-		int end = endNum(currentPage);
 
 		try {
 			ps = con.prepareStatement(sql);
 			
-			ps.setInt(1, start);
-			ps.setInt(2, end);
+//			ps.setInt(1, start);
+//			ps.setInt(2, end);
 			
 			rs = ps.executeQuery();
 			while (rs.next()) {
@@ -249,7 +246,7 @@ public class OrderDAO {
 		return list;
 	}
 	
-	public ArrayList<OrderList> searchList(Connection con, int currentPage, String searchKey, String searchValue) {
+	public ArrayList<OrderList> searchList(Connection con, String searchKey, String searchValue) {
 		
 		ArrayList<OrderList> list = new ArrayList<>();
 		
@@ -257,13 +254,14 @@ public class OrderDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
+		if(searchKey.equals("p_no")) searchKey = "o." + searchKey;
 		String headSql = prop.getProperty("searchListConditionKey");
 		String conditionSql = " WHERE " + searchKey + "=?";
 		String tailSql = prop.getProperty("searchListConditionValue");
 		String sql = headSql + conditionSql + tailSql;
 		
-		int start = startNum(currentPage);
-		int end = endNum(currentPage);
+//		int start = startNum(currentPage);
+//		int end = endNum(currentPage);
 
 		try {
 			ps = con.prepareStatement(sql);
@@ -275,9 +273,6 @@ public class OrderDAO {
 			default:
 				ps.setString(1, searchValue);
 			}
-			
-			ps.setInt(2, start);
-			ps.setInt(3, end);
 			
 			rs = ps.executeQuery();
 			while (rs.next()) {
@@ -320,6 +315,62 @@ public class OrderDAO {
 			e.printStackTrace();
 		} finally {
 			close(con);
+		}
+		
+		return result;
+	}
+
+	public ArrayList selectOrderInfo(Connection con, String pno) {
+		
+		ArrayList list = new ArrayList();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectOrderInfo");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, pno);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				list.add(rs.getString(1));
+				list.add(rs.getInt(2));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(ps);
+		}
+		
+		return list;
+	}
+
+	public int updateOrder(Connection con, Order o) {
+		
+		int result = 0;
+		PreparedStatement ps = null;
+		
+		String sql = prop.getProperty("updateOrder");
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1,  o.getO_quan());
+			ps.setInt(2,  o.getO_no());
+			
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(ps);
 		}
 		
 		return result;
