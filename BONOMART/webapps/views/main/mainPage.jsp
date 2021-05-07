@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>메인페이지</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
    <script src="/bono/assets/js/jquery-3.6.0.min.js"></script>
@@ -83,8 +83,7 @@
                     </div>    
                 </div>  
                    
-                <!-- 여백 -->
-                <br />
+                <div class="pyo1-2" ></div>
 
 
                  <div class="month-card">
@@ -184,8 +183,6 @@
             
         });
     });
-
-
    
 	// 일 별 매출액
 	var dates = [];
@@ -267,10 +264,6 @@
 				console.log("상품정보 에러발생");
 			}
 		});
-
-        
-    
-    
     
     // 월별 차트
     $(function(){
@@ -334,9 +327,6 @@
 			}
 		});
 	});
-    
-   
-
     // 도넛차트
     $(function(){ 
  	  	 $.ajax({
@@ -372,7 +362,6 @@
  
     Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
     Chart.defaults.global.defaultFontColor = '#858796';
-
     function number_format(number, decimals, dec_point, thousands_sep) {
       
       number = (number + '').replace(',', '').replace(' ', '');
@@ -444,7 +433,13 @@
 				$('#lackorder tr').eq(i).children().eq(5).text(data[i].c_no);
 				
 				}
-			
+				
+				$('#lackorder tr').on('click',function(){
+					var p_no = $(this).children().eq(4).text();
+					var c_no = $(this).children().eq(5).text();
+					
+					location.href="/bono/views/order/orderRegister.jsp?p_no="+p_no+"&c_no="+c_no
+				});
 			}, error : function(error) {
 				
 			}
