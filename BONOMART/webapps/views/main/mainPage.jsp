@@ -434,9 +434,9 @@
 				
 				}
 				
-				$('#lackorder tr').on('click',function(){
-					var p_no = $(this).children().eq(4).text();
-					var c_no = $(this).children().eq(5).text();
+				$('#lackorder tr button').on('click',function(){
+					var p_no = $(this).parent().parent().children().eq(4).text();
+					var c_no = $(this).parent().parent().children().eq(5).text();
 					
 					location.href="/bono/views/order/orderRegister.jsp?p_no="+p_no+"&c_no="+c_no
 				});
