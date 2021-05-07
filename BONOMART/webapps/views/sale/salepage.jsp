@@ -184,8 +184,9 @@
 	        		
 	        		// td를 input태그로 바꾸기
 	        		var update = $(this).parent().siblings('td#s_quan');
+	        		var val_up = $(this).parent().siblings('td#s_quan').text();
 	        		update.replaceWith('<td id="s_quan"> <input type="number" id="up_s_quan"' 
-	        				            + ' style="width:70px; margin-top:7px;"/>' 
+	        				            + ' style="width:70px; margin-top:7px;" value="' + val_up + '"/>' 
 	        				            + '<button id="updateBtn">수정</button> </td>');
 	        		
 	        		// 수정버튼 클릭 시 input에 바꾼 수량과 그에 따른 총 금액이 변경됨
