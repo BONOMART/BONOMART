@@ -158,35 +158,8 @@
                 <!-- 게시판 끝 -->
 
                 <!-- 게시판 영역과 page nation 영역 사이 공간 -->
-                <%-- <div style="padding-top: 30px; padding-bottom: 30px;"></div>
+                <div style="padding-top: 30px; padding-bottom: 30px;"></div>
 
-                <!-- 페이지 네이션 시작 -->
-	           <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                    <% if(currentPage > 1) { %>
-                        <li class="page-item">
-                            <a class="page-link" href="<%= request.getContextPath() %>/views/order/orderlist?currentPage=<%=currentPage - 1 %>" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                     <% } %>
-                     <% for(int p=startPage; p<=endPage; p++) { %>
-                        <li class="page-item">
-                        	<a class="page-link" href="<%= request.getContextPath() %>/views/order/orderlist?currentPage=<%=p %>"><%=p %></a>
-                        </li>
-                     <% } %>
-                     <% if(endPage < maxPage) { %>
-                        <li class="page-item">
-                            <a class="page-link" href="<%= request.getContextPath() %>/views/order/orderlist?currentPage=<%=currentPage + 1 %>" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                     <% } %>
-                    </ul>
-                </nav> --%>
-                <!-- 페이지 네이션 끝 -->
-                
-                
             <!-- 푸터 영역 추가 -->
             <%@ include file="../common/footer.jsp" %>
                 </div>
