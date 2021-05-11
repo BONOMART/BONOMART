@@ -83,8 +83,7 @@
                     </div>    
                 </div>  
                    
-                <!-- 여백 -->
-                <br />
+                <div class="pyo1-2"></div>
 
 
                  <div class="month-card">
@@ -274,9 +273,7 @@
 			success : function(result) {
 				var ctx = document.getElementById('myChart2').getContext('2d');
 			    var chart = new Chart(ctx, {
-
 			    	type: 'line',
-
 			        data: {
 			            labels: [result[0].month, result[1].month,
 			            			result[2].month, result[3].month, 
@@ -324,7 +321,6 @@
 			            }
 			        }
 			    });
-
 			}
 		});
 	});
@@ -336,9 +332,7 @@
     		success : function(result) {
     			var ctx = document.getElementById('myChart3').getContext('2d');
     			 var chart = new Chart(ctx, {
-
     			        type: 'pie',
-
     			        data: {
     			            labels: [result[0].c_name, result[1].c_name, result[2].c_name],
     			            datasets: [{
@@ -435,6 +429,12 @@
 				
 				}
 				
+				$('#lackorder tr button').on('click',function(){
+					var p_no = $(this).parent().parent().children().eq(4).text();
+					var c_no = $(this).parent().parent().children().eq(5).text();
+					
+					location.href="/bono/views/order/orderRegister.jsp?p_no="+p_no+"&c_no="+c_no
+				});
 			}, error : function(error) {
 				
 			}

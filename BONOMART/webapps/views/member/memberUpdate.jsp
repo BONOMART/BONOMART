@@ -130,7 +130,6 @@
                     $('#check').css('color','red')
                     $('.pass-change').attr('type','button');
                     $('input[name=newPass2]').css('outline','none').css('box-shadow','0 0 0 2px red');
-
                     $('.pass-change').on('click',function(){
                         $('input[name=newPass2]').focus();
                         
@@ -140,7 +139,6 @@
                     $('#check').text('비밀번호가 일치합니다!');
                     $('#check').css('color','green')
                     $('.pass-change').attr('type','submit');
-
                     $('input[name=newPass2]').css('outline','none').css('box-shadow','0 0 0 2px green');
     
                     
@@ -150,30 +148,25 @@
                 if($('input[name=newPass]').val() != $('input[name=newPass2]').val()){
                     $('#check').text('비밀번호가 일치하지 않습니다!');
                     $('#check').css('color','red')
-
                     // 
                     $('input[name=newPass2]').css('outline','none').css('box-shadow','0 0 0 2px red');
                     $('.pass-change').attr('type','button');
                     $('.pass-change').on('click',function(){
                         $('input[name=newPass2]').focus();
-
                     })
                 } else if($('input[name=newPass]').val() == '' && $('input[name=newPass2]').val() == '') {
                 	$('#check').text('비밀번호를 입력해주세요!');
                     $('#check').css('color','red')
-
                    	$('input[name=newPass2]').css('outline','none').css('box-shadow','0 0 0 2px red');
                     $('.pass-change').attr('type','button');
                     $('.pass-change').on('click',function(){
                         $('input[name=newPass2]').focus();
-
                     })
                     
                 } else {
                     $('#check').text('비밀번호가 일치합니다!');
                     $('#check').css('color','green')
                     $('.pass-change').attr('type','submit');
-
                     $('input[name=newPass2]').css('outline','none').css('box-shadow','0 0 3px 2px green');
                 }
             });
@@ -216,19 +209,19 @@
 	        		});
         		}
         	});
-
      	// 회원 탈퇴
-		function deleteMember() { 
-     		var deleteCheck = confirm("정말 탈퇴하시겠습니까?");
-     		
-     		if(deleteCheck == true) {
-     			// 쿼리 스트링
-    			location.href = "/bono/delete.me?mid=<%=m.getUserId()%>"; 
-     		}
-     		else {
-     			return;
-     		}
-		}
+	// 회원 탈퇴
+      function deleteMember() { 
+           var deleteCheck = confirm("정말 탈퇴하시겠습니까?");
+           
+           if(deleteCheck == true) {
+              // 쿼리 스트링
+             location.href = "/bono/delete.me?mid=<%=m.getUserId()%>"; 
+           }
+           else {
+              return;
+           }
+      }
 		
       
         /*

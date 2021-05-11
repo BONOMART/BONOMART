@@ -25,6 +25,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>판매 조회</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 <link rel="stylesheet" href="/bono/assets/css/saleList.css" />
 <link rel="stylesheet" href="/bono/assets/css/header.css" />
@@ -279,9 +280,10 @@
 			// 화면 먼저 수정해서 servlet으로 넘길거임
 			// 수량을 input태그로 변경
 			var update = $(this).parent().siblings('td#s_quan');
+			var val_up = $(this).parent().siblings('td#s_quan').text();
     		
     		update.replaceWith('<td id="s_quan"> <input type="number" id="up_s_quan"' 
-    				            + ' style="width:70px; margin-top:7px;"/>' 
+    				            + ' style="width:70px; margin-top:7px;" value="' + val_up + '"/>' 
     				            + '<button id="updateBtn">수정</button> </td>');
     		
     		// 수정 버튼 클릭 시 input태그로 수정한 값 처리

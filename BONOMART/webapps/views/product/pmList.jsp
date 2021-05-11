@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>상품 조회</title>
 <link rel="stylesheet" href="../../assets/css/pmList.css" />
 <link rel="stylesheet" href="../../assets/css/header.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
@@ -79,7 +80,7 @@ select {
 				<select name="" id="searchbox">
 						
 						<option value="P_NO">상품코드</option>
-						<option value="C_NO">거래처</option>
+						<option value="C_NAME">거래처</option>
 						<option value="P_NAME">상품명</option>
 						<option value="G_NAME">그룹명</option>
 				</select>
